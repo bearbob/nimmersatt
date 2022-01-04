@@ -1,0 +1,43 @@
+html {
+  height: 100%;
+}
+
+body {
+  background: #dae9ee;
+  color: black;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+
+a {
+  color: #f4d03f;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #f7dc6f;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #f39c12;
+}
+
+#random {
+  position: fixed;
+  z-index: 100;
+  left: 5px;
+  top: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  background: #0f4526;
+  color: white;
+  border: 3px solid black;
+}
+
+#random:hover {
+  background: #186f3d;
+  cursor: pointer;
+}
