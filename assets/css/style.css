@@ -25,11 +25,8 @@ a:visited {
   color: #f39c12;
 }
 
-#random {
-  position: fixed;
-  z-index: 100;
-  left: 5px;
-  top: 5px;
+.random {
+  margin: auto;
   padding: 10px;
   border-radius: 5px;
   background: #0f4526;
@@ -37,7 +34,11 @@ a:visited {
   border: 3px solid black;
 }
 
-#random:hover {
+.random:hover {
   background: #186f3d;
   cursor: pointer;
+}
+
+.content {
+  padding: 10px;
 }

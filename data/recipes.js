@@ -6,5 +6,9 @@ const raw_data = [
   {
     "name": "Milchreis",
     "tags": ["rice", "sweet", "milk"]
+  },
+  {
+    "name": "Black Bean Mole",
+    "tags": ["rice", "sweet", "milk"]
   }
 ];
