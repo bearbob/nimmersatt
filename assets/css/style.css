@@ -3,8 +3,8 @@ html {
 }
 
 body {
-  background: #fdf0d5;
-  color: black;
+  background: #EAEAEA;
+  color: #252A34;
   margin: 0;
   padding: 0;
   min-height: 100%;
@@ -12,30 +12,28 @@ body {
 
 
 a {
-  color: #f4d03f;
+  color: #08D9D6;
   text-decoration: none;
 }
 
 a:hover {
-  color: #f7dc6f;
+  color: #059795;
   text-decoration: underline;
 }
 
 a:visited {
-  color: #f39c12;
+  color: #036968;
 }
 
 #random {
-  margin: auto;
-  padding: 10px;
-  border-radius: 5px;
-  background: #0f4526;
-  color: white;
-  border: 3px solid black;
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+  background: #FF2E63;
 }
 
 #random:hover {
-  background: #186f3d;
+  background: #7f1731;
   cursor: pointer;
 }
 
