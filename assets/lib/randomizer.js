@@ -6,7 +6,7 @@ function getRandom() {
   var content = "";
 
   if (recipe.link) {
-      content += '<a href="' + recipe.link + '">';
+      content += '<a href="' + recipe.link + '" target="_blank" rel="noopener noreferrer">';
   }
   content += recipe.name;
   if (recipe.link) {
