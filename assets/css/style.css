@@ -30,10 +30,12 @@ a:visited {
   text-align: center;
   padding: 15px;
   background: #FF2E63;
+  font-size: 1.4em;
 }
 
 #random:hover {
   background: #7f1731;
+  color: #EAEAEA;
   cursor: pointer;
 }
 
