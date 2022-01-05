@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  background: #dae9ee;
+  background: #fdf0d5;
   color: black;
   margin: 0;
   padding: 0;
@@ -25,7 +25,7 @@ a:visited {
   color: #f39c12;
 }
 
-.random {
+#.random {
   margin: auto;
   padding: 10px;
   border-radius: 5px;
@@ -34,11 +34,11 @@ a:visited {
   border: 3px solid black;
 }
 
-.random:hover {
+#random:hover {
   background: #186f3d;
   cursor: pointer;
 }
 
-.content {
+#content {
   padding: 10px;
 }
