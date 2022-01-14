@@ -1,8 +1,26 @@
 const raw_data = [
   {
     "name": "Bierbrot",
-    "tags": ["bread", "baking", "beer"],
+    "tags": ["brot", "bread", "baking", "beer"],
     "link": "https://www.marcelpaa.com/rezepte/bierbrot/"
+  },
+  {
+    "name": "Sonnenblumenbrot",
+    "tags": ["brot", "bread", "baking"],
+    "link": "https://www.marcelpaa.com/rezepte/sonnenblumenbrot/",
+    "video": "https://www.youtube.com/watch?v=WNZV6t9_FIw"
+  },
+  {
+    "name": "Urdinkel Schlumberger",
+    "tags": ["brot", "bread", "baking"],
+    "link": "https://www.marcelpaa.com/rezepte/urdinkel-schlumberger/",
+    "video": "https://www.youtube.com/watch?v=zpvk80lLhs8"
+  },
+  {
+    "name": "Roggen-Vollkornbrötchen",
+    "tags": ["brot", "bread", "baking"],
+    "link": "https://www.marcelpaa.com/rezepte/roggen-vollkornbroetchen/",
+    "video": "https://www.youtube.com/watch?v=f2u9ZcHiMYQ"
   },
   {
     "name": "Milchreis",
@@ -31,5 +49,16 @@ const raw_data = [
   {
     "name": "One-Pot-Paste mit Zitronenkäsesauce",
     "link": "https://www.penny.de/erleben/rezepte-und-ernaehrung/one-pot-pasta-mit-zitronen-kaeseso%C3%9Fe"
+  },
+  {
+    "name": "Fischstäbchen",
+    "subtext": "mit Buttergemüse und Kartoffelbrei oder Erbsen und Reis"
+  },
+  {
+    "name": "Kartoffelsuppe"
+  },
+  {
+    "name": "Sheperds Pie",
+    "link": "https://www.jamieoliver.com/recipes/lamb-recipes/super-shepherd-s-pie/"
   }
 ];

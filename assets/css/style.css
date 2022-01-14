@@ -33,6 +33,7 @@ a:visited {
   background: #FF2E63;
   font-size: 1.4em;
   font-weight: bold;
+  border: none;
 }
 
 #random:hover {

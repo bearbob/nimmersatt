@@ -12,6 +12,9 @@ function getRandom() {
   if (recipe.link) {
       content += '</a>';
   }
+  if (recipe.tags) {
+    content += '<br><br>Tags: ' + recipe.tags.join(', ');
+  }
 
   p.innerHTML = content;
 };
