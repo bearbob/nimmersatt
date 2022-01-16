@@ -8,8 +8,16 @@ function getRandom() {
 
   content += buildBlock(recipe, {"type": "name"});
   content += buildBlock(recipe, {"type": "subtitle"});
-  content += buildBlock(recipe, {"type": "link", "header": true, "f": function(s) { return '<a href="' + s + '" target="_blank" rel="noopener noreferrer">' +  s.substring(0, s.indexOf('/', 8)) + '</a>'; }});
-  content += buildBlock(recipe, {"type": "tags", "header": true, "f": function(s) { return s.join(', '); }});
+  content += buildBlock(recipe, {
+    "type": "link",
+    "header": true,
+    "f": function(s) { return '<a href="' + s + '" target="_blank" rel="noopener noreferrer">' +  s.substring(0, s.indexOf('/', 8)) + '</a>'; }
+  });
+  content += buildBlock(recipe, {
+    "type": "tags",
+    "header": true,
+    "f": function(s) { return s.join(', '); }
+  });
 
   p.innerHTML = content;
 };
@@ -29,7 +37,7 @@ function buildBlock(container, params) {
       result += type.charAt(0).toUpperCase() + type.slice(1) + ': ';
     }
     if (params.f) {
-      result += f(block);
+      result += params.f.apply(this, block);
     } else {
       result += block;
     }
