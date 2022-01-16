@@ -13,26 +13,27 @@ body {
 
 
 a {
-  color: #08D9D6;
+  color: #059795;
   text-decoration: none;
 }
 
 a:hover {
-  color: #059795;
-  text-decoration: underline;
+  color: #036b6a;
 }
 
-a:visited {
-  color: #036968;
+#buttons {
+  font-size: 1.6em;
+  font-weight: bold;
+  border: none;
+  display: flex;
 }
 
 #random {
+  flex: 50%
   width: 100%;
   text-align: center;
   padding: 15px;
   background: #FF2E63;
-  font-size: 1.4em;
-  font-weight: bold;
   border: none;
 }
 
@@ -42,6 +43,37 @@ a:visited {
   cursor: pointer;
 }
 
+#bread {
+  flex: 50%
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+  background: #FF2E63;
+  border: none;
+}
+
+#bread:hover {
+  background: #7f1731;
+  color: #EAEAEA;
+  cursor: pointer;
+}
+
 #content {
   padding: 10px;
+}
+
+.name {
+  width: 100%;
+  text-align: center;
+  font-size: 1.6em;
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+.subtitle {
+  width: 100%;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: italic;
+  padding-bottom: 5px;
 }

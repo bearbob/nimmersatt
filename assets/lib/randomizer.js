@@ -1,11 +1,19 @@
 function getRandom() {
-  var p = document.getElementById("content");
+  let random = Math.floor(Math.random() * recipes.length);
+  let recipe = recipes[random];
+  setContent(recipe);
+};
 
-  const random = Math.floor(Math.random() * recipes.length);
-  const recipe = recipes[random];
-  var content = "";
+function getBread() {
+  let breads = recipes.filter(r => r.tags && r.tags.includes("bread") );
+  let random = Math.floor(Math.random() * breads.length);
+  let recipe = breads[random];
+  setContent(recipe);
+};
 
-
+function setContent(recipe) {
+  let p = document.getElementById("content");
+  let content = "";
   content += buildBlock(recipe, {"type": "name"});
   content += buildBlock(recipe, {"type": "subtitle"});
   content += buildBlock(recipe, {
