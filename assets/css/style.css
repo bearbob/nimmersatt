@@ -22,15 +22,15 @@ a:hover {
 }
 
 #buttons {
-  font-size: 1.6em;
-  font-weight: bold;
   border: none;
   display: flex;
 }
 
 #random {
-  flex: 50%
+  flex: 50%;
   width: 100%;
+  font-size: 1.6em;
+  font-weight: bold;
   text-align: center;
   padding: 15px;
   background: #FF2E63;
@@ -44,8 +44,10 @@ a:hover {
 }
 
 #bread {
-  flex: 50%
+  flex: 50%;
   width: 100%;
+  font-size: 1.6em;
+  font-weight: bold;
   text-align: center;
   padding: 15px;
   background: #FF2E63;
