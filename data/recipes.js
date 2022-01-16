@@ -14,7 +14,7 @@ const recipes = [
   },
   {
     "name": "Geniale Grüne Spaghetti",
-    "subtitle": "mit Schwarzkohl und Ricotta"
+    "subtitle": "mit Schwarzkohl und Ricotta",
     "book": {
       "id": "jamies5zutaten",
       "page": 50
