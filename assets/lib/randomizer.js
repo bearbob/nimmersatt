@@ -37,12 +37,13 @@ function buildBlock(container, params) {
       result += type.charAt(0).toUpperCase() + type.slice(1) + ': ';
     }
     if (params.f) {
-      result += params.f.apply(this, block);
+      result += params.f.apply(this, [block]);
     } else {
       result += block;
     }
     result += '</div>';
+    return result;
   } else {
     return "";
   }
-}
+};
