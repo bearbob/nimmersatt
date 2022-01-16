@@ -1,4 +1,75 @@
-const raw_data = [
+const books = {
+  "jamies5zutaten": {
+    "name": "Jamies 5 Zutatenküche",
+    "ISBN": "978-3-8310-3422-5"
+  }
+};
+const recipes = [
+  {
+    "name": "Wildreis mit Mangold und Kirschen",
+    "book": {
+      "id": "jamies5zutaten",
+      "page": 32
+    }
+  },
+  {
+    "name": "Geniale Grüne Spaghetti",
+    "subtitle": "mit Schwarzkohl und Ricotta"
+    "book": {
+      "id": "jamies5zutaten",
+      "page": 50
+    }
+  },
+  {
+    "name": "Blitzschnelle Bratwurst-Carbonara",
+    "book": {
+      "id": "jamies5zutaten",
+      "page": 52
+    }
+  },
+  {
+    "name": "Pasta mit Hackfleisch und Steinpilzen",
+    "book": {
+      "id": "jamies5zutaten",
+      "page": 68
+    }
+  },
+  {
+    "name": "Koreanischer Eierreis",
+    "book": {
+      "id": "jamies5zutaten",
+      "page": 80
+    }
+  },
+  {
+    "name": "Frittata mit Pilzen und Räucherspeck",
+    "book": {
+      "id": "jamies5zutaten",
+      "page": 92
+    }
+  },
+  {
+    "name": "Knuspriges Knoblauchhähnchen",
+    "book": {
+      "id": "jamies5zutaten",
+      "page": 108
+    }
+  },
+  {
+    "name": "Schnelle Asia-Frikadellen",
+    "book": {
+      "id": "jamies5zutaten",
+      "page": 130
+    }
+  },
+  {
+    "name": "Erbsen, dicke Bohnen, Chili & Minze",
+    "book": {
+      "id": "jamies5zutaten",
+      "page": 176
+    },
+    "link": "https://www.jamieoliver.com/recipes/vegetable-recipes/peas-beans-chilli-mint/"
+  },
   {
     "name": "Bierbrot",
     "tags": ["brot", "bread", "baking", "beer"],
