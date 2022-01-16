@@ -94,6 +94,12 @@ const recipes = [
     "video": "https://www.youtube.com/watch?v=f2u9ZcHiMYQ"
   },
   {
+    "name": "Kartoffelkiste",
+    "tags": ["brot", "bread", "baking"],
+    "link": "https://www.marcelpaa.com/rezepte/kartoffelkiste/",
+    "video": "https://www.youtube.com/watch?v=GyUhTJhI45c"
+  },
+  {
     "name": "Milchreis",
     "tags": ["rice", "sweet", "milk"]
   },
