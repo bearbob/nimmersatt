@@ -22,6 +22,16 @@ function setContent(recipe) {
     "f": function(s) { return '<a href="' + s + '" target="_blank" rel="noopener noreferrer">' +  s.substring(0, s.indexOf('/', 8)) + '</a>'; }
   });
   content += buildBlock(recipe, {
+    "type": "video",
+    "header": true,
+    "f": function(s) { return '<a href="' + s + '" target="_blank" rel="noopener noreferrer">' +  s + '</a>'; }
+  });
+  content += buildBlock(recipe, {
+    "type": "book",
+    "header": true,
+    "f": function(s) { return books[s.id] + ', Seite ' + s.page; }
+  });
+  content += buildBlock(recipe, {
     "type": "tags",
     "header": true,
     "f": function(s) { return s.join(', '); }

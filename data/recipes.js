@@ -100,8 +100,18 @@ const recipes = [
     "video": "https://www.youtube.com/watch?v=GyUhTJhI45c"
   },
   {
+    "name": "Rustikales Mischbrot",
+    "link": "https://www.ploetzblog.de/2021/02/20/rustikales-mischbrot/",
+    "tags": ["brot", "bread", "baking"],
+  },
+  {
+    "name": "Dinkelvollkornmischbrot mit 25% Gerstenkörnern",
+    "link": "https://www.ploetzblog.de/2022/01/01/dinkelvollkornmischbrot-mit-25-gerstenkoernern/",
+    "tags": ["brot", "bread", "baking"],
+  },
+  {
     "name": "Milchreis",
-    "tags": ["rice", "sweet", "milk"]
+    "tags": ["rice", "sweet", "milk", "reis"]
   },
   {
     "name": "Black-eyed bean mole with salsa",
@@ -146,5 +156,31 @@ const recipes = [
   },
   {
     "name": "Flammkuchen"
+  },
+  {
+    "name": "Käsespätzle"
+  },
+  {
+    "name": "Quarkeierkuchen"
+  },
+  {
+    "name": "Ofengemüse"
+  },
+  {
+    "name": "Gerösteter Curry-Blumenkohl",
+    "subtitle": "mit frischer Zitronen-Raita",
+    "link": "https://www.eat-this.org/curry-blumenkohl-mit-zitronen-raita/",
+    "tags": ["rice", "curry", "blumenkohl", "reis"]
+  },
+  {
+    "name": "Cremige Süßkartoffelsuppe",
+    "subtitle": "mit rauchigen Rosenkohl-Chips",
+    "link": "https://www.eat-this.org/cremige-suesskartoffelsuppe-mit-rauchigen-rosenkohl-chips/"
+  },
+  {
+    "name": "Pasta e fagioli",
+    "subtitle": "das bohnigste Pastagericht überhaupt",
+    "link": "https://www.eat-this.org/vegane-pasta-e-fagioli/",
+    "tags": ["pasta", "noodles"]
   }
 ];
