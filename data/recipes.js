@@ -1,6 +1,6 @@
 const books = {
   "jamies5zutaten": {
-    "name": "Jamies 5 Zutatenküche",
+    "name": "Jamies 5-Zutaten-Küche",
     "ISBN": "978-3-8310-3422-5"
   }
 };
