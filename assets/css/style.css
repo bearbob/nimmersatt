@@ -26,13 +26,17 @@ a:hover {
   display: flex;
 }
 
-#random {
-  flex: 50%;
-  width: 100%;
+#buttons.button {
   font-size: 1.6em;
   font-weight: bold;
   text-align: center;
-  padding: 15px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#random {
+  flex: 50%;
+  width: 100%;
   background: #FF2E63;
   border: none;
 }
@@ -46,10 +50,6 @@ a:hover {
 #bread {
   flex: 50%;
   width: 100%;
-  font-size: 1.6em;
-  font-weight: bold;
-  text-align: center;
-  padding: 15px;
   background: #FF2E63;
   border: none;
 }
