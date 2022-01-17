@@ -102,13 +102,19 @@ const recipes = [
   {
     "name": "Rustikales Mischbrot",
     "link": "https://www.ploetzblog.de/2021/02/20/rustikales-mischbrot/",
-    "tags": ["brot", "bread", "baking"],
+    "tags": ["brot", "bread", "baking"]
   },
   {
     "name": "Dinkelvollkornmischbrot mit 25% Gerstenkörnern",
     "link": "https://www.ploetzblog.de/2022/01/01/dinkelvollkornmischbrot-mit-25-gerstenkoernern/",
-    "tags": ["brot", "bread", "baking"],
+    "tags": ["brot", "bread", "baking"]
   },
+  {
+    "name": "Rustikales Gewürz-Vollkornbrot",
+    "subtitle": "perfekt für die Sauerteig-Resteverwertung",
+    "link": "https://madamroteruebe.de/2022/01/gewuerz-vollkornbrot-perfekt-fuer-die-sauerteig-resteverwertung/",
+    "tags": ["brot", "bread", "baking"]
+  }
   {
     "name": "Milchreis",
     "tags": ["rice", "sweet", "milk", "reis"]
