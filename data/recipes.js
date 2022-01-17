@@ -114,7 +114,7 @@ const recipes = [
     "subtitle": "perfekt für die Sauerteig-Resteverwertung",
     "link": "https://madamroteruebe.de/2022/01/gewuerz-vollkornbrot-perfekt-fuer-die-sauerteig-resteverwertung/",
     "tags": ["brot", "bread", "baking"]
-  }
+  },
   {
     "name": "Milchreis",
     "tags": ["rice", "sweet", "milk", "reis"]
