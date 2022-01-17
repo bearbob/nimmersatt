@@ -29,7 +29,7 @@ function setContent(recipe) {
   content += buildBlock(recipe, {
     "type": "book",
     "header": true,
-    "f": function(s) { return books[s.id] + ', Seite ' + s.page; }
+    "f": function(s) { return '"' + books[s.id].name + '", Seite ' + s.page; }
   });
   content += buildBlock(recipe, {
     "type": "tags",
