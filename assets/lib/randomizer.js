@@ -1,8 +1,8 @@
 function getRandom() {
   let random = Math.floor(Math.random() * recipes.length);
-  let recipe = recipes[random];
-  let result = '<div class="odd">' + getContent(recipe) + '</div>';
-  result += '<div class="even">' + getContent(recipe) + '</div>';
+  let result = '<div class="odd">' + getContent(recipes[random]) + '</div>';
+  random = Math.floor(Math.random() * recipes.length);
+  result += '<div class="even">' + getContent(recipes[random]) + '</div>';
   setContent(result);
 };
 
