@@ -239,7 +239,7 @@ const recipes = [
   },
   {
     "name": "One Pot Taco Pasta",
-    "subtitle": "würzige, cremige 20 Minuten Nudelpfanne"
+    "subtitle": "würzige, cremige 20 Minuten Nudelpfanne",
     "link": "https://sallys-blog.de/one-pot-taco-pasta-wurzige-cremige-20-minuten-nudelpfanne",
     "tags": ["pasta"],
     "ingredients": ["olivenöl", "hackfleisch", "zwiebel", "knoblauch", "tomatenmark", "gemüsebrühe", "sahne", "salz", "pfeffer", "chiliflocken", "kreuzkümmel", "lorbeer", "oregano", "nudel", "parmesan", "erbsen"],
