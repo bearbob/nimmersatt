@@ -71,6 +71,48 @@ const recipes = [
     "link": "https://www.jamieoliver.com/recipes/vegetable-recipes/peas-beans-chilli-mint/",
   },
   {
+    "name": "Irre guter Schweinefleisch-Burger",
+    "book": {
+      "id": "jamies5zutaten",
+      "page": 208,
+    },
+  },
+  {
+    "name": "Pfannengerührtes Schweinefleisch",
+    "book": {
+      "id": "jamies5zutaten",
+      "page": 220,
+    },
+  },
+  {
+    "name": "Aromatisches Lammcurry",
+    "book": {
+      "id": "jamies5zutaten",
+      "page": 232,
+    },
+  },
+  {
+    "name": "Bratreis mit Ei",
+    "book": {
+      "id": "jamies5zutaten",
+      "page": 244,
+    },
+  },
+  {
+    "name": "Nudeln mit schwarzem Sesam",
+    "book": {
+      "id": "jamies5zutaten",
+      "page": 250,
+    },
+  },
+  {
+    "name": "Würzige Linsen & Reis",
+    "book": {
+      "id": "jamies5zutaten",
+      "page": 252,
+    },
+  },
+  {
     "name": "Bierbrot",
     "tags": ["brot", "bread", "baking", "beer"],
     "link": "https://www.marcelpaa.com/rezepte/bierbrot/",
@@ -176,7 +218,7 @@ const recipes = [
     "name": "Gerösteter Curry-Blumenkohl",
     "subtitle": "mit frischer Zitronen-Raita",
     "link": "https://www.eat-this.org/curry-blumenkohl-mit-zitronen-raita/",
-    "tags": ["rice", "curry", "blumenkohl", "reis"],
+    "tags": ["curry", "blumenkohl", "reis"],
   },
   {
     "name": "Cremige Süßkartoffelsuppe",
@@ -187,6 +229,19 @@ const recipes = [
     "name": "Pasta e fagioli",
     "subtitle": "das bohnigste Pastagericht überhaupt",
     "link": "https://www.eat-this.org/vegane-pasta-e-fagioli/",
-    "tags": ["pasta", "noodles"],
+    "tags": ["pasta", "nudeln"],
+  },
+  {
+    "name": "Pastinakensuppe",
+    "link": "https://sallys-blog.de/blog/detail/sCategory/218/blogArticle/1815",
+    "tags": ["suppe"],
+    "ingredients": ["pastinaken", "kartoffeln", "zwiebel", "butterschmalz", "mehl", "wasser", "milch", "salz", "pfeffer"],
+  },
+  {
+    "name": "One Pot Taco Pasta",
+    "subtitle": "würzige, cremige 20 Minuten Nudelpfanne"
+    "link": "https://sallys-blog.de/one-pot-taco-pasta-wurzige-cremige-20-minuten-nudelpfanne",
+    "tags": ["pasta"],
+    "ingredients": ["olivenöl", "hackfleisch", "zwiebel", "knoblauch", "tomatenmark", "gemüsebrühe", "sahne", "salz", "pfeffer", "chiliflocken", "kreuzkümmel", "lorbeer", "oregano", "nudel", "parmesan", "erbsen"],
   },
 ];
