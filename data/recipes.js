@@ -5,54 +5,6 @@ const BOOKS = {
   }
 };
 
-const BREADS = [
-  {
-    "name": "Bierbrot",
-    "tags": ["brot", "bread", "baking", "beer"],
-    "link": "https://www.marcelpaa.com/rezepte/bierbrot/",
-  },
-  {
-    "name": "Sonnenblumenbrot",
-    "tags": ["brot", "bread", "baking"],
-    "link": "https://www.marcelpaa.com/rezepte/sonnenblumenbrot/",
-    "video": "https://www.youtube.com/watch?v=WNZV6t9_FIw",
-  },
-  {
-    "name": "Urdinkel Schlumberger",
-    "tags": ["brot", "bread", "baking"],
-    "link": "https://www.marcelpaa.com/rezepte/urdinkel-schlumberger/",
-    "video": "https://www.youtube.com/watch?v=zpvk80lLhs8",
-  },
-  {
-    "name": "Roggen-Vollkornbrötchen",
-    "tags": ["brot", "bread", "baking"],
-    "link": "https://www.marcelpaa.com/rezepte/roggen-vollkornbroetchen/",
-    "video": "https://www.youtube.com/watch?v=f2u9ZcHiMYQ",
-  },
-  {
-    "name": "Kartoffelkiste",
-    "tags": ["brot", "bread", "baking"],
-    "link": "https://www.marcelpaa.com/rezepte/kartoffelkiste/",
-    "video": "https://www.youtube.com/watch?v=GyUhTJhI45c",
-  },
-  {
-    "name": "Rustikales Mischbrot",
-    "link": "https://www.ploetzblog.de/2021/02/20/rustikales-mischbrot/",
-    "tags": ["brot", "bread", "baking"],
-  },
-  {
-    "name": "Dinkelvollkornmischbrot mit 25% Gerstenkörnern",
-    "link": "https://www.ploetzblog.de/2022/01/01/dinkelvollkornmischbrot-mit-25-gerstenkoernern/",
-    "tags": ["brot", "bread", "baking"],
-  },
-  {
-    "name": "Rustikales Gewürz-Vollkornbrot",
-    "subtitle": "perfekt für die Sauerteig-Resteverwertung",
-    "link": "https://madamroteruebe.de/2022/01/gewuerz-vollkornbrot-perfekt-fuer-die-sauerteig-resteverwertung/",
-    "tags": ["brot", "bread", "baking"],
-  },
-];
-
 const RECIPES = [
   {
     "name": "Wildreis mit Mangold und Kirschen",
