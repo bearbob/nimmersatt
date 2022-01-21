@@ -66,11 +66,11 @@ a:hover {
   padding: 0px;
 }
 
-.even {
+.odd {
   padding: 15px;
 }
 
-.odd {
+.even {
   padding: 15px;
   background: #f7f7f7;
 }
