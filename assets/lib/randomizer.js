@@ -32,7 +32,7 @@ function getContent(recipe) {
   content += buildBlock(recipe, {
     "type": "book",
     "header": "Buch",
-    "f": function(s) { return '"' + books[s.id].name + '", Seite ' + s.page; }
+    "f": function(s) { return '"' + BOOKS[s.id].name + '", Seite ' + s.page; }
   });
   content += buildBlock(recipe, {
     "type": "tags",
