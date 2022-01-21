@@ -1,16 +1,16 @@
 function getRandom() {
-  let random = Math.floor(Math.random() * recipes.length);
-  let result = '<div class="odd">' + getContent(recipes[random]) + '</div>';
-  let r = Math.floor(Math.random() * recipes.length);
-  random = (r == random)? (r+1)%recipes.length : r;
-  result += '<div class="even">' + getContent(recipes[random]) + '</div>';
+  let size = RECIPES.length;
+  let random = Math.floor(Math.random() * size);
+  let result = '<div class="odd">' + getContent(RECIPES[random]) + '</div>';
+  let r = Math.floor(Math.random() * size);
+  random = (r == random)? (r+1)%size : r;
+  result += '<div class="even">' + getContent(RECIPES[random]) + '</div>';
   setContent(result);
 };
 
 function getBread() {
-  let breads = recipes.filter(r => r.tags && r.tags.includes("bread") );
-  let random = Math.floor(Math.random() * breads.length);
-  let recipe = breads[random];
+  let random = Math.floor(Math.random() * BREADS.length);
+  let recipe = BREADS[random];
   let result = getContent(recipe);
   setContent(result);
 };
@@ -22,12 +22,12 @@ function getContent(recipe) {
   content += buildBlock(recipe, {
     "type": "link",
     "header": "Link",
-    "f": function(s) { return '<a href="' + s + '" target="_blank" rel="noopener noreferrer">' +  s.substring(0, s.indexOf('/', 8)) + '</a>'; }
+    "f": function(s) { return '<a href="' + s + '" target="_blank" rel="noopener noreferrer">' + s.substring(0, s.indexOf('/', 8)) + '</a>'; }
   });
   content += buildBlock(recipe, {
     "type": "video",
     "header": "Video",
-    "f": function(s) { return '<a href="' + s + '" target="_blank" rel="noopener noreferrer">' +  s + '</a>'; }
+    "f": function(s) { return '<a href="' + s + '" target="_blank" rel="noopener noreferrer">' + s.substring(0, s.indexOf('/', 8)) + '</a>'; }
   });
   content += buildBlock(recipe, {
     "type": "book",
@@ -65,7 +65,7 @@ function buildBlock(container, params) {
     let block = container[type];
     let result = '<div class="'+type+'">';
     if (params.header) {
-      result += params.header + ': ';
+      result += '<b>' + params.header + ':</b> ';
     }
     if (params.f) {
       result += params.f.apply(this, [block]);

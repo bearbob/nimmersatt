@@ -1,10 +1,59 @@
-const books = {
+const BOOKS = {
   "jamies5zutaten": {
     "name": "Jamies 5-Zutaten-Küche",
     "ISBN": "978-3-8310-3422-5",
   }
 };
-const recipes = [
+
+const BREADS = [
+  {
+    "name": "Bierbrot",
+    "tags": ["brot", "bread", "baking", "beer"],
+    "link": "https://www.marcelpaa.com/rezepte/bierbrot/",
+  },
+  {
+    "name": "Sonnenblumenbrot",
+    "tags": ["brot", "bread", "baking"],
+    "link": "https://www.marcelpaa.com/rezepte/sonnenblumenbrot/",
+    "video": "https://www.youtube.com/watch?v=WNZV6t9_FIw",
+  },
+  {
+    "name": "Urdinkel Schlumberger",
+    "tags": ["brot", "bread", "baking"],
+    "link": "https://www.marcelpaa.com/rezepte/urdinkel-schlumberger/",
+    "video": "https://www.youtube.com/watch?v=zpvk80lLhs8",
+  },
+  {
+    "name": "Roggen-Vollkornbrötchen",
+    "tags": ["brot", "bread", "baking"],
+    "link": "https://www.marcelpaa.com/rezepte/roggen-vollkornbroetchen/",
+    "video": "https://www.youtube.com/watch?v=f2u9ZcHiMYQ",
+  },
+  {
+    "name": "Kartoffelkiste",
+    "tags": ["brot", "bread", "baking"],
+    "link": "https://www.marcelpaa.com/rezepte/kartoffelkiste/",
+    "video": "https://www.youtube.com/watch?v=GyUhTJhI45c",
+  },
+  {
+    "name": "Rustikales Mischbrot",
+    "link": "https://www.ploetzblog.de/2021/02/20/rustikales-mischbrot/",
+    "tags": ["brot", "bread", "baking"],
+  },
+  {
+    "name": "Dinkelvollkornmischbrot mit 25% Gerstenkörnern",
+    "link": "https://www.ploetzblog.de/2022/01/01/dinkelvollkornmischbrot-mit-25-gerstenkoernern/",
+    "tags": ["brot", "bread", "baking"],
+  },
+  {
+    "name": "Rustikales Gewürz-Vollkornbrot",
+    "subtitle": "perfekt für die Sauerteig-Resteverwertung",
+    "link": "https://madamroteruebe.de/2022/01/gewuerz-vollkornbrot-perfekt-fuer-die-sauerteig-resteverwertung/",
+    "tags": ["brot", "bread", "baking"],
+  },
+];
+
+const RECIPES = [
   {
     "name": "Wildreis mit Mangold und Kirschen",
     "book": {
@@ -113,51 +162,6 @@ const recipes = [
     },
   },
   {
-    "name": "Bierbrot",
-    "tags": ["brot", "bread", "baking", "beer"],
-    "link": "https://www.marcelpaa.com/rezepte/bierbrot/",
-  },
-  {
-    "name": "Sonnenblumenbrot",
-    "tags": ["brot", "bread", "baking"],
-    "link": "https://www.marcelpaa.com/rezepte/sonnenblumenbrot/",
-    "video": "https://www.youtube.com/watch?v=WNZV6t9_FIw",
-  },
-  {
-    "name": "Urdinkel Schlumberger",
-    "tags": ["brot", "bread", "baking"],
-    "link": "https://www.marcelpaa.com/rezepte/urdinkel-schlumberger/",
-    "video": "https://www.youtube.com/watch?v=zpvk80lLhs8",
-  },
-  {
-    "name": "Roggen-Vollkornbrötchen",
-    "tags": ["brot", "bread", "baking"],
-    "link": "https://www.marcelpaa.com/rezepte/roggen-vollkornbroetchen/",
-    "video": "https://www.youtube.com/watch?v=f2u9ZcHiMYQ",
-  },
-  {
-    "name": "Kartoffelkiste",
-    "tags": ["brot", "bread", "baking"],
-    "link": "https://www.marcelpaa.com/rezepte/kartoffelkiste/",
-    "video": "https://www.youtube.com/watch?v=GyUhTJhI45c",
-  },
-  {
-    "name": "Rustikales Mischbrot",
-    "link": "https://www.ploetzblog.de/2021/02/20/rustikales-mischbrot/",
-    "tags": ["brot", "bread", "baking"],
-  },
-  {
-    "name": "Dinkelvollkornmischbrot mit 25% Gerstenkörnern",
-    "link": "https://www.ploetzblog.de/2022/01/01/dinkelvollkornmischbrot-mit-25-gerstenkoernern/",
-    "tags": ["brot", "bread", "baking"],
-  },
-  {
-    "name": "Rustikales Gewürz-Vollkornbrot",
-    "subtitle": "perfekt für die Sauerteig-Resteverwertung",
-    "link": "https://madamroteruebe.de/2022/01/gewuerz-vollkornbrot-perfekt-fuer-die-sauerteig-resteverwertung/",
-    "tags": ["brot", "bread", "baking"],
-  },
-  {
     "name": "Milchreis",
     "tags": ["rice", "sweet", "milk", "reis"],
   },
@@ -223,7 +227,7 @@ const recipes = [
   {
     "name": "Cremige Süßkartoffelsuppe",
     "subtitle": "mit rauchigen Rosenkohl-Chips",
-    "link": "https://www.eat-this.org/cremige-suesskartoffelsuppe-mit-rauchigen-rosenkohl-chips/",
+    "link": "https://ww,w.eat-this.org/cremige-suesskartoffelsuppe-mit-rauchigen-rosenkohl-chips/",
   },
   {
     "name": "Pasta e fagioli",
@@ -243,5 +247,40 @@ const recipes = [
     "link": "https://sallys-blog.de/one-pot-taco-pasta-wurzige-cremige-20-minuten-nudelpfanne",
     "tags": ["pasta"],
     "ingredients": ["olivenöl", "hackfleisch", "zwiebel", "knoblauch", "tomatenmark", "gemüsebrühe", "sahne", "salz", "pfeffer", "chiliflocken", "kreuzkümmel", "lorbeer", "oregano", "nudel", "parmesan", "erbsen"],
+  },
+  {
+    "name": "Letscho",
+  },
+  {
+    "name": "Chile relleno",
+    "subtitle": "mexikanische gefüllte Paprika",
+    "link": "https://www.rewe.de/rezepte/gefuellte-paprika-chile-relleno/",
+    "ingredients": ["spitzpaprika", "mozzarella", "tomaten", "zwiebeln", "knoblauch", "gemüsebrühe", "öl", "salz", "pfeffer", "eier", "mehl", "sonnenblumenöl", "petersilie"],
+  },
+  {
+    "name": "Safran-Risotto mit King Prawns",
+    "link": "https://www.rewe.de/rezepte/safran-risotto-king-prawns/",
+  },
+  {
+    "name": "Chicken & chorizo jambalaya",
+    "link": "https://www.bbcgoodfood.com/recipes/chicken-chorizo-jambalaya",
+    "ingredients": ["öl", "hähnchenbrust", "zwiebel", "paprika", "knoblauch", "chorizo", "cajungewürz", "reis", "tomaten", "hühnerbrühe"],
+  },
+  {
+    "name": "Wirsingrouladen",
+  },
+  {
+    "name": "Coconut-Apple-Ginger Dal",
+    "link": "https://www.epicurious.com/recipes/food/views/coconut-apple-ginger-dal",
+  },
+  {
+    "name": "Braised Butternut Squash in Spiced Coconut Gravy",
+    "link": "https://www.epicurious.com/recipes/food/views/braised-butternut-squash-in-spiced-coconut-gravy",
+  },
+  {
+    "name": "Bierrisotto",
+    "subtitle": "mit Pilzen und Chorizo-Chips",
+    "link": "https://www.rewe.de/rezepte/bierrisotto-pilze-chorizo-chips/",
+    "ingredients": ["champignons", "schalotte", "chroizo", "petersilie", "olivenöl", "risotto-reis", "bier", "gemüsefond", "butter", "salz", "pfeffer", "parmesan"],
   },
 ];
