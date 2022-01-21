@@ -11,7 +11,7 @@ function getRandom() {
 function getBread() {
   let random = Math.floor(Math.random() * BREADS.length);
   let recipe = BREADS[random];
-  let result = getContent(recipe);
+  let result = '<div class="odd">' + getContent(recipe) + '</div>';
   setContent(result);
 };
 
