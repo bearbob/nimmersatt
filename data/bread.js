@@ -48,4 +48,15 @@ const BREADS = [
     "video": "https://www.youtube.com/watch?v=l8hhraD-gaE",
     "ingredients": ["weizenmehl 812", "roggenmehl 610/815", "dinkelmehl 630", "Vollkornmehl", "frischhefe", "salz"],
   },
+  {
+    "name": "Banater Weißbrot",
+    "link": "https://www.ploetzblog.de/2020/12/12/banater-weissbrot/",
+    "time": "10 Stunden",
+  },
+  {
+    "name": "Hartweizen Krusties",
+    "link": "https://www.marcelpaa.com/rezepte/hartweizen-krusties/",
+    "video": "https://www.youtube.com/watch?v=FzIEl71-4G4",
+    "time": "3 bis 17 Stunden"
+  }
 ];

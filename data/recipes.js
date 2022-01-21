@@ -235,4 +235,9 @@ const RECIPES = [
     "link": "https://www.rewe.de/rezepte/bierrisotto-pilze-chorizo-chips/",
     "ingredients": ["champignons", "schalotte", "chroizo", "petersilie", "olivenöl", "risotto-reis", "bier", "gemüsefond", "butter", "salz", "pfeffer", "parmesan"],
   },
+  {
+    "name": "Rotkohl-Schupfnudel-Gratin mit Schafskäse",
+    "ingredients": ["rotkohl", "rosinen", "orangen", "zwiebeln", "olivenöl", "mandeln", "salz", "pfeffer", "zucker", "obstessig", "schupfnudeln", "schafskäse", "gemahlene muskatblüte"],
+    "time": "ca 80min",
+  }
 ];

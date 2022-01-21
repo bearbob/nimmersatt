@@ -52,7 +52,7 @@ a:hover {
   text-align: center;
   padding-top: 20px;
   padding-bottom: 20px;
-  background: #457B9D;
+  background: #6398ba;
   border: none;
 }
 
@@ -66,12 +66,12 @@ a:hover {
   padding: 0px;
 }
 
-#even {
-  padding: 10px;
+.even {
+  padding: 15px;
 }
 
-#odd {
-  padding: 10px;
+.odd {
+  padding: 15px;
   background: #f7f7f7;
 }
 

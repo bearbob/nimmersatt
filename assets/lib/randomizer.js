@@ -44,6 +44,10 @@ function getContent(recipe) {
     "header": "Zutaten",
     "f": function(s) { return s.join(', '); }
   });
+  content += buildBlock(recipe, {
+    "type": "time",
+    "header": "Zeit"
+  });
 
   return content;
 };
