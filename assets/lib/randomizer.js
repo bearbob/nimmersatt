@@ -1,10 +1,11 @@
 function getRandom(count = 1) {
   let size = RECIPES.length;
   let result = '';
-  for(let i=0; i<count; i++) {
+  for(let i=1; i<(count+1); i++) {
+    // We count from 1 to get even and odd right
     let random = Math.floor(Math.random() * size);
     result += '<div class="';
-    if(i%2 == 0) {
+    if (i%2 == 0) {
       result += 'even';
     } else {
       result += 'odd';

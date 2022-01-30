@@ -251,4 +251,34 @@ const RECIPES = [
     "time": "45 min",
     "ingredients": ["wirsing", "mehl", "weichweizengrieß", "eier", "olivenöl", "salz", "öl", "ingwer", "thymian", "gemüsebrühe", "schlagsahne", "zitrone", "zucker", "pfeffer", "butter", "sauerrahm", "schnittlauch"],
   },
+  {
+    "name": "Protein-Packed Muscle-Building Chili",
+    "link": "https://www.bodybuilding.com/recipes/protein-packed-muscle-building-chili",
+    "time": "35 min",
+    "ingredients": ["hähnchenbrust", "olivenöl", "paprika", "pilze", "zwiebeln", "mais", "kidneybohnen", "pintobohnen", "tomaten", "chilipulver", "knoblauch", "petersilie", "kreuzkümmel", "worcestershire sauce"],
+  },
+  {
+    "name": "Coconut & squash dhansak",
+    "link": "https://www.bbcgoodfood.com/recipes/coconut-squash-dhansak",
+    "time": "20 min",
+    "ingredients": ["öl", "butternut squash", "zwiebeln", "korma curry paste", "tomaten", "kokosnussmilch", "linsen", "babyspinat", "kokosnussjoghurt"],
+  },
+  {
+    "name": "Caponata pasta",
+    "link": "https://www.bbcgoodfood.com/recipes/caponata-pasta",
+    "time": "20 min",
+    "ingredients": ["olivenöl", "zwiebeln", "knoblauch", "paprika", "auberginen", "tomaten", "kapern", "rosinen", "nudeln", "basilikum", "parmesan"],
+  },
+  {
+    "name": "Gnocchi cacio e pepe",
+    "link": "https://www.bbcgoodfood.com/recipes/gnocchi-cacio-e-pepe",
+    "time": "10 min",
+    "ingredients": ["gnocchi", "butter", "parmesan", "pfeffer"],
+  },
+  {
+    "name": "Shepherd's pie with sweet potato mash",
+    "link": "https://www.bbcgoodfood.com/recipes/veggie-shepherds-pie-sweet-potato-mash",
+    "time": "1 Stunde",
+    "ingredients": ["olivenöl", "zwiebeln", "karotten", "thymian", "rotwein", "tomaten", "gemüsebrühe", "grüne linsen", "süßkartoffeln", "butter", "cheddar"],
+  }
 ];
