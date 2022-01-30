@@ -172,7 +172,7 @@ const RECIPES = [
   {
     "name": "Cremige Süßkartoffelsuppe",
     "subtitle": "mit rauchigen Rosenkohl-Chips",
-    "link": "https://ww,w.eat-this.org/cremige-suesskartoffelsuppe-mit-rauchigen-rosenkohl-chips/",
+    "link": "https://www.eat-this.org/cremige-suesskartoffelsuppe-mit-rauchigen-rosenkohl-chips/",
   },
   {
     "name": "Pasta e fagioli",
