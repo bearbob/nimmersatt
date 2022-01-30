@@ -1,10 +1,16 @@
-function getRandom() {
+function getRandom(count = 1) {
   let size = RECIPES.length;
-  let random = Math.floor(Math.random() * size);
-  let result = '<div class="odd">' + getContent(RECIPES[random]) + '</div>';
-  let r = Math.floor(Math.random() * size);
-  random = (r == random)? (r+1)%size : r;
-  result += '<div class="even">' + getContent(RECIPES[random]) + '</div>';
+  let result = '';
+  for(let i=0; i<count; i++) {
+    let random = Math.floor(Math.random() * size);
+    result += '<div class="';
+    if(i%2 == 0) {
+      result += 'even';
+    } else {
+      result += 'odd';
+    }
+    result += '">' + getContent(RECIPES[random]) + '</div>';
+  }
   setContent(result);
 };
 

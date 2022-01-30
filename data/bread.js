@@ -58,5 +58,14 @@ const BREADS = [
     "link": "https://www.marcelpaa.com/rezepte/hartweizen-krusties/",
     "video": "https://www.youtube.com/watch?v=FzIEl71-4G4",
     "time": "3 bis 17 Stunden"
+  },
+  {
+    "name": "Schrippen",
+    "book": {
+      "id": "brotrezeptefuerjedentag",
+      "page": 35
+    },
+    "time": "11 bis 13 Stunden",
+    "ingredients": ["weizenmehl 550", "milch", "roggenmehl 1150", "honig", "salz", "butter", "frischhefe"],
   }
 ];

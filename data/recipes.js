@@ -1,10 +1,3 @@
-const BOOKS = {
-  "jamies5zutaten": {
-    "name": "Jamies 5-Zutaten-Küche",
-    "ISBN": "978-3-8310-3422-5",
-  }
-};
-
 const RECIPES = [
   {
     "name": "Wildreis mit Mangold und Kirschen",
@@ -239,5 +232,23 @@ const RECIPES = [
     "name": "Rotkohl-Schupfnudel-Gratin mit Schafskäse",
     "ingredients": ["rotkohl", "rosinen", "orangen", "zwiebeln", "olivenöl", "mandeln", "salz", "pfeffer", "zucker", "obstessig", "schupfnudeln", "schafskäse", "gemahlene muskatblüte"],
     "time": "ca 80min",
-  }
+  },
+  {
+    "name": "Kartoffel-Sellerie-Püree mit grünem Buttergemüse",
+    "book": {
+      "id": "greenbox",
+      "page": 162,
+    },
+    "time": "45 min",
+    "ingredients": ["kartoffeln", "sellerie", "salz", "butter", "dicke bohnen", "grüner spargel", "knackerbsen", "erbsen", "knoblauch", "mehl", "gemüsebrühe", "minze", "frühlingszwiebeln", "muskatnuss", "zitronensaft"],
+  },
+  {
+    "name": "Wirsing-Nudel-Strudel",
+    "book": {
+      "id": "greenbox",
+      "page": 253,
+    },
+    "time": "45 min",
+    "ingredients": ["wirsing", "mehl", "weichweizengrieß", "eier", "olivenöl", "salz", "öl", "ingwer", "thymian", "gemüsebrühe", "schlagsahne", "zitrone", "zucker", "pfeffer", "butter", "sauerrahm", "schnittlauch"],
+  },
 ];
