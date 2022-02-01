@@ -36,8 +36,13 @@ function getFiltered() {
   }
   // select randomly
   let size = filtered.length;
-  let random = Math.floor(Math.random() * size);
-  let result = '<div class="odd"">' + getContent(filtered[random]) + '</div>';
+  let result = '';
+  if (size == 0) {
+    result = '<div class="odd"">Kein passendes Ergebnis gefunden</div>';
+  } else {
+    let random = Math.floor(Math.random() * size);
+    result = '<div class="odd"">' + getContent(filtered[random]) + '</div>';
+  }
   setContent(result);
 };
 

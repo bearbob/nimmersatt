@@ -169,6 +169,7 @@ const RECIPES = [
     "subtitle": "mit frischer Zitronen-Raita",
     "link": "https://www.eat-this.org/curry-blumenkohl-mit-zitronen-raita/",
     "tags": ["curry", "blumenkohl", "reis"],
+    "ingredients": ["blumenkohl", "reis"],
   },
   {
     "name": "Cremige Süßkartoffelsuppe",
@@ -180,6 +181,8 @@ const RECIPES = [
     "subtitle": "das bohnigste Pastagericht überhaupt",
     "link": "https://www.eat-this.org/vegane-pasta-e-fagioli/",
     "tags": ["pasta", "nudeln"],
+    "time": "20 min",
+    "ingredients": ["zwiebeln", "karotten", "stangensellerie", "knoblauch", "olivenöl", "salz", "chiliflocken", "tomatenmark", "weiße bohnen", "aquafaba", "tomaten", "oregano", "thymian", "fenchelsamen", "lorbeer", "dunkle misopaste", "pasta", "endivie"],
   },
   {
     "name": "Pastinakensuppe",
@@ -295,5 +298,17 @@ const RECIPES = [
     "link": "https://www.eat-this.org/kitchari-indisches-reis-porridge/",
     "time": "1 Stunde 30 min",
     "ingredients": ["mungbohnen", "basmatireis", "zwiebeln", "kokosöl", "kreuzkümmel", "senfsamen", "karotten", "tomaten", "kurkuma", "ingwerpulver", "salz", "spinat", "koriander"],
+  },
+  {
+    "name": "Geröstete Knoblauch-Shiitake auf Miso-Steckrübenpüree",
+    "link": "https://www.eat-this.org/geroestete-shiitake-auf-miso-steckruebenpueree/",
+    "time": "20 min",
+    "ingredients": ["steckrüben", "kartoffeln", "hafermilch", "olivenöl", "dunkle misopaste", "sesamöl", "salz", "sojasauce", "zitrone", "ahornsirup", "knoblauch", "ingwer", "schwarzer pfeffer", "sesam", "radieschen", "frühlingszwiebeln"],
+  },
+  {
+    "name": "Roasted veggie curry",
+    "link": "https://www.jamieoliver.com/recipes/curry-recipes/roasted-veggie-curry/",
+    "time": "1 Stunde 10min",
+    "ingredients": ["madras curry paste", "olivenöl", "essig", "karotten", "pastinake", "butternut kürbis", "zucchini", "blumenkohl", "ingwer", "knoblauch", "mango chutney", "tomaten", "kokosnussmilch", "erbsen"]
   }
 ];
