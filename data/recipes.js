@@ -109,11 +109,12 @@ const RECIPES = [
   {
     "name": "Milchreis",
     "tags": ["rice", "sweet", "milk", "reis"],
+    "ingredients": ["reis", "milch", "zimt"],
   },
   {
     "name": "Black-eyed bean mole with salsa",
-    "tags": ["rice", "sweet", "milk", "beans", "salsa"],
     "link": "https://www.bbcgoodfood.com/recipes/black-eye-bean-mole-salsa",
+    "ingredients": ["zwiebeln", "tomaten", "koriander", "limette", "rapsöl", "knoblauch", "chilipulver", "zimt", "bohnen", "kakoa", "gemüsebrühe", "tomatenmark"]
   },
   {
     "name": "Auberginencurry",
@@ -184,14 +185,14 @@ const RECIPES = [
     "name": "Pastinakensuppe",
     "link": "https://sallys-blog.de/blog/detail/sCategory/218/blogArticle/1815",
     "tags": ["suppe"],
-    "ingredients": ["pastinaken", "kartoffeln", "zwiebel", "butterschmalz", "mehl", "wasser", "milch", "salz", "pfeffer"],
+    "ingredients": ["pastinaken", "kartoffeln", "zwiebeln", "butterschmalz", "mehl", "wasser", "milch", "salz", "pfeffer"],
   },
   {
     "name": "One Pot Taco Pasta",
     "subtitle": "würzige, cremige 20 Minuten Nudelpfanne",
     "link": "https://sallys-blog.de/one-pot-taco-pasta-wurzige-cremige-20-minuten-nudelpfanne",
     "tags": ["pasta"],
-    "ingredients": ["olivenöl", "hackfleisch", "zwiebel", "knoblauch", "tomatenmark", "gemüsebrühe", "sahne", "salz", "pfeffer", "chiliflocken", "kreuzkümmel", "lorbeer", "oregano", "nudel", "parmesan", "erbsen"],
+    "ingredients": ["olivenöl", "hackfleisch", "zwiebeln", "knoblauch", "tomatenmark", "gemüsebrühe", "sahne", "salz", "pfeffer", "chiliflocken", "kreuzkümmel", "lorbeer", "oregano", "nudel", "parmesan", "erbsen"],
   },
   {
     "name": "Letscho",
@@ -209,7 +210,7 @@ const RECIPES = [
   {
     "name": "Chicken & chorizo jambalaya",
     "link": "https://www.bbcgoodfood.com/recipes/chicken-chorizo-jambalaya",
-    "ingredients": ["öl", "hähnchenbrust", "zwiebel", "paprika", "knoblauch", "chorizo", "cajungewürz", "reis", "tomaten", "hühnerbrühe"],
+    "ingredients": ["öl", "hähnchenbrust", "zwiebeln", "paprika", "knoblauch", "chorizo", "cajungewürz", "reis", "tomaten", "hühnerbrühe"],
   },
   {
     "name": "Wirsingrouladen",
@@ -280,5 +281,19 @@ const RECIPES = [
     "link": "https://www.bbcgoodfood.com/recipes/veggie-shepherds-pie-sweet-potato-mash",
     "time": "1 Stunde",
     "ingredients": ["olivenöl", "zwiebeln", "karotten", "thymian", "rotwein", "tomaten", "gemüsebrühe", "grüne linsen", "süßkartoffeln", "butter", "cheddar"],
+  },
+  {
+    "name": "Vegane grüne Enchiladas",
+    "subtitle": "mit Tofu und Jalapeño-Apfel-Salsa",
+    "link": "https://www.eat-this.org/vegane-gruene-enchiladas/",
+    "time": "1 Stunde",
+    "ingredients": ["zwiebeln", "apfel", "paprika", "jalapenos", "knoblauch", "olivenöl", "limette", "koriander", "salz", "paprikapulver", "oregano", "kreuzkümmel", "zwiebelpulver", "tofu", "joghurt", "gouda", "tortillas"],
+  },
+  {
+    "name": "Kitchari",
+    "subtitle": "Indiens einfaches, leckeres Reis-Porridge",
+    "link": "https://www.eat-this.org/kitchari-indisches-reis-porridge/",
+    "time": "1 Stunde 30 min",
+    "ingredients": ["mungbohnen", "basmatireis", "zwiebeln", "kokosöl", "kreuzkümmel", "senfsamen", "karotten", "tomaten", "kurkuma", "ingwerpulver", "salz", "spinat", "koriander"],
   }
 ];

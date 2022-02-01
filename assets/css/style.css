@@ -66,6 +66,38 @@ a:hover {
   padding: 0px;
 }
 
+#footer {
+  border: none;
+  display: flex;
+}
+
+#search {
+  flex: 70%;
+  width: 100%;
+  font-size: 1.8em;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: #6398ba;
+  border: none;
+}
+
+#filter {
+  flex: 30%;
+  width: 100%;
+  font-size: 1.6em;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border: none;
+}
+
+#filter:hover {
+  background: #1D3557;
+  color: #EAEAEA;
+  cursor: pointer;
+}
+
 .odd {
   padding: 15px;
 }

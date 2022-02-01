@@ -22,6 +22,20 @@ function getBread() {
   setContent(result);
 };
 
+function getFiltered() {
+  let input = document.getElementById('search').value;
+  let words = input.split(' ');
+  let filtered = RECIPES;
+  for (let i of words) {
+    filtered = filtered.filter(r => r.ingredients && r.ingredients.includes(i));
+  }
+  // select randomly
+  let size = filtered.length;
+  let random = Math.floor(Math.random() * size);
+  let result = '<div class="odd"">' + getContent(filtered[random]) + '</div>';
+  setContent(result);
+};
+
 function getContent(recipe) {
   let content = "";
   content += buildBlock(recipe, {"type": "name"});
