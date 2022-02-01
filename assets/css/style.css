@@ -75,7 +75,7 @@ a:hover {
 }
 
 #search {
-  flex: 30%;
+  flex: 70%;
   width: 100%;
   font-size: 1.6em;
   padding-top: 20px;
@@ -84,7 +84,7 @@ a:hover {
 }
 
 #filter {
- flex: 70%;
+ flex: 30%;
  width: 100%;
  font-size: 1.8em;
  font-weight: bold;

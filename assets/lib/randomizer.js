@@ -27,7 +27,12 @@ function getFiltered() {
   let words = input.split(' ');
   let filtered = RECIPES;
   for (let i of words) {
-    filtered = filtered.filter(r => r.ingredients && r.ingredients.includes(i));
+    // define a comparison function that is case insensitive and checks if the search word
+    // is a substring
+    let searchTerm = i.trim().toLowerCase();
+    if (searchTerm.length < 1) continue;
+    let criteria = (element) => element.toLowerCase().indexOf(searchTerm) != -1;
+    filtered = filtered.filter(r => r.ingredients && r.ingredients.some(criteria));
   }
   // select randomly
   let size = filtered.length;
