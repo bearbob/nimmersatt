@@ -31,8 +31,14 @@ function getFiltered() {
     // is a substring
     let searchTerm = i.trim().toLowerCase();
     if (searchTerm.length < 1) continue;
-    let criteria = (element) => element.toLowerCase().indexOf(searchTerm) != -1;
-    filtered = filtered.filter(r => r.ingredients && r.ingredients.some(criteria));
+    const isSubstring = function(element) {
+      return element.toLowerCase().indexOf(searchTerm) != -1
+    }
+    filtered = filtered.filter( r =>
+      (r.ingredients && r.ingredients.some(isSubstring)) ||
+      (r.tags && r.tags.some(isSubstring)) ||
+      isSubstring(r.name)
+    );
   }
   // select randomly
   let size = filtered.length;

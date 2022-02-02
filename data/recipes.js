@@ -308,7 +308,13 @@ const RECIPES = [
   {
     "name": "Roasted veggie curry",
     "link": "https://www.jamieoliver.com/recipes/curry-recipes/roasted-veggie-curry/",
-    "time": "1 Stunde 10min",
+    "time": "1 Stunde 10 min",
     "ingredients": ["madras curry paste", "olivenöl", "essig", "karotten", "pastinake", "butternut kürbis", "zucchini", "blumenkohl", "ingwer", "knoblauch", "mango chutney", "tomaten", "kokosnussmilch", "erbsen"]
+  },
+  {
+    "name": "Kaiserschmarrn",
+    "subtitle": "Omas Original Rezept für einen vorzüglich feinen Schmarrn",
+    "link": "https://emmikochteinfach.de/kaiserschmarrn-ganz-klassisch/",
+    "ingredients": ["mehl", "salz", "milch", "ei"],
   }
 ];
