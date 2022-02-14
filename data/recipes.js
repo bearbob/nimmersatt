@@ -316,5 +316,11 @@ const RECIPES = [
     "subtitle": "Omas Original Rezept für einen vorzüglich feinen Schmarrn",
     "link": "https://emmikochteinfach.de/kaiserschmarrn-ganz-klassisch/",
     "ingredients": ["mehl", "salz", "milch", "ei"],
+  },
+  {
+    "name": "Crispy Greek-style pie",
+    "link": "https://www.bbcgoodfood.com/recipes/crispy-greek-style-pie",
+    "ingredients": ["spinat", "tomaten", "fetakäse", "eier", "blätterteig"],
+    "time": "40 min"
   }
 ];

@@ -25,7 +25,8 @@ function getBread() {
 function getFiltered() {
   let input = document.getElementById('search').value;
   let words = input.split(' ');
-  let filtered = RECIPES;
+  // search over all recipes, including breads
+  let filtered = RECIPES.concat(BREADS);
   for (let i of words) {
     // define a comparison function that is case insensitive and checks if the search word
     // is a substring

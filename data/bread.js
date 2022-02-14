@@ -67,5 +67,10 @@ const BREADS = [
     },
     "time": "11 bis 13 Stunden",
     "ingredients": ["weizenmehl 550", "milch", "roggenmehl 1150", "honig", "salz", "butter", "frischhefe"],
-  }
+  },
+  {
+    "name": "Weiche Burgerbuns mit Tangzhong",
+    "link": "https://www.tasteoftravel.at/weiche-burger-buns/",
+    "ingredients": ["wasser", "milch", "hefe", "butter", "kristallzucker", "salz", "weizenmehl 550", "öl", "eigelb"],
+  },
 ];
