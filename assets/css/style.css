@@ -81,6 +81,9 @@ a:hover {
   padding-top: 20px;
   padding-bottom: 20px;
   border: none;
+  border-top: 1px black solid;
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
 }
 
 #filter {
