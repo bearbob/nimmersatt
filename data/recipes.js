@@ -5,6 +5,9 @@ const RECIPES = [
       "id": "jamies5zutaten",
       "page": 32,
     },
+    "link": "https://www.jamieoliver.com/recipes/rice-recipes/cherry-chard-wild-rice/",
+    "ingredients": ["wildreis", "mangold", "kirschen", "fetakäse", "walnüsse"],
+    "time": "30 min"
   },
   {
     "name": "Geniale Grüne Spaghetti",
@@ -322,5 +325,34 @@ const RECIPES = [
     "link": "https://www.bbcgoodfood.com/recipes/crispy-greek-style-pie",
     "ingredients": ["spinat", "tomaten", "fetakäse", "eier", "blätterteig"],
     "time": "40 min"
+  },
+  {
+    "name": "Hot-smoked salmon pasta",
+    "subtitle": "With asparagus & crème fraîche",
+    "link": "https://www.jamieoliver.com/recipes/salmon-recipes/hot-smoked-salmon-pasta/",
+    "time": "15 min",
+    "ingredients": ["spargel", "pasta", "lachs", "zitrone", "creme fraiche"]
+  },
+  {
+    "name": "Bodybuilding Mac & Cheese",
+    "link": "https://theproteinchef.co/bodybuilding-mac-cheese-recipe/",
+  },
+  {
+    "name": "Beetroot & red onion tarte tatin",
+    "link": "https://www.bbcgoodfood.com/recipes/beetroot-red-onion-tarte-tatin",
+    "time": "1 Stunde 30 min",
+    "ingredients": ["rote beete", "zwiebeln", "olivenöl", "reisweinessig", "brauner zucker", "sternanis", "mehl", "blätterteig", "orange"]
+  },
+  {
+    "name": "Cheesy celeriac, leek & rosemary gratin",
+    "link": "https://www.bbcgoodfood.com/recipes/cheesy-celeriac-leek-rosemary-gratin",
+    "time": "2 Stunden",
+    "ingredients": ["butter", "poree/lauch", "rosmarin", "milch", "mascarpone", "lorbeer", "knollensellerie", "cheddar"]
+  },
+  {
+    "name": "Japanese ramen noodle soup",
+    "link": "https://www.bbcgoodfood.com/recipes/japanese-ramen-noodle-soup",
+    "time": "40 min",
+    "ingredients": ["hühnerbrühe", "knoblauch", "sojasauce", "worcestershire sauce", "ingwer", "chilipulver", "zucker", "ramennudeln", "tofu/hähnchen/schweinefilet", "sesamöl", "blattspinat", "zuckermais", "eier", "nori", "frühlingszwiebeln", "sesam"]
   }
 ];
