@@ -73,4 +73,10 @@ const BREADS = [
     "link": "https://www.tasteoftravel.at/weiche-burger-buns/",
     "ingredients": ["wasser", "milch", "hefe", "butter", "kristallzucker", "salz", "weizenmehl 550", "öl", "eigelb"],
   },
+  {
+    "name": "Bao Burger Buns",
+    "link": "https://caroskueche.de/bao-burger-buns/",
+    "time": "1 Stunde 15 min",
+    "ingredients": ["weizenmehl", "trockenhefe", "zucker", "salz", "backpulver", "wasser"]
+  }
 ];

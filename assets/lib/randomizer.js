@@ -38,7 +38,9 @@ function getFiltered() {
     filtered = filtered.filter( r =>
       (r.ingredients && r.ingredients.some(isSubstring)) ||
       (r.tags && r.tags.some(isSubstring)) ||
-      isSubstring(r.name)
+      isSubstring(r.name) ||
+      (r.link && isSubstring(r.link)) ||
+      (r.subtitle && isSubstring(r.subtitle))
     );
   }
   // select randomly
