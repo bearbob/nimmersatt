@@ -23,6 +23,8 @@ const RECIPES = [
       "id": "jamies5zutaten",
       "page": 52,
     },
+    "link": "https://www.tastesheriff.com/blitzschnelle-bratwurst-carbonara-aus-jamies-5-zutaten-kueche/",
+    "ingredients": ["Tagliatelle", "Bratwurst", "glatte petersilie", "ei", "parmesan", "olivenöl", "pfeffer", "salz"]
   },
   {
     "name": "Pasta mit Hackfleisch und Steinpilzen",
@@ -122,14 +124,18 @@ const RECIPES = [
   {
     "name": "Auberginencurry",
     "link": "https://www.lidl-kochen.de/rezeptwelt/auberginen-curry-268581",
+    "ingredients": ["auberginen", "salz", "spitzpaprika", "knoblauch", "zwiebeln", "peperoni", "öl", "currypulver", "passierte tomaten", "kokosnussmilch", "basmatireis", "speisestärke", "koriander", "pfeffer" ]
   },
   {
     "name": "Bananenbrot",
+    "time": "80 Minuten",
+    "ingredients": ["butter", "puderzucker", "salz", "vanillezucker", "eier", "bananen", "zimt", "weizenmehl 405", "backpulver", "naturjoghurt", "haselnüsse", "sultaninen"],
   },
   {
     "name": "Kung Pao Chicken",
     "link": "https://www.edeka.de/rezepte/rezept/kung-pao-chicken.jsp",
     "video": "https://www.youtube.com/watch?v=nKOpKflSNkc",
+    "ingredients": ["Hähnchenbrustfilet", "Sojasauce", "Reiswein", "Rohrzucker", "Maisstärke", "Karotte", "Mini Pak Choi", "Frühlingszwiebel", "Chilischote", "ingwer", "knoblauch", "szechuanpfeffer", "grobes salz", "erdnussöl", "hühnerbrühe", "honig", "erdnüsse", "sesamöl"]
   },
   {
     "name": "Eierreis",
@@ -354,5 +360,18 @@ const RECIPES = [
     "link": "https://www.bbcgoodfood.com/recipes/japanese-ramen-noodle-soup",
     "time": "40 min",
     "ingredients": ["hühnerbrühe", "knoblauch", "sojasauce", "worcestershire sauce", "ingwer", "chilipulver", "zucker", "ramennudeln", "tofu/hähnchen/schweinefilet", "sesamöl", "blattspinat", "zuckermais", "eier", "nori", "frühlingszwiebeln", "sesam"]
+  },
+  {
+    "name": "Arroz de Pato",
+    "subtitle": "Entenreis",
+    "ingredients": ["ente", "zwiebeln", "lauchstange", "karotte", "knoblauch", "olivenöl", "lorbeerblätter", "glatte petersilie", "chorizo", "serrano schinken", "schwarze pfefferkörner", "orange", "tomatenmark", "wasser", "langkornreis natur", "salz", "iberico käse", "grüne oliven"],
+    "time": "3 Stunden",
+    "link": "https://www.foodundco.de/arroz-de-pato-entenreis/"
+  },
+  {
+    "name": "Chorizo & mozzarella gnocchi bake",
+    "link": "https://www.bbcgoodfood.com/recipes/chorizo-mozzarella-gnocchi-bake",
+    "time": "35 min",
+    "ingredients": ["olivenöl", "zwiebeln", "knoblauch", "chorizo", "gehackte tomaten", "zucker", "gnocchi", "mozzarella", "basilikum"]
   }
 ];
