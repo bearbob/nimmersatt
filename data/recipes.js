@@ -185,8 +185,9 @@ const RECIPES = [
   },
   {
     "name": "Grießbrei",
-    "subtitle": "mit Mandeln und Erdbeeren"
+    "subtitle": "mit Mandeln und Erdbeeren",
     "tags": ["dinner", "sweet"],
+    "ingredients": ["weichweizengrieß", "milch", "zucker", "salz", "eier", "butter", "mandelsplitter", "erdbeeren", "zimt"],
   },
   {
     "name": "Flammkuchen",
@@ -208,7 +209,7 @@ const RECIPES = [
     "name": "Gerösteter Curry-Blumenkohl",
     "subtitle": "mit frischer Zitronen-Raita",
     "link": "https://www.eat-this.org/curry-blumenkohl-mit-zitronen-raita/",
-    "tags": ["dinner", "herzhaft"]
+    "tags": ["dinner", "herzhaft"],
     "ingredients": ["blumenkohl", "reis"],
   },
   {
