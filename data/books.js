@@ -13,5 +13,10 @@ const BOOKS = {
     "name": "Greenbox",
     "author": "Tim Mälzer",
     "ISBN": "978-3-442-39243-8"
+  },
+  "modernbaking": {
+    "name": "Modern Baking",
+    "author": "Cynthia Barcomi",
+    "ISBN": "978-3-8310-3894-7"
   }
 };

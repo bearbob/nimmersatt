@@ -424,5 +424,15 @@ const RECIPES = [
     "tags": ["sweet"],
     "time": "40 min",
     "ingredients": ["zucker", "butter", "vanillezucker", "salz", "eier", "weizenmehl", "buttermilch", "backpulver"]
-  }
+  },
+  {
+    "name": "Pcokets",
+    "subtitle": "gefüllte Teigtaschen",
+    "tags": ["dinner"],
+    "book": {
+      "id": "modernbaking",
+      "page": 177
+    },
+    "ingredients": ["honig", "trockenhefe", "wasser", "Weizenvollkornmehl", "mehl", "salz", "olivenöl", "griechischer joghurt", "pesto", "cheddar/parmesan", "grünkohl", "pflanzenöl", "butter"],
+  },
 ];
