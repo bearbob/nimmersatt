@@ -435,4 +435,31 @@ const RECIPES = [
     },
     "ingredients": ["honig", "trockenhefe", "wasser", "Weizenvollkornmehl", "mehl", "salz", "olivenöl", "griechischer joghurt", "pesto", "cheddar/parmesan", "grünkohl", "pflanzenöl", "butter"],
   },
+  {
+    "name": "Asiatische Steckrübensuppe",
+    "link": "https://www.rewe.de/rezepte/asia-steckruebensuppe/",
+    "time": "30 min",
+    "ingredients": ["kartoffeln", "steckrüben", "ingwer", "chili", "rapsöl", "currypulver", "gemüsebrühe", "kokosmilch", "sternanis", "salz", "pfeffer", "lauch", "shiitake", "koriander", "sesam", "tabasco"],
+    "tags": ["dinner", "vegan"],
+  },
+  {
+    "name": "Spicy root & lentil casserole",
+    "link": "https://www.bbcgoodfood.com/recipes/spicy-root-lentil-casserole",
+    "ingredients": ["pflanzenöl", "zwiebeln", "Knoblauch", "kartoffeln", "karotte", "pastinake", "currypulver", "gemüsebrühe", "rote linsen", "koriander", "joghurt"],
+    "time": "45 min",
+    "tags": ["dinner", "vegan"],
+  },
+  {
+    "name": "Orientalischer Steckrüben-Eintopf mit Kichererbsen",
+    "link": "https://www.ndr.de/ratgeber/kochen/rezepte/rezeptdb6_id-14377_broadcast-1572_station-ndrtv.html",
+    "ingredients": ["steckrüben", "Kichererbsen", "backpulver", "pastinake", "rote zwiebeln", "karotte", "knoblauch", "limette", "orange", "baharat/harissa", "tomatensaft", "sojasauce", "chili-schote", "honig", "sesam", "petersilie", "olivenöl", "salz"],
+    "tags": ["dinner"],
+  },
+  {
+    "name": "Glasierter Ofenkürbis mit Tomaten & Spinat",
+    "link": "https://www.lecker.de/glasierter-ofenkuerbis-mit-tomaten-spinat-70386.html",
+    "ingredients": ["hokkaidokürbis", "schalotten", "ahornsirup", "balsamico-essig", "olivenöl", "salz", "cayennpfeffer", "kirschtomaten", "blattspinat"],
+    "time": "50 min",
+    "tags": ["dinner"],
+  },
 ];
