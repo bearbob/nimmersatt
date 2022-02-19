@@ -151,7 +151,7 @@ const BREADS = [
   },
   {
     "name": "Sweet Potato Buns",
-    "subtitle": "Pekannuss-Schnecken mit Süßkartoffelteig"
+    "subtitle": "Pekannuss-Schnecken mit Süßkartoffelteig",
     "tags": ["sweet", "kuchen"],
     "book": {
       "id": "modernbaking",
