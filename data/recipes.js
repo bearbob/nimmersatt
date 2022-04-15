@@ -536,7 +536,7 @@ const RECIPES = [
   {
     "name": "Rührei-Burrito",
     "link": "https://www.rewe.de/rezepte/ruehrei-burrito",
-    "tags": ["vegetarisch"],
+    "tags": ["vegetarisch", "dinner"],
     "time": "35 min",
     "ingredients": ["tortillla wraps", "paprika", "schnittlauch", "cheddar", "rapsöl", "eier", "milch", "salz", "pfeffer", "paprikapulver edelsüß", "avocado", "kräuterquark"],
   },
@@ -544,6 +544,21 @@ const RECIPES = [
     "name": "Zwiebelkuchen",
     "link": "https://www.lecker.de/zwiebelkuchen-26596.html",
     "time": "1 Stunde 10 min",
+    "tags": ["dinner"],
     "ingredients": ["mehl", "hefe", "milch", "zucker", "butter", "eier", "salz", "zwiebeln", "öl", "speck", "pfeffer", "saure sahne", "speisestärke", "kümmel"],
+  },
+  {
+    "name": "Pasta mit Erbsen-Joghurt-Soße",
+    "link": "https://www.rewe.de/rezepte/pasta-erbsen-joghurt-sosse/",
+    "time": "30 min",
+    "tags": ["dinner"],
+    "ingredients": ["erbsen", "orechiette / nudeln", "salz", "zitrone", "pinienkerne", "minze", "knoblauch", "griechischer joghurt", "pfeffer", "fetakäse", "olivenöl"],
+  },
+  {
+    "name": "Auberginen-Reispfanne mit Feta",
+    "link": "https://www.rewe.de/rezepte/auberginen-reis-pfanne-feta/",
+    "time": "35 min",
+    "tags": ["dinner", "vegetarisch"],
+    "ingredients": ["auberginen", "paprika", "Kichererbsen", "zwiebeln", "knoblauch", "olivenöl", "tomatenmark", "reis", "gemüsebrühe", "thymian", "fetakäse", "salz", "pfeffer"],
   },
 ];
