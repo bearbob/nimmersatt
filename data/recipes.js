@@ -184,6 +184,12 @@ const RECIPES = [
     "tags": ["dinner", "herzhaft"],
   },
   {
+    "name": "Pizza-Kranz",
+    "subtext": "Tortano – italienisches Pizza-Brot"
+    "link": "https://sallys-blog.de/Sallys-Blog/Herzhafte-Rezepte/Pizza-Kranz/Tortano-italienisches-Pizza-Brot",
+    "tags": ["dinner", "herzhaft"],
+  },
+  {
     "name": "Grießbrei",
     "subtitle": "mit Mandeln und Erdbeeren",
     "tags": ["dinner", "sweet"],
@@ -196,6 +202,60 @@ const RECIPES = [
   {
     "name": "Käsespätzle",
     "tags": ["dinner", "herzhaft"],
+  },
+  {
+    "name": "Köttbullar",
+    "link": "https://sallys-blog.de/kottbullar-selbstgemacht-schwedisches-rezept-ikea-nachgemacht",
+    "tags": ["dinner", "herzhaft"],
+  },
+  {
+    "name": "Pulled Beef mit Kartoffelstampf und Krautsalat",
+    "link": "https://sallys-blog.de/pulled-beef-mit-kartoffelstampf-und-krautsalat-leckeres-menu",
+    "tags": ["dinner", "herzhaft"],
+  },
+  {
+    "name": "Pelmeni",
+    "subtext": "russische, gefüllte Teigtaschen"
+    "link": "https://sallys-blog.de/Sallys-Blog/Herzhafte-Rezepte/Hauptspeisen-mit-Fisch-Fleisch/Pelmeni-russische-gefuellte-Teigtaschen/pelmeni",
+    "tags": ["dinner", "herzhaft"],
+  },
+  {
+    "name": "Linzertorte",
+    "link": "https://sallys-blog.de/linzertorte-klassisch-linzer-tarte",
+    "tags": ["sweet", "süß", "kuchen", "kaffee"],
+  },
+  {
+    "name": "Brownie Waffeln",
+    "link": "https://sallys-blog.de/Sallys-Blog/Suesse-Rezepte/Desserts/Brownie-Waffeln",
+    "tags": ["sweet", "süß", "kuchen", "kaffee"],
+  },
+  {
+    "name": "Zimtschnecken Guglhupf",
+    "link": "https://sallys-blog.de/zimtschnecken-guglhupf",
+    "tags": ["sweet", "süß", "kuchen", "kaffee"],
+  },
+  {
+    "name": "Zimtschnecken aus Finnland",
+    "link": "https://sallys-blog.de/blog/detail/sCategory/223/blogArticle/1837",
+    "tags": ["sweet", "süß", "kuchen", "kaffee"],
+  },
+  {
+    "name": "Orangen Tiramisu",
+    "subtext": "fruchtiges Weihnachtsdessert",
+    "link": "https://sallys-blog.de/Sallys-Blog/Themen/Saisonal/Weihnachten/Orangen-Tiramisu/fruchtiges-Weihnachtsdessert",
+    "tags": ["sweet", "süß", "kuchen", "kaffee"],
+  },
+  {
+    "name": "Watruschka",
+    "subtext": "russisches Hefeteiggebäck mit Vanille-Quark-Füllung",
+    "link": "https://sallys-blog.de/Sallys-Blog/Suesse-Rezepte/Kleingebaeck-Kekse/Watruschka-russisches-Hefeteiggebaeck-mit-Vanille-Quark-Fuellung",
+    "tags": ["sweet", "süß", "kuchen", "kaffee"],
+  },
+  {
+    "name": "Skolebrød",
+    "subtext": "norwegische Hefebrötchen",
+    "link": "https://sallys-blog.de/blog/detail/sCategory/223/blogArticle/1821",
+    "tags": ["sweet", "süß", "kuchen", "kaffee"],
   },
   {
     "name": "Quarkeierkuchen",
@@ -240,43 +300,52 @@ const RECIPES = [
   },
   {
     "name": "Letscho",
+    "tags": ["dinner"],
   },
   {
     "name": "Chile relleno",
     "subtitle": "mexikanische gefüllte Paprika",
     "link": "https://www.rewe.de/rezepte/gefuellte-paprika-chile-relleno/",
     "ingredients": ["spitzpaprika", "mozzarella", "tomaten", "zwiebeln", "knoblauch", "gemüsebrühe", "öl", "salz", "pfeffer", "eier", "mehl", "sonnenblumenöl", "petersilie"],
+    "tags": ["dinner"],
   },
   {
     "name": "Safran-Risotto mit King Prawns",
     "link": "https://www.rewe.de/rezepte/safran-risotto-king-prawns/",
+    "tags": ["dinner"],
   },
   {
     "name": "Chicken & chorizo jambalaya",
     "link": "https://www.bbcgoodfood.com/recipes/chicken-chorizo-jambalaya",
     "ingredients": ["öl", "hähnchenbrust", "zwiebeln", "paprika", "knoblauch", "chorizo", "cajungewürz", "reis", "tomaten", "hühnerbrühe"],
+    "tags": ["dinner"],
   },
   {
     "name": "Wirsingrouladen",
+    "tags": ["dinner"],
   },
   {
     "name": "Coconut-Apple-Ginger Dal",
     "link": "https://www.epicurious.com/recipes/food/views/coconut-apple-ginger-dal",
+    "tags": ["dinner"],
   },
   {
     "name": "Braised Butternut Squash in Spiced Coconut Gravy",
     "link": "https://www.epicurious.com/recipes/food/views/braised-butternut-squash-in-spiced-coconut-gravy",
+    "tags": ["dinner"],
   },
   {
     "name": "Bierrisotto",
     "subtitle": "mit Pilzen und Chorizo-Chips",
     "link": "https://www.rewe.de/rezepte/bierrisotto-pilze-chorizo-chips/",
     "ingredients": ["champignons", "schalotte", "chroizo", "petersilie", "olivenöl", "risotto-reis", "bier", "gemüsefond", "butter", "salz", "pfeffer", "parmesan"],
+    "tags": ["dinner"],
   },
   {
     "name": "Rotkohl-Schupfnudel-Gratin mit Schafskäse",
     "ingredients": ["rotkohl", "rosinen", "orangen", "zwiebeln", "olivenöl", "mandeln", "salz", "pfeffer", "zucker", "obstessig", "schupfnudeln", "schafskäse", "gemahlene muskatblüte"],
-    "time": "ca 80min",
+    "time": "80 min",
+    "tags": ["dinner"],
   },
   {
     "name": "Kartoffel-Sellerie-Püree mit grünem Buttergemüse",
@@ -306,12 +375,14 @@ const RECIPES = [
     "name": "Coconut & squash dhansak",
     "link": "https://www.bbcgoodfood.com/recipes/coconut-squash-dhansak",
     "time": "20 min",
+    "tags": ["dinner"],
     "ingredients": ["öl", "butternut squash", "zwiebeln", "korma curry paste", "tomaten", "kokosnussmilch", "linsen", "babyspinat", "kokosnussjoghurt"],
   },
   {
     "name": "Caponata pasta",
     "link": "https://www.bbcgoodfood.com/recipes/caponata-pasta",
     "time": "20 min",
+    "tags": ["dinner"],
     "ingredients": ["olivenöl", "zwiebeln", "knoblauch", "paprika", "auberginen", "tomaten", "kapern", "rosinen", "nudeln", "basilikum", "parmesan"],
   },
   {
@@ -461,5 +532,18 @@ const RECIPES = [
     "ingredients": ["hokkaidokürbis", "schalotten", "ahornsirup", "balsamico-essig", "olivenöl", "salz", "cayennpfeffer", "kirschtomaten", "blattspinat"],
     "time": "50 min",
     "tags": ["dinner"],
+  },
+  {
+    "name": "Rührei-Burrito",
+    "link": "https://www.rewe.de/rezepte/ruehrei-burrito",
+    "tags": ["vegetarisch"],
+    "time": "35 min",
+    "ingredients": ["tortillla wraps", "paprika", "schnittlauch", "cheddar", "rapsöl", "eier", "milch", "salz", "pfeffer", "paprikapulver edelsüß", "avocado", "kräuterquark"],
+  },
+  {
+    "name": "Zwiebelkuchen",
+    "link": "https://www.lecker.de/zwiebelkuchen-26596.html",
+    "time": "1 Stunde 10 min",
+    "ingredients": ["mehl", "hefe", "milch", "zucker", "butter", "eier", "salz", "zwiebeln", "öl", "speck", "pfeffer", "saure sahne", "speisestärke", "kümmel"],
   },
 ];
