@@ -185,7 +185,7 @@ const RECIPES = [
   },
   {
     "name": "Pizza-Kranz",
-    "subtext": "Tortano – italienisches Pizza-Brot"
+    "subtext": "Tortano – italienisches Pizza-Brot",
     "link": "https://sallys-blog.de/Sallys-Blog/Herzhafte-Rezepte/Pizza-Kranz/Tortano-italienisches-Pizza-Brot",
     "tags": ["dinner", "herzhaft"],
   },
@@ -215,7 +215,7 @@ const RECIPES = [
   },
   {
     "name": "Pelmeni",
-    "subtext": "russische, gefüllte Teigtaschen"
+    "subtext": "russische, gefüllte Teigtaschen",
     "link": "https://sallys-blog.de/Sallys-Blog/Herzhafte-Rezepte/Hauptspeisen-mit-Fisch-Fleisch/Pelmeni-russische-gefuellte-Teigtaschen/pelmeni",
     "tags": ["dinner", "herzhaft"],
   },
