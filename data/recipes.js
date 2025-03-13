@@ -262,6 +262,14 @@ const RECIPES = [
     "tags": ["dinner", "sweet"],
   },
   {
+    "name": "Lasagne",
+    "tags": ["dinner"],
+  },
+  {
+    "name": "Lachs-Lasagne",
+    "tags": ["dinner"],
+  },
+  {
     "name": "Ofengemüse",
     "tags": ["dinner", "herzhaft"]
   },
@@ -300,6 +308,10 @@ const RECIPES = [
   },
   {
     "name": "Letscho",
+    "tags": ["dinner"],
+  },
+  {
+    "name": "Quiche",
     "tags": ["dinner"],
   },
   {
@@ -633,5 +645,29 @@ const RECIPES = [
     "link": "https://www.eat-this.org/einfache-kartoffelfrikadellen-mit-buchweizen/#recipe",
     "time": "40 min",
     "tags": ["dinner", "vegan", "eaththis"],
+  },
+  {
+    "name": "Sweet Potato Chickpea and Coconut Curry",
+    "link": "https://biancazapatka.com/en/sweet-potato-chickpea-coconut-curry/",
+    "time": "40 min",
+    "tags": ["dinner", "vegan"],
+  },
+  {
+    "name": "Tofu Stir-Fry with Peanut Sauce",
+    "link": "https://themodernproper.com/tofu-stir-fry-with-peanut-sauce",
+    "time": "40 min",
+    "tags": ["dinner", "vegan"],
+  },
+  {
+    "name": "Spaghetti Aglio Olio",
+    "link": "https://slurrp.club/recipe/spaghetti-aglio-olio/",
+    "time": "20 min",
+    "tags": ["dinner", "vegan"],
+  },
+  {
+    "name": "Black Bean Tacos",
+    "link": "https://www.cookingclassy.com/black-bean-tacos-with-avocado-cilantro-lime-crema/",
+    "time": "30 min",
+    "tags": ["dinner", "vegan"],
   },
 ];
