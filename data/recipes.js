@@ -509,7 +509,7 @@ const RECIPES = [
     "ingredients": ["zucker", "butter", "vanillezucker", "salz", "eier", "weizenmehl", "buttermilch", "backpulver"]
   },
   {
-    "name": "Pcokets",
+    "name": "Pockets",
     "subtitle": "gefüllte Teigtaschen",
     "tags": ["dinner"],
     "book": {
