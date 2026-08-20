@@ -91,6 +91,8 @@ function getCategory(recipe) {
 }
 
 function getEmoji(recipe) {
+  if (recipe.icon) return recipe.icon;
+  // try to guess a good emoji
   const n = recipe.name.toLowerCase();
   if (/pasta|spaghetti|tagliatelle|gnocchi|carbonara|linguine|penne|maccheroni/.test(n)) return '🍝';
   if (/curry|dal|dhansak|jambalaya/.test(n)) return '🍛';
