@@ -1,14 +1,16 @@
-const CACHE = 'nimmersatt-v1';
+const CACHE = 'nimmersatt-v2.1.0';
 
 const ASSETS = [
   './',
   './index.html',
   './manifest.json',
+  './version.js',
   './assets/css/style.css',
   './assets/js/app.js',
   './assets/icons/icon.svg',
   './assets/icons/icon-192.svg',
   './assets/icons/icon-512.svg',
+  './assets/icons/apple-touch-icon.svg',
   './data/books.js',
   './data/recipes.js',
   './data/bread.js',
@@ -16,7 +18,7 @@ const ASSETS = [
 
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)));
-  self.skipWaiting();
+  // Do NOT skipWaiting here — the update toast handles that explicitly.
 });
 
 self.addEventListener('activate', (e) => {
@@ -26,6 +28,10 @@ self.addEventListener('activate', (e) => {
     )
   );
   self.clients.claim();
+});
+
+self.addEventListener('message', (e) => {
+  if (e.data === 'SKIP_WAITING') self.skipWaiting();
 });
 
 self.addEventListener('fetch', (e) => {

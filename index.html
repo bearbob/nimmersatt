@@ -18,51 +18,129 @@
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-  <div id="app">
 
-    <header id="filter-header">
-      <div id="filter-chips" role="group" aria-label="Filter by category"></div>
-    </header>
-
-    <main id="deck-area">
-      <div id="deck"></div>
-      <div id="empty-state" class="hidden">
-        <div class="empty-emoji">🍽️</div>
-        <h2>All done!</h2>
-        <p>You've seen everything in this selection.</p>
-        <button id="reset-btn">Shuffle & Restart</button>
-      </div>
-    </main>
-
-    <div id="action-bar">
-      <button id="skip-btn" class="action-btn skip" aria-label="Skip">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round">
-          <line x1="18" y1="6" x2="6" y2="18"/>
-          <line x1="6" y1="6" x2="18" y2="18"/>
-        </svg>
-      </button>
-
-      <button id="list-toggle-btn" aria-label="My list">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="3" width="18" height="18" rx="4"/>
-          <line x1="7" y1="8" x2="17" y2="8"/>
-          <line x1="7" y1="12" x2="17" y2="12"/>
-          <line x1="7" y1="16" x2="12" y2="16"/>
-        </svg>
-        <span id="list-badge" class="badge hidden">0</span>
-      </button>
-
-      <button id="like-btn" class="action-btn like" aria-label="Add to list">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="20 6 9 17 4 12"/>
-        </svg>
-      </button>
-    </div>
-
+  <!-- Update toast -->
+  <div id="update-toast" class="hidden" role="alert">
+    <span>🎉 Update available</span>
+    <button id="update-reload-btn">Reload</button>
   </div>
 
-  <div id="list-backdrop" class="hidden"></div>
+  <!-- Nav backdrop -->
+  <div id="nav-backdrop" class="hidden"></div>
 
+  <!-- Nav drawer -->
+  <nav id="nav-drawer" aria-label="Main navigation" class="hidden">
+    <div id="nav-drawer-header">
+      <span class="nav-logo">🧑‍🍳</span>
+      <span class="nav-title">Nimmersatt</span>
+    </div>
+    <div id="nav-items">
+      <button class="nav-item" data-page="match">
+        <span class="nav-item-icon">🃏</span> Match
+      </button>
+      <button class="nav-item" data-page="favourites">
+        <span class="nav-item-icon">⭐</span> Favourites
+      </button>
+      <button class="nav-item" data-page="about">
+        <span class="nav-item-icon">ℹ️</span> About
+      </button>
+    </div>
+  </nav>
+
+  <!-- App shell -->
+  <div id="app">
+
+    <header id="app-header">
+      <button id="burger-btn" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+      <div id="filter-chips" role="group" aria-label="Filter by category"></div>
+      <span id="page-title" class="hidden" aria-live="polite"></span>
+    </header>
+
+    <div id="pages">
+
+      <!-- ── Match page ─────────────────────────────────────── -->
+      <div id="page-match" class="page">
+        <main id="deck-area">
+          <div id="deck"></div>
+          <div id="empty-state" class="hidden">
+            <div class="empty-emoji">🍽️</div>
+            <h2>All done!</h2>
+            <p>You've seen everything in this selection.</p>
+            <button id="reset-btn">Shuffle &amp; Restart</button>
+          </div>
+        </main>
+
+        <div id="action-bar">
+          <button id="skip-btn" class="action-btn skip" aria-label="Skip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+
+          <button id="list-toggle-btn" aria-label="My list">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="4"/>
+              <line x1="7" y1="8" x2="17" y2="8"/>
+              <line x1="7" y1="12" x2="17" y2="12"/>
+              <line x1="7" y1="16" x2="12" y2="16"/>
+            </svg>
+            <span id="list-badge" class="badge hidden">0</span>
+          </button>
+
+          <button id="like-btn" class="action-btn like" aria-label="Add to list">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ── Favourites page ────────────────────────────────── -->
+      <div id="page-favourites" class="page hidden">
+        <div id="fav-items"></div>
+        <div id="fav-empty" class="hidden">
+          <div class="empty-emoji">⭐</div>
+          <p>Star recipes from your weekly list to save them here.</p>
+        </div>
+      </div>
+
+      <!-- ── About page ─────────────────────────────────────── -->
+      <div id="page-about" class="page hidden">
+        <div id="about-content">
+          <div class="about-logo">🧑‍🍳</div>
+          <h1 class="about-name">Nimmersatt</h1>
+          <p class="about-tagline">Swipe your way to next week's meals.</p>
+          <div class="about-steps">
+            <div class="about-step">
+              <span>❤️</span>
+              <p>Swipe <strong>right</strong> to add a recipe to your weekly list</p>
+            </div>
+            <div class="about-step">
+              <span>✕</span>
+              <p>Swipe <strong>left</strong> to skip a recipe</p>
+            </div>
+            <div class="about-step">
+              <span>⭐</span>
+              <p>Star recipes in your list to save them as <strong>Favourites</strong></p>
+            </div>
+          </div>
+          <div class="about-version">Version <span id="version-display">—</span></div>
+        </div>
+      </div>
+
+    </div><!-- /#pages -->
+
+  </div><!-- /#app -->
+
+  <!-- Weekly list panel -->
+  <div id="list-backdrop" class="hidden"></div>
   <div id="list-panel" role="dialog" aria-modal="true" aria-label="My weekly list" class="hidden">
     <div id="list-panel-header">
       <h2>My List</h2>
@@ -83,6 +161,7 @@
     </div>
   </div>
 
+  <script src="version.js"></script>
   <script src="data/books.js"></script>
   <script src="data/recipes.js"></script>
   <script src="data/bread.js"></script>
