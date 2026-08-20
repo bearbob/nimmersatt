@@ -1,6 +1,7 @@
 const RECIPES = [
   {
     "name": "Wildreis mit Mangold und Kirschen",
+    "icon": "🍚",
     "book": {
       "id": "jamies5zutaten",
       "page": 32,
@@ -13,6 +14,7 @@ const RECIPES = [
   {
     "name": "Geniale Grüne Spaghetti",
     "subtitle": "mit Schwarzkohl und Ricotta",
+    "icon": "🥬",
     "book": {
       "id": "jamies5zutaten",
       "page": 50,
@@ -71,6 +73,7 @@ const RECIPES = [
   },
   {
     "name": "Erbsen, dicke Bohnen, Chili & Minze",
+    "icon": "🫛",
     "book": {
       "id": "jamies5zutaten",
       "page": 176,
@@ -128,6 +131,7 @@ const RECIPES = [
   },
   {
     "name": "Milchreis",
+    "icon": "🍚",
     "tags": ["sweet", "dinner"],
     "ingredients": ["reis", "milch", "zimt"],
   },
