@@ -1,33 +1,91 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#FF6B6B">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Nimmersatt">
+  <title>Nimmersatt</title>
 
-  <head>
-    <meta charset="utf-8">
-    <title>nimmersatt</title>
-    <link rel="shortcut icon" href="/nimmersatt/images/favicon.ico" />
-    <link rel="stylesheet" href="/nimmersatt/assets/css/style.css">
-    <script type="text/javascript" src="/nimmersatt/data/recipes.js" charset="utf-8"></script>
-    <script type="text/javascript" src="/nimmersatt/data/bread.js" charset="utf-8"></script>
-    <script type="text/javascript" src="/nimmersatt/data/books.js" charset="utf-8"></script>
-    <script type="text/javascript" src="/nimmersatt/assets/lib/randomizer.js" charset="utf-8"></script>
-    <!-- iOS optimization -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  </head>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div id="app">
 
-  <body>
-    <div id="buttons">
-      <button id="random" onclick="getRandom();"><ion-icon name="dice"></ion-icon> Zufällig</button>
-      <button id="bread" onclick="getBread();"><ion-icon name="bonfire"></ion-icon> Backen</button>
-    </div>
-    <div id="content">
-      <div style="padding: 15px;">Tippe einen der Buttons, um einen Vorschlag zu sehen</div>
-    </div>
-    <div id="footer">
-      <input type="search" id="search" name="ingredients" placeholder="Zutaten...">
-      <button id="filter" onclick="getFiltered();"><ion-icon name="search-circle-outline" role="img" class="md hydrated" aria-label="search circle outline"></ion-icon> Filter</button>
+    <header id="filter-header">
+      <div id="filter-chips" role="group" aria-label="Filter by category"></div>
+    </header>
+
+    <main id="deck-area">
+      <div id="deck"></div>
+      <div id="empty-state" class="hidden">
+        <div class="empty-emoji">🍽️</div>
+        <h2>All done!</h2>
+        <p>You've seen everything in this selection.</p>
+        <button id="reset-btn">Shuffle & Restart</button>
+      </div>
+    </main>
+
+    <div id="action-bar">
+      <button id="skip-btn" class="action-btn skip" aria-label="Skip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+
+      <button id="list-toggle-btn" aria-label="My list">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="4"/>
+          <line x1="7" y1="8" x2="17" y2="8"/>
+          <line x1="7" y1="12" x2="17" y2="12"/>
+          <line x1="7" y1="16" x2="12" y2="16"/>
+        </svg>
+        <span id="list-badge" class="badge hidden">0</span>
+      </button>
+
+      <button id="like-btn" class="action-btn like" aria-label="Add to list">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </button>
     </div>
 
-  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-  </body>
+  </div>
+
+  <div id="list-backdrop" class="hidden"></div>
+
+  <div id="list-panel" role="dialog" aria-modal="true" aria-label="My weekly list" class="hidden">
+    <div id="list-panel-header">
+      <h2>My List</h2>
+      <div class="list-header-actions">
+        <button id="clear-list-btn" class="btn-ghost">Clear all</button>
+        <button id="close-list-btn" aria-label="Close list">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div id="list-items"></div>
+    <div id="list-empty" class="hidden">
+      <div class="empty-emoji">📋</div>
+      <p>Swipe right on recipes to add them here!</p>
+    </div>
+  </div>
+
+  <script src="data/books.js"></script>
+  <script src="data/recipes.js"></script>
+  <script src="data/bread.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
 </html>
