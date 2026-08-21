@@ -367,7 +367,7 @@ function buttonSwipe(direction) {
 
 // ── Swipe-to-delete (for fav detail items) ────────────────────────────────
 
-function initSwipeToDelete(itemEl, onDelete) {
+function initSwipeToDelete(itemEl, onDelete, onTap) {
   let startX, startY, dx = 0, swiping = false, decided = false;
 
   itemEl.addEventListener('pointerdown', (e) => {
@@ -396,7 +396,11 @@ function initSwipeToDelete(itemEl, onDelete) {
   });
 
   const end = () => {
-    if (!swiping) { decided = false; startX = undefined; return; }
+    if (!swiping) {
+      // Clean tap (no significant movement) → open detail
+      if (!decided && onTap) onTap();
+      decided = false; startX = undefined; return;
+    }
     swiping = false; decided = false; startX = undefined;
 
     if (dx < -90) {
@@ -419,6 +423,77 @@ function initSwipeToDelete(itemEl, onDelete) {
 
   itemEl.addEventListener('pointerup', end);
   itemEl.addEventListener('pointercancel', cancel);
+}
+
+// ── Recipe detail sheet ────────────────────────────────────────────────────
+
+function openRecipeDetail(recipe) {
+  const cat = getCategory(recipe);
+  const emoji = getEmoji(recipe);
+
+  const heroEl = document.getElementById('recipe-detail-hero');
+  heroEl.style.background = `${cat.color}30`;
+  document.getElementById('recipe-detail-emoji').textContent = emoji;
+
+  const catEl = document.getElementById('recipe-detail-category');
+  catEl.textContent = `${cat.emoji} ${cat.label}`;
+  catEl.style.background = cat.color;
+  catEl.style.color = cat.id === 'sweet' ? '#1A1A2E' : '#fff';
+
+  document.getElementById('recipe-detail-name').textContent = recipe.name;
+
+  const subtitleEl = document.getElementById('recipe-detail-subtitle');
+  if (recipe.subtitle) {
+    subtitleEl.textContent = recipe.subtitle;
+    subtitleEl.classList.remove('hidden');
+  } else {
+    subtitleEl.classList.add('hidden');
+  }
+
+  const timeEl = document.getElementById('recipe-detail-time');
+  if (recipe.time) {
+    timeEl.textContent = `⏱ ${recipe.time}`;
+    timeEl.classList.remove('hidden');
+  } else {
+    timeEl.classList.add('hidden');
+  }
+
+  const ingEl = document.getElementById('recipe-detail-ingredients');
+  if (recipe.ingredients && recipe.ingredients.length > 0) {
+    const shown = recipe.ingredients.slice(0, 5);
+    const more = recipe.ingredients.length > 5 ? '…' : '';
+    ingEl.textContent = `🛒 ${shown.join(', ')}${more}`;
+    ingEl.classList.remove('hidden');
+  } else {
+    ingEl.classList.add('hidden');
+  }
+
+  const linksEl = document.getElementById('recipe-detail-links');
+  linksEl.innerHTML = '';
+  if (recipe.link) {
+    linksEl.innerHTML += `<a href="${recipe.link}" target="_blank" rel="noopener noreferrer" class="card-link">🔗 Recipe</a>`;
+  }
+  if (recipe.video) {
+    linksEl.innerHTML += `<a href="${recipe.video}" target="_blank" rel="noopener noreferrer" class="card-link">▶️ Video</a>`;
+  }
+  if (!recipe.link && !recipe.video && recipe.book && BOOKS[recipe.book.id]) {
+    const book = BOOKS[recipe.book.id];
+    linksEl.innerHTML = `<span class="card-book">📚 ${escHtml(book.name)}, p.&nbsp;${recipe.book.page}</span>`;
+  }
+
+  const panel = document.getElementById('recipe-detail');
+  const backdrop = document.getElementById('recipe-detail-backdrop');
+  panel.classList.remove('hidden'); backdrop.classList.remove('hidden');
+  requestAnimationFrame(() => { panel.classList.add('open'); backdrop.classList.add('open'); });
+}
+
+function closeRecipeDetail() {
+  const panel = document.getElementById('recipe-detail');
+  const backdrop = document.getElementById('recipe-detail-backdrop');
+  panel.classList.remove('open'); backdrop.classList.remove('open');
+  panel.addEventListener('transitionend', () => {
+    panel.classList.add('hidden'); backdrop.classList.add('hidden');
+  }, { once: true });
 }
 
 // ── Weekly list ────────────────────────────────────────────────────────────
@@ -478,8 +553,18 @@ function renderListPanel() {
       </div>`;
   }).join('');
 
+  itemsEl.querySelectorAll('.list-item').forEach(item => {
+    const key = item.querySelector('.heart-btn').dataset.key;
+    const recipe = state.weeklyList.find(r => recipeKey(r) === key);
+    item.addEventListener('click', (e) => {
+      if (e.target.closest('.heart-btn')) return;
+      if (recipe) openRecipeDetail(recipe);
+    });
+  });
+
   itemsEl.querySelectorAll('.heart-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
       const key = btn.dataset.key;
       const recipe = state.weeklyList.find(r => recipeKey(r) === key);
       if (recipe) openListPicker(recipe);
@@ -678,12 +763,11 @@ function renderFavDetail() {
       </div>
       <span class="fav-delete-hint">← Swipe to delete</span>`;
 
-    initSwipeToDelete(item, () => {
-      removeFromFavList(currentFavListId, key);
-      renderFavDetail();
-      renderFavOverview();
-      renderListPanel();
-    });
+    initSwipeToDelete(
+      item,
+      () => { removeFromFavList(currentFavListId, key); renderFavDetail(); renderFavOverview(); renderListPanel(); },
+      () => openRecipeDetail(recipe)
+    );
 
     itemsEl.appendChild(item);
   });
@@ -888,6 +972,10 @@ function init() {
   document.getElementById('list-backdrop').addEventListener('click', closeList);
   document.getElementById('clear-list-btn').addEventListener('click', clearList);
   document.getElementById('reset-btn').addEventListener('click', () => { buildDeck(); renderDeck(); });
+
+  // Recipe detail sheet
+  document.getElementById('recipe-detail-backdrop').addEventListener('click', closeRecipeDetail);
+  document.getElementById('recipe-detail-close').addEventListener('click', closeRecipeDetail);
 
   // List picker
   document.getElementById('list-picker-backdrop').addEventListener('click', closeListPicker);

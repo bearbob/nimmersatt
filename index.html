@@ -203,6 +203,30 @@
     </div>
   </div>
 
+  <!-- Recipe detail sheet -->
+  <div id="recipe-detail-backdrop" class="hidden"></div>
+  <div id="recipe-detail" role="dialog" aria-modal="true" aria-label="Recipe detail" class="hidden">
+    <div id="recipe-detail-hero">
+      <div id="recipe-detail-emoji"></div>
+      <button id="recipe-detail-close" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div id="recipe-detail-body">
+      <div id="recipe-detail-category"></div>
+      <h2 id="recipe-detail-name"></h2>
+      <p id="recipe-detail-subtitle" class="hidden"></p>
+      <div id="recipe-detail-meta">
+        <span id="recipe-detail-time" class="hidden"></span>
+        <span id="recipe-detail-ingredients" class="hidden"></span>
+      </div>
+      <div id="recipe-detail-links"></div>
+    </div>
+  </div>
+
   <!-- List picker (choose which favourite list to add to) -->
   <div id="list-picker-backdrop" class="hidden"></div>
   <div id="list-picker" role="dialog" aria-modal="true" aria-label="Save to favourites list" class="hidden">
