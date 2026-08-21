@@ -334,14 +334,18 @@ function initSwipe(cardEl, recipe) {
 
   function onDown(e) {
     startX = e.clientX; startY = e.clientY; hasDragged = false;
-    cardEl.setPointerCapture(e.pointerId);
+    // Do NOT capture here — capturing immediately prevents link clicks.
+    // Capture is deferred until actual dragging is detected in onMove.
     cardEl.style.transition = 'none';
   }
   function onMove(e) {
     const dx = e.clientX - startX;
     const dy = e.clientY - startY;
     if (!hasDragged && Math.abs(dx) < 4 && Math.abs(dy) < 4) return;
-    hasDragged = true;
+    if (!hasDragged) {
+      hasDragged = true;
+      cardEl.setPointerCapture(e.pointerId); // capture only once dragging starts
+    }
     const rotate = dx * 0.07;
     cardEl.style.transform = `translateX(${dx}px) translateY(${Math.min(Math.abs(dx) * 0.03, 8)}px) rotate(${rotate}deg)`;
     const progress = Math.min(1, Math.abs(dx) / SWIPE_THRESHOLD);
