@@ -14,6 +14,7 @@ const ASSETS = [
   './data/books.js',
   './data/recipes.js',
   './data/bread.js',
+  './data/recipes_en.js',
 ];
 
 self.addEventListener('install', (e) => {

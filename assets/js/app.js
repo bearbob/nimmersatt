@@ -135,7 +135,7 @@ function isInAnyList(recipeKey) {
 function initData() {
   // Normalize: all existing recipes without an explicit language are German
   const normalize = r => r.language ? r : { ...r, language: 'de' };
-  state.allRecipes = [...RECIPES.map(normalize), ...BREADS.map(normalize)];
+  state.allRecipes = [...RECIPES.map(normalize), ...BREADS.map(normalize), ...RECIPES_EN];
   buildDeck();
 }
 
