@@ -11,6 +11,11 @@ const FILTERS = [
     tags: ['vegan'] },
 ];
 
+const LANGUAGES = [
+  { code: 'de', flag: '🇩🇪', name: 'Deutsch', sub: 'German' },
+  { code: 'en', flag: '🇬🇧', name: 'English', sub: 'English' },
+];
+
 const SWIPE_THRESHOLD = 80;
 
 // ── State ──────────────────────────────────────────────────────────────────
@@ -20,6 +25,7 @@ const state = {
   deck: [],
   currentIndex: 0,
   activeFilters: new Set(),
+  activeLanguages: new Set(),  // e.g. Set(['de', 'en'])
   weeklyList: [],
   favouriteLists: [],   // [{ id, name, recipeKeys[] }]
 };
@@ -31,6 +37,8 @@ let pickerRecipe = null;
 // ── Storage ────────────────────────────────────────────────────────────────
 
 function loadStorage() {
+  loadLanguages();
+
   try {
     const list = JSON.parse(localStorage.getItem('nimmersatt_list') || '[]');
     state.weeklyList = Array.isArray(list) ? list : [];
@@ -54,6 +62,24 @@ function loadStorage() {
     state.favouriteLists = [{ id: 'list-default', name: 'Favourites', recipeKeys: [] }];
     saveFavouriteLists();
   }
+}
+
+function loadLanguages() {
+  try {
+    const stored = JSON.parse(localStorage.getItem('nimmersatt_langs') || 'null');
+    if (Array.isArray(stored) && stored.length > 0) {
+      state.activeLanguages = new Set(stored.filter(c => LANGUAGES.some(l => l.code === c)));
+      if (state.activeLanguages.size > 0) return;
+    }
+  } catch (_) {}
+  // First launch: detect browser language
+  const browserLang = (navigator.language || 'en').toLowerCase().slice(0, 2);
+  const known = LANGUAGES.find(l => l.code === browserLang);
+  state.activeLanguages = new Set([known ? browserLang : 'en']);
+}
+
+function saveLanguages() {
+  localStorage.setItem('nimmersatt_langs', JSON.stringify([...state.activeLanguages]));
 }
 
 function saveList() {
@@ -107,24 +133,24 @@ function isInAnyList(recipeKey) {
 // ── Data helpers ───────────────────────────────────────────────────────────
 
 function initData() {
-  state.allRecipes = [...RECIPES, ...BREADS];
+  // Normalize: all existing recipes without an explicit language are German
+  const normalize = r => r.language ? r : { ...r, language: 'de' };
+  state.allRecipes = [...RECIPES.map(normalize), ...BREADS.map(normalize)];
   buildDeck();
 }
 
 function buildDeck() {
-  let pool;
-  if (state.activeFilters.size === 0) {
-    pool = [...state.allRecipes];
-  } else {
+  let pool = state.allRecipes.filter(r => state.activeLanguages.has(r.language || 'de'));
+
+  if (state.activeFilters.size > 0) {
     const activeTags = new Set();
     for (const id of state.activeFilters) {
       const f = FILTERS.find(f => f.id === id);
       if (f) f.tags.forEach(t => activeTags.add(t));
     }
-    pool = state.allRecipes.filter(r =>
-      (r.tags || []).some(t => activeTags.has(t.toLowerCase()))
-    );
+    pool = pool.filter(r => (r.tags || []).some(t => activeTags.has(t.toLowerCase())));
   }
+
   state.deck = shuffle(pool);
   state.currentIndex = 0;
 }
@@ -854,6 +880,7 @@ function performSearch(query) {
   if (terms.length === 0) return null; // null = show initial state
 
   return state.allRecipes.filter(recipe => {
+    if (!state.activeLanguages.has(recipe.language || 'de')) return false;
     const name = recipe.name.toLowerCase();
     const ingredients = (recipe.ingredients || []).join(' ').toLowerCase();
     return terms.every(term => name.includes(term) || ingredients.includes(term));
@@ -936,6 +963,51 @@ function refreshSearchHearts() {
   });
 }
 
+// ── Language page ──────────────────────────────────────────────────────────
+
+function renderLanguagePage() {
+  const container = document.getElementById('language-cards');
+  const onlyActive = state.activeLanguages.size === 1;
+
+  container.innerHTML = '';
+  LANGUAGES.forEach(lang => {
+    const active = state.activeLanguages.has(lang.code);
+    const isOnly = active && onlyActive;
+
+    const card = document.createElement('div');
+    card.className = `lang-card${active ? ' active' : ''}${isOnly ? ' only-active' : ''}`;
+    card.dataset.code = lang.code;
+    card.setAttribute('role', 'switch');
+    card.setAttribute('aria-checked', String(active));
+    card.innerHTML = `
+      <span class="lang-card-flag">${lang.flag}</span>
+      <div class="lang-card-info">
+        <div class="lang-card-name">${lang.name}</div>
+        <div class="lang-card-sub">${lang.sub}</div>
+      </div>
+      <div class="lang-toggle" aria-hidden="true"></div>`;
+
+    card.addEventListener('click', () => toggleLanguage(lang.code));
+    container.appendChild(card);
+  });
+}
+
+function toggleLanguage(code) {
+  if (state.activeLanguages.has(code) && state.activeLanguages.size === 1) return; // last active — prevent
+
+  if (state.activeLanguages.has(code)) {
+    state.activeLanguages.delete(code);
+  } else {
+    state.activeLanguages.add(code);
+  }
+
+  saveLanguages();
+  renderLanguagePage();
+  buildDeck();
+  renderDeck();
+  onSearchInput(); // re-run search with new language filter
+}
+
 // ── Filter chips ───────────────────────────────────────────────────────────
 
 function renderFilterBar() {
@@ -988,9 +1060,11 @@ function navigateTo(page) {
   } else {
     filterChips.classList.add('hidden');
     pageTitle.classList.remove('hidden');
-    const titles = { search: 'Search', favourites: 'Favourites', about: 'About' };
+    const titles = { search: 'Search', favourites: 'Favourites', language: 'Language', about: 'About' };
     pageTitle.textContent = titles[page] || page;
   }
+
+  if (page === 'language') renderLanguagePage();
 
   if (page === 'search') {
     requestAnimationFrame(() => document.getElementById('search-input').focus());

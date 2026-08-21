@@ -1228,6 +1228,87 @@ body {
   box-shadow: var(--shadow-sm);
 }
 
+/* ── Language page ─────────────────────────────────────────────── */
+#page-language {
+  overflow-y: auto;
+}
+
+#language-content {
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.language-desc {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+#language-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lang-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 20px;
+  background: var(--card-bg);
+  border: var(--border-w) solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s, border-color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.lang-card:active { transform: translate(2px, 2px); box-shadow: var(--shadow-sm); }
+.lang-card.active {
+  border-color: var(--like);
+  box-shadow: 5px 5px 0 var(--like);
+}
+.lang-card.only-active {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.lang-card.only-active:active { transform: none; box-shadow: var(--shadow); }
+
+.lang-card-flag { font-size: 2.2rem; line-height: 1; flex: 0 0 auto; }
+
+.lang-card-info { flex: 1; }
+.lang-card-name { font-size: 1.05rem; font-weight: 900; }
+.lang-card-sub  { font-size: 0.8rem; font-weight: 600; color: var(--text-secondary); }
+
+.lang-toggle {
+  flex: 0 0 50px;
+  width: 50px; height: 28px;
+  background: #ddd;
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  position: relative;
+  transition: background 0.2s;
+}
+.lang-toggle::after {
+  content: '';
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 18px; height: 18px;
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+.lang-card.active .lang-toggle {
+  background: var(--like);
+}
+.lang-card.active .lang-toggle::after {
+  transform: translateX(22px);
+}
+
 /* ── About page ────────────────────────────────────────────────── */
 #page-about {
   overflow-y: auto;
