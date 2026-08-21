@@ -166,7 +166,7 @@ const RECIPES = [
   },
   {
     "name": "One-Pot-Paste mit Zitronenkäsesauce",
-    "link": "https://www.penny.de/erleben/rezepte-und-ernaehrung/one-pot-pasta-mit-zitronen-kaeseso%C3%9Fe",
+    "link": "https://www.penny.de/clever-kochen/rezepte-und-ernaehrung/one-pot-pasta-mit-zitronen-kaesesauce",
     "tags": ["dinner", "herzhaft"],
   },
   {
