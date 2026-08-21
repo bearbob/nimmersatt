@@ -21,20 +21,38 @@ const state = {
   currentIndex: 0,
   activeFilters: new Set(),
   weeklyList: [],
-  favorites: new Set(),
+  favouriteLists: [],   // [{ id, name, recipeKeys[] }]
 };
+
+let currentFavView = 'overview'; // 'overview' | 'detail'
+let currentFavListId = null;
+let pickerRecipe = null;
 
 // ── Storage ────────────────────────────────────────────────────────────────
 
 function loadStorage() {
   try {
     const list = JSON.parse(localStorage.getItem('nimmersatt_list') || '[]');
-    const favs = JSON.parse(localStorage.getItem('nimmersatt_favs') || '[]');
     state.weeklyList = Array.isArray(list) ? list : [];
-    state.favorites = new Set(Array.isArray(favs) ? favs : []);
+  } catch (_) { state.weeklyList = []; }
+
+  try {
+    const stored = JSON.parse(localStorage.getItem('nimmersatt_favlists') || 'null');
+    if (stored && Array.isArray(stored) && stored.length > 0) {
+      state.favouriteLists = stored;
+    } else {
+      // First launch or migration from old star-based system
+      const oldFavs = JSON.parse(localStorage.getItem('nimmersatt_favs') || '[]');
+      state.favouriteLists = [{
+        id: 'list-default',
+        name: 'Favourites',
+        recipeKeys: Array.isArray(oldFavs) ? oldFavs : [],
+      }];
+      saveFavouriteLists();
+    }
   } catch (_) {
-    state.weeklyList = [];
-    state.favorites = new Set();
+    state.favouriteLists = [{ id: 'list-default', name: 'Favourites', recipeKeys: [] }];
+    saveFavouriteLists();
   }
 }
 
@@ -42,8 +60,48 @@ function saveList() {
   localStorage.setItem('nimmersatt_list', JSON.stringify(state.weeklyList));
 }
 
-function saveFavorites() {
-  localStorage.setItem('nimmersatt_favs', JSON.stringify([...state.favorites]));
+function saveFavouriteLists() {
+  localStorage.setItem('nimmersatt_favlists', JSON.stringify(state.favouriteLists));
+}
+
+// ── Favourite list CRUD ────────────────────────────────────────────────────
+
+function createFavList(name) {
+  const trimmed = name.trim();
+  if (!trimmed) return null;
+  const list = { id: 'list-' + Date.now(), name: trimmed, recipeKeys: [] };
+  state.favouriteLists.push(list);
+  saveFavouriteLists();
+  return list;
+}
+
+function deleteFavList(listId) {
+  state.favouriteLists = state.favouriteLists.filter(l => l.id !== listId);
+  saveFavouriteLists();
+}
+
+function renameFavList(listId, newName) {
+  const trimmed = newName.trim();
+  if (!trimmed) return;
+  const list = state.favouriteLists.find(l => l.id === listId);
+  if (list) { list.name = trimmed; saveFavouriteLists(); }
+}
+
+function toggleFavListMembership(listId, recipeKey) {
+  const list = state.favouriteLists.find(l => l.id === listId);
+  if (!list) return;
+  const idx = list.recipeKeys.indexOf(recipeKey);
+  if (idx >= 0) { list.recipeKeys.splice(idx, 1); } else { list.recipeKeys.push(recipeKey); }
+  saveFavouriteLists();
+}
+
+function removeFromFavList(listId, recipeKey) {
+  const list = state.favouriteLists.find(l => l.id === listId);
+  if (list) { list.recipeKeys = list.recipeKeys.filter(k => k !== recipeKey); saveFavouriteLists(); }
+}
+
+function isInAnyList(recipeKey) {
+  return state.favouriteLists.some(l => l.recipeKeys.includes(recipeKey));
 }
 
 // ── Data helpers ───────────────────────────────────────────────────────────
@@ -80,6 +138,10 @@ function shuffle(arr) {
   return a;
 }
 
+function getRecipeByKey(key) {
+  return state.allRecipes.find(r => recipeKey(r) === key) || null;
+}
+
 // ── Card helpers ───────────────────────────────────────────────────────────
 
 function getCategory(recipe) {
@@ -92,7 +154,6 @@ function getCategory(recipe) {
 
 function getEmoji(recipe) {
   if (recipe.icon) return recipe.icon;
-  // try to guess a good emoji
   const n = recipe.name.toLowerCase();
   if (/pasta|spaghetti|tagliatelle|gnocchi|carbonara|linguine|penne|maccheroni/.test(n)) return '🍝';
   if (/curry|dal|dhansak|jambalaya/.test(n)) return '🍛';
@@ -187,10 +248,7 @@ function renderDeck() {
   emptyEl.classList.add('hidden');
 
   const recipes = state.deck.slice(state.currentIndex, state.currentIndex + 3);
-  if (recipes.length === 0) {
-    emptyEl.classList.remove('hidden');
-    return;
-  }
+  if (recipes.length === 0) { emptyEl.classList.remove('hidden'); return; }
 
   [...recipes].reverse().forEach((recipe, reverseIdx) => {
     const card = createCardEl(recipe);
@@ -236,9 +294,7 @@ function advanceDeck(leavingCard) {
 
   leavingCard.addEventListener('transitionend', () => {
     leavingCard.remove();
-    if (state.currentIndex >= state.deck.length) {
-      emptyEl.classList.remove('hidden');
-    }
+    if (state.currentIndex >= state.deck.length) emptyEl.classList.remove('hidden');
     updateListBadge();
   }, { once: true });
 }
@@ -251,61 +307,36 @@ function initSwipe(cardEl, recipe) {
   const skipEl = cardEl.querySelector('.card-indicator.skip');
 
   function onDown(e) {
-    startX = e.clientX;
-    startY = e.clientY;
-    hasDragged = false;
+    startX = e.clientX; startY = e.clientY; hasDragged = false;
     cardEl.setPointerCapture(e.pointerId);
     cardEl.style.transition = 'none';
   }
-
   function onMove(e) {
     const dx = e.clientX - startX;
     const dy = e.clientY - startY;
     if (!hasDragged && Math.abs(dx) < 4 && Math.abs(dy) < 4) return;
     hasDragged = true;
-
     const rotate = dx * 0.07;
     cardEl.style.transform = `translateX(${dx}px) translateY(${Math.min(Math.abs(dx) * 0.03, 8)}px) rotate(${rotate}deg)`;
-
     const progress = Math.min(1, Math.abs(dx) / SWIPE_THRESHOLD);
-    if (dx > 4) {
-      likeEl.style.opacity = String(progress);
-      skipEl.style.opacity = '0';
-    } else if (dx < -4) {
-      skipEl.style.opacity = String(progress);
-      likeEl.style.opacity = '0';
-    } else {
-      likeEl.style.opacity = '0';
-      skipEl.style.opacity = '0';
-    }
+    if (dx > 4) { likeEl.style.opacity = String(progress); skipEl.style.opacity = '0'; }
+    else if (dx < -4) { skipEl.style.opacity = String(progress); likeEl.style.opacity = '0'; }
+    else { likeEl.style.opacity = '0'; skipEl.style.opacity = '0'; }
   }
-
   function onUp(e) {
     if (!hasDragged) return;
     const dx = e.clientX - startX;
-    likeEl.style.opacity = '0';
-    skipEl.style.opacity = '0';
-
-    if (dx > SWIPE_THRESHOLD) {
-      triggerSwipe(cardEl, recipe, 'right');
-    } else if (dx < -SWIPE_THRESHOLD) {
-      triggerSwipe(cardEl, recipe, 'left');
-    } else {
-      snapBack(cardEl);
-    }
+    likeEl.style.opacity = '0'; skipEl.style.opacity = '0';
+    if (dx > SWIPE_THRESHOLD) triggerSwipe(cardEl, recipe, 'right');
+    else if (dx < -SWIPE_THRESHOLD) triggerSwipe(cardEl, recipe, 'left');
+    else snapBack(cardEl);
   }
-
-  cardEl.addEventListener('click', (e) => {
-    if (hasDragged) { e.preventDefault(); e.stopPropagation(); }
-  }, true);
-
+  cardEl.addEventListener('click', (e) => { if (hasDragged) { e.preventDefault(); e.stopPropagation(); } }, true);
   cardEl.addEventListener('pointerdown', onDown);
   cardEl.addEventListener('pointermove', onMove);
   cardEl.addEventListener('pointerup', onUp);
   cardEl.addEventListener('pointercancel', () => {
-    likeEl.style.opacity = '0';
-    skipEl.style.opacity = '0';
-    snapBack(cardEl);
+    likeEl.style.opacity = '0'; skipEl.style.opacity = '0'; snapBack(cardEl);
   });
 }
 
@@ -317,12 +348,10 @@ function snapBack(cardEl) {
 function triggerSwipe(cardEl, recipe, direction) {
   const dx = direction === 'right' ? window.innerWidth * 1.6 : -window.innerWidth * 1.6;
   const rotate = direction === 'right' ? 28 : -28;
-
   cardEl.classList.add('leaving');
   cardEl.style.transition = 'transform 0.38s ease, opacity 0.38s ease';
   cardEl.style.transform = `translateX(${dx}px) rotate(${rotate}deg)`;
   cardEl.style.opacity = '0';
-
   if (direction === 'right') addToList(recipe);
   state.currentIndex++;
   advanceDeck(cardEl);
@@ -334,6 +363,62 @@ function buttonSwipe(direction) {
   const recipe = state.deck[state.currentIndex];
   if (!recipe) return;
   triggerSwipe(topCard, recipe, direction);
+}
+
+// ── Swipe-to-delete (for fav detail items) ────────────────────────────────
+
+function initSwipeToDelete(itemEl, onDelete) {
+  let startX, startY, dx = 0, swiping = false, decided = false;
+
+  itemEl.addEventListener('pointerdown', (e) => {
+    startX = e.clientX; startY = e.clientY;
+    dx = 0; swiping = false; decided = false;
+  });
+
+  itemEl.addEventListener('pointermove', (e) => {
+    if (startX === undefined) return;
+    const curDx = e.clientX - startX;
+    const curDy = e.clientY - startY;
+
+    if (!decided && (Math.abs(curDx) > 6 || Math.abs(curDy) > 6)) {
+      decided = true;
+      if (Math.abs(curDx) > Math.abs(curDy) && curDx < 0) {
+        swiping = true;
+        itemEl.setPointerCapture(e.pointerId);
+        itemEl.style.transition = 'none';
+      }
+    }
+
+    if (!swiping) return;
+    dx = Math.min(0, curDx);
+    itemEl.style.transform = `translateX(${dx}px)`;
+    itemEl.style.opacity = String(Math.max(0, 1 + dx / 180));
+  });
+
+  const end = () => {
+    if (!swiping) { decided = false; startX = undefined; return; }
+    swiping = false; decided = false; startX = undefined;
+
+    if (dx < -90) {
+      itemEl.style.transition = 'transform 0.25s ease, opacity 0.25s ease';
+      itemEl.style.transform = `translateX(-${window.innerWidth}px)`;
+      itemEl.style.opacity = '0';
+      itemEl.addEventListener('transitionend', onDelete, { once: true });
+    } else {
+      itemEl.style.transition = 'transform 0.25s ease, opacity 0.25s ease';
+      itemEl.style.transform = 'translateX(0)';
+      itemEl.style.opacity = '1';
+    }
+  };
+  const cancel = () => {
+    swiping = false; decided = false; startX = undefined;
+    itemEl.style.transition = 'transform 0.25s ease, opacity 0.25s ease';
+    itemEl.style.transform = 'translateX(0)';
+    itemEl.style.opacity = '1';
+  };
+
+  itemEl.addEventListener('pointerup', end);
+  itemEl.addEventListener('pointercancel', cancel);
 }
 
 // ── Weekly list ────────────────────────────────────────────────────────────
@@ -373,12 +458,14 @@ function renderListPanel() {
   emptyEl.classList.add('hidden');
 
   const sorted = [...state.weeklyList].sort((a, b) => {
-    return (state.favorites.has(recipeKey(a)) ? 0 : 1) - (state.favorites.has(recipeKey(b)) ? 0 : 1);
+    const aIn = isInAnyList(recipeKey(a)) ? 0 : 1;
+    const bIn = isInAnyList(recipeKey(b)) ? 0 : 1;
+    return aIn - bIn;
   });
 
   itemsEl.innerHTML = sorted.map(recipe => {
     const key = recipeKey(recipe);
-    const isFav = state.favorites.has(key);
+    const inAny = isInAnyList(key);
     const sub = recipe.subtitle || recipe.time || (recipe.tags || []).slice(0, 2).join(', ') || '';
     return `
       <div class="list-item">
@@ -387,19 +474,15 @@ function renderListPanel() {
           <div class="list-item-name">${escHtml(recipe.name)}</div>
           ${sub ? `<div class="list-item-sub">${escHtml(sub)}</div>` : ''}
         </div>
-        <button class="star-btn" data-key="${escHtml(key)}" aria-label="${isFav ? 'Unfavourite' : 'Favourite'}">${isFav ? '⭐' : '☆'}</button>
+        <button class="heart-btn" data-key="${escHtml(key)}" aria-label="${inAny ? 'Edit favourites' : 'Save to favourites'}">${inAny ? '❤️' : '♡'}</button>
       </div>`;
   }).join('');
 
-  itemsEl.querySelectorAll('.star-btn').forEach(btn => {
+  itemsEl.querySelectorAll('.heart-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const key = btn.dataset.key;
-      if (state.favorites.has(key)) { state.favorites.delete(key); } else { state.favorites.add(key); }
-      saveFavorites();
-      renderListPanel();
-      if (document.getElementById('page-favourites').classList.contains('hidden') === false) {
-        renderFavouritesPage();
-      }
+      const recipe = state.weeklyList.find(r => recipeKey(r) === key);
+      if (recipe) openListPicker(recipe);
     });
   });
 }
@@ -416,12 +499,267 @@ function openList() {
 function closeList() {
   const panel = document.getElementById('list-panel');
   const backdrop = document.getElementById('list-backdrop');
-  panel.classList.remove('open');
-  backdrop.classList.remove('open');
+  panel.classList.remove('open'); backdrop.classList.remove('open');
   panel.addEventListener('transitionend', () => {
-    panel.classList.add('hidden');
-    backdrop.classList.add('hidden');
+    panel.classList.add('hidden'); backdrop.classList.add('hidden');
   }, { once: true });
+}
+
+// ── List picker ────────────────────────────────────────────────────────────
+
+function openListPicker(recipe) {
+  pickerRecipe = recipe;
+  renderListPicker();
+  const panel = document.getElementById('list-picker');
+  const backdrop = document.getElementById('list-picker-backdrop');
+  panel.classList.remove('hidden'); backdrop.classList.remove('hidden');
+  requestAnimationFrame(() => { panel.classList.add('open'); backdrop.classList.add('open'); });
+}
+
+function closeListPicker() {
+  const panel = document.getElementById('list-picker');
+  const backdrop = document.getElementById('list-picker-backdrop');
+  panel.classList.remove('open'); backdrop.classList.remove('open');
+  panel.addEventListener('transitionend', () => {
+    panel.classList.add('hidden'); backdrop.classList.add('hidden');
+    hidePickerNewRow();
+  }, { once: true });
+  pickerRecipe = null;
+}
+
+function renderListPicker() {
+  if (!pickerRecipe) return;
+  const key = recipeKey(pickerRecipe);
+  const listsEl = document.getElementById('list-picker-lists');
+
+  document.getElementById('list-picker-title').textContent = pickerRecipe.name.length > 30
+    ? pickerRecipe.name.slice(0, 28) + '…' : pickerRecipe.name;
+
+  listsEl.innerHTML = state.favouriteLists.map(list => {
+    const inList = list.recipeKeys.includes(key);
+    return `
+      <div class="picker-item" data-list-id="${escHtml(list.id)}">
+        <span class="picker-item-heart">${inList ? '❤️' : '♡'}</span>
+        <span class="picker-item-name">${escHtml(list.name)}</span>
+        <span class="picker-item-count">${list.recipeKeys.length} recipes</span>
+      </div>`;
+  }).join('');
+
+  listsEl.querySelectorAll('.picker-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const listId = item.dataset.listId;
+      toggleFavListMembership(listId, key);
+      renderListPicker();
+      renderListPanel(); // update heart in weekly list
+      if (currentFavView === 'detail' && currentFavListId === listId) renderFavDetail();
+      renderFavOverview(); // update counts
+    });
+  });
+}
+
+function showPickerNewRow() {
+  const row = document.getElementById('list-picker-new-row');
+  const input = document.getElementById('list-picker-new-input');
+  row.classList.remove('hidden');
+  document.getElementById('list-picker-new-btn').classList.add('hidden');
+  input.value = '';
+  input.focus();
+}
+
+function hidePickerNewRow() {
+  document.getElementById('list-picker-new-row').classList.add('hidden');
+  document.getElementById('list-picker-new-btn').classList.remove('hidden');
+}
+
+function addPickerNewList() {
+  const input = document.getElementById('list-picker-new-input');
+  const name = input.value.trim();
+  if (!name) return;
+  createFavList(name);
+  hidePickerNewRow();
+  renderListPicker();
+  renderFavOverview();
+}
+
+// ── Favourites navigation ──────────────────────────────────────────────────
+
+function renderFavouritesPage() {
+  if (currentFavView === 'detail' && currentFavListId) {
+    renderFavDetail();
+  } else {
+    currentFavView = 'overview';
+    renderFavOverview();
+  }
+}
+
+function renderFavOverview() {
+  const rowsEl = document.getElementById('fav-list-rows');
+  const emptyEl = document.getElementById('fav-overview-empty');
+
+  if (state.favouriteLists.length === 0) {
+    rowsEl.innerHTML = '';
+    emptyEl.classList.remove('hidden');
+    return;
+  }
+  emptyEl.classList.add('hidden');
+
+  rowsEl.innerHTML = state.favouriteLists.map(list => `
+    <div class="fav-list-card" data-list-id="${escHtml(list.id)}">
+      <span class="fav-list-card-icon">❤️</span>
+      <span class="fav-list-card-name">${escHtml(list.name)}</span>
+      <span class="fav-list-card-count">${list.recipeKeys.length}</span>
+      <span class="fav-list-card-arrow">›</span>
+    </div>`).join('');
+
+  rowsEl.querySelectorAll('.fav-list-card').forEach(card => {
+    card.addEventListener('click', () => openFavDetail(card.dataset.listId));
+  });
+}
+
+function openFavDetail(listId) {
+  currentFavView = 'detail';
+  currentFavListId = listId;
+  document.getElementById('fav-overview').classList.add('hidden');
+  document.getElementById('fav-detail').classList.remove('hidden');
+  renderFavDetail();
+}
+
+function closeFavDetail() {
+  currentFavView = 'overview';
+  currentFavListId = null;
+  document.getElementById('fav-detail').classList.add('hidden');
+  document.getElementById('fav-overview').classList.remove('hidden');
+  renderFavOverview();
+}
+
+function renderFavDetail() {
+  const list = state.favouriteLists.find(l => l.id === currentFavListId);
+  const titleEl = document.getElementById('fav-detail-title');
+  const itemsEl = document.getElementById('fav-detail-items');
+  const emptyEl = document.getElementById('fav-detail-empty');
+
+  if (!list) { closeFavDetail(); return; }
+
+  // Restore title element if it was replaced by input
+  if (titleEl.tagName !== 'H3') {
+    const h3 = document.createElement('h3');
+    h3.id = 'fav-detail-title';
+    titleEl.replaceWith(h3);
+  }
+  document.getElementById('fav-detail-title').textContent = list.name;
+
+  const recipes = list.recipeKeys.map(key => getRecipeByKey(key)).filter(Boolean);
+
+  if (recipes.length === 0) {
+    itemsEl.innerHTML = '';
+    emptyEl.classList.remove('hidden');
+    return;
+  }
+  emptyEl.classList.add('hidden');
+
+  itemsEl.innerHTML = '';
+  recipes.forEach(recipe => {
+    const key = recipeKey(recipe);
+    const cat = getCategory(recipe);
+    const sub = recipe.subtitle || recipe.time || '';
+    let linkHtml = '';
+    if (recipe.link) linkHtml = `<a href="${recipe.link}" target="_blank" rel="noopener noreferrer" class="fav-detail-item-link">🔗 View Recipe</a>`;
+    else if (recipe.video) linkHtml = `<a href="${recipe.video}" target="_blank" rel="noopener noreferrer" class="fav-detail-item-link">▶️ Video</a>`;
+    else if (recipe.book && BOOKS[recipe.book.id]) linkHtml = `<span class="fav-detail-item-link">📚 ${escHtml(BOOKS[recipe.book.id].name)}, p.&nbsp;${recipe.book.page}</span>`;
+
+    const item = document.createElement('div');
+    item.className = 'fav-detail-item';
+    item.innerHTML = `
+      <div class="fav-detail-item-emoji" style="background:${cat.color}25;">${getEmoji(recipe)}</div>
+      <div class="fav-detail-item-info">
+        <div class="fav-detail-item-name">${escHtml(recipe.name)}</div>
+        ${sub ? `<div class="fav-detail-item-sub">${escHtml(sub)}</div>` : ''}
+        ${linkHtml}
+      </div>
+      <span class="fav-delete-hint">← Swipe to delete</span>`;
+
+    initSwipeToDelete(item, () => {
+      removeFromFavList(currentFavListId, key);
+      renderFavDetail();
+      renderFavOverview();
+      renderListPanel();
+    });
+
+    itemsEl.appendChild(item);
+  });
+}
+
+// ── Delete / rename list ───────────────────────────────────────────────────
+
+function tryDeleteList() {
+  const btn = document.getElementById('fav-delete-btn');
+  if (btn.dataset.confirm === '1') {
+    deleteFavList(currentFavListId);
+    closeFavDetail();
+    btn.dataset.confirm = '';
+  } else {
+    btn.dataset.confirm = '1';
+    btn.classList.add('danger');
+    btn.title = 'Tap again to confirm';
+    setTimeout(() => {
+      btn.dataset.confirm = '';
+      btn.classList.remove('danger');
+      btn.title = '';
+    }, 3000);
+  }
+}
+
+function startRename() {
+  const list = state.favouriteLists.find(l => l.id === currentFavListId);
+  if (!list) return;
+  const titleEl = document.getElementById('fav-detail-title');
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.className = 'fav-rename-input';
+  input.value = list.name;
+  input.maxLength = 40;
+  const finish = () => {
+    const newName = input.value.trim();
+    if (newName && newName !== list.name) {
+      list.name = newName;
+      saveFavouriteLists();
+      renderFavOverview();
+    }
+    renderFavDetail();
+  };
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); input.blur(); } });
+  input.addEventListener('blur', finish);
+  titleEl.replaceWith(input);
+  input.focus();
+  input.select();
+}
+
+// ── Fav new list (overview) ───────────────────────────────────────────────
+
+function toggleFavNewInputRow() {
+  const row = document.getElementById('fav-new-input-row');
+  const input = document.getElementById('fav-new-input');
+  const btn = document.getElementById('fav-new-list-btn');
+  if (row.classList.contains('hidden')) {
+    row.classList.remove('hidden');
+    btn.classList.add('hidden');
+    input.value = '';
+    input.focus();
+  } else {
+    row.classList.add('hidden');
+    btn.classList.remove('hidden');
+  }
+}
+
+function createListFromOverview() {
+  const input = document.getElementById('fav-new-input');
+  const name = input.value.trim();
+  if (!name) return;
+  const list = createFavList(name);
+  document.getElementById('fav-new-input-row').classList.add('hidden');
+  document.getElementById('fav-new-list-btn').classList.remove('hidden');
+  renderFavOverview();
+  openFavDetail(list.id);
 }
 
 // ── Filter chips ───────────────────────────────────────────────────────────
@@ -431,10 +769,7 @@ function renderFilterBar() {
 
   const allChip = makeChip('all', '✨ All', '#1A1A2E', state.activeFilters.size === 0);
   allChip.addEventListener('click', () => {
-    state.activeFilters.clear();
-    buildDeck();
-    renderDeck();
-    updateChips();
+    state.activeFilters.clear(); buildDeck(); renderDeck(); updateChips();
   });
   bar.appendChild(allChip);
 
@@ -442,9 +777,7 @@ function renderFilterBar() {
     const chip = makeChip(f.id, `${f.emoji} ${f.label}`, f.color, state.activeFilters.has(f.id));
     chip.addEventListener('click', () => {
       if (state.activeFilters.has(f.id)) { state.activeFilters.delete(f.id); } else { state.activeFilters.add(f.id); }
-      buildDeck();
-      renderDeck();
-      updateChips();
+      buildDeck(); renderDeck(); updateChips();
     });
     bar.appendChild(chip);
   });
@@ -494,73 +827,17 @@ function navigateTo(page) {
 function openDrawer() {
   const drawer = document.getElementById('nav-drawer');
   const backdrop = document.getElementById('nav-backdrop');
-  drawer.classList.remove('hidden');
-  backdrop.classList.remove('hidden');
+  drawer.classList.remove('hidden'); backdrop.classList.remove('hidden');
   requestAnimationFrame(() => { drawer.classList.add('open'); backdrop.classList.add('open'); });
 }
 
 function closeDrawer() {
   const drawer = document.getElementById('nav-drawer');
   const backdrop = document.getElementById('nav-backdrop');
-  drawer.classList.remove('open');
-  backdrop.classList.remove('open');
+  drawer.classList.remove('open'); backdrop.classList.remove('open');
   drawer.addEventListener('transitionend', () => {
-    drawer.classList.add('hidden');
-    backdrop.classList.add('hidden');
+    drawer.classList.add('hidden'); backdrop.classList.add('hidden');
   }, { once: true });
-}
-
-// ── Favourites page ────────────────────────────────────────────────────────
-
-function renderFavouritesPage() {
-  const container = document.getElementById('fav-items');
-  const emptyEl = document.getElementById('fav-empty');
-
-  const favRecipes = state.allRecipes.filter(r => state.favorites.has(recipeKey(r)));
-
-  if (favRecipes.length === 0) {
-    container.innerHTML = '';
-    emptyEl.classList.remove('hidden');
-    return;
-  }
-  emptyEl.classList.add('hidden');
-
-  const cat = r => getCategory(r);
-
-  container.innerHTML = favRecipes.map(recipe => {
-    const key = recipeKey(recipe);
-    const c = cat(recipe);
-    const emoji = getEmoji(recipe);
-    const sub = recipe.subtitle || recipe.time || '';
-    const hasLink = !!recipe.link;
-    const hasVideo = !!recipe.video;
-    const hasBook = !recipe.link && !recipe.video && recipe.book && BOOKS[recipe.book.id];
-
-    let linkHtml = '';
-    if (hasLink) linkHtml = `<a href="${recipe.link}" target="_blank" rel="noopener noreferrer" class="fav-item-link">🔗 View Recipe</a>`;
-    else if (hasVideo) linkHtml = `<a href="${recipe.video}" target="_blank" rel="noopener noreferrer" class="fav-item-link">▶️ Video</a>`;
-    else if (hasBook) linkHtml = `<span class="fav-item-link">📚 ${escHtml(BOOKS[recipe.book.id].name)}, p.&nbsp;${recipe.book.page}</span>`;
-
-    return `
-      <div class="fav-item">
-        <div class="fav-item-emoji" style="background:${c.color}25;">${emoji}</div>
-        <div class="fav-item-info">
-          <div class="fav-item-name">${escHtml(recipe.name)}</div>
-          ${sub ? `<div class="fav-item-sub">${escHtml(sub)}</div>` : ''}
-          ${linkHtml}
-        </div>
-        <button class="star-btn" data-key="${escHtml(key)}" aria-label="Remove from favourites">⭐</button>
-      </div>`;
-  }).join('');
-
-  container.querySelectorAll('.star-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      state.favorites.delete(btn.dataset.key);
-      saveFavorites();
-      renderFavouritesPage();
-      renderListPanel();
-    });
-  });
 }
 
 // ── Service worker + update toast ──────────────────────────────────────────
@@ -569,19 +846,13 @@ async function registerSW() {
   if (!('serviceWorker' in navigator)) return;
   try {
     const reg = await navigator.serviceWorker.register('sw.js');
-
-    const watchInstalling = (sw) => {
+    const watch = (sw) => {
       sw.addEventListener('statechange', () => {
-        if (sw.state === 'installed' && navigator.serviceWorker.controller) {
-          showUpdateToast(reg);
-        }
+        if (sw.state === 'installed' && navigator.serviceWorker.controller) showUpdateToast(reg);
       });
     };
-
-    if (reg.installing) watchInstalling(reg.installing);
-    reg.addEventListener('updatefound', () => watchInstalling(reg.installing));
-
-    // Already waiting from a previous install
+    if (reg.installing) watch(reg.installing);
+    reg.addEventListener('updatefound', () => watch(reg.installing));
     if (reg.waiting && navigator.serviceWorker.controller) showUpdateToast(reg);
   } catch (_) {}
 }
@@ -590,7 +861,6 @@ function showUpdateToast(reg) {
   const toast = document.getElementById('update-toast');
   toast.classList.remove('hidden');
   requestAnimationFrame(() => toast.classList.add('show'));
-
   document.getElementById('update-reload-btn').addEventListener('click', () => {
     reg.waiting.postMessage('SKIP_WAITING');
     navigator.serviceWorker.addEventListener('controllerchange', () => window.location.reload(), { once: true });
@@ -606,12 +876,11 @@ function init() {
   renderDeck();
   updateListBadge();
 
-  // Version display
   if (typeof APP_VERSION !== 'undefined') {
     document.getElementById('version-display').textContent = APP_VERSION;
   }
 
-  // Match page buttons
+  // Match page
   document.getElementById('like-btn').addEventListener('click', () => buttonSwipe('right'));
   document.getElementById('skip-btn').addEventListener('click', () => buttonSwipe('left'));
   document.getElementById('list-toggle-btn').addEventListener('click', openList);
@@ -620,17 +889,33 @@ function init() {
   document.getElementById('clear-list-btn').addEventListener('click', clearList);
   document.getElementById('reset-btn').addEventListener('click', () => { buildDeck(); renderDeck(); });
 
+  // List picker
+  document.getElementById('list-picker-backdrop').addEventListener('click', closeListPicker);
+  document.getElementById('list-picker-close-btn').addEventListener('click', closeListPicker);
+  document.getElementById('list-picker-new-btn').addEventListener('click', showPickerNewRow);
+  document.getElementById('list-picker-new-add-btn').addEventListener('click', addPickerNewList);
+  document.getElementById('list-picker-new-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') addPickerNewList();
+    if (e.key === 'Escape') hidePickerNewRow();
+  });
+
+  // Favourites page
+  document.getElementById('fav-back-btn').addEventListener('click', closeFavDetail);
+  document.getElementById('fav-rename-btn').addEventListener('click', startRename);
+  document.getElementById('fav-delete-btn').addEventListener('click', tryDeleteList);
+  document.getElementById('fav-new-list-btn').addEventListener('click', toggleFavNewInputRow);
+  document.getElementById('fav-new-create-btn').addEventListener('click', createListFromOverview);
+  document.getElementById('fav-new-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') createListFromOverview();
+    if (e.key === 'Escape') toggleFavNewInputRow();
+  });
+
   // Navigation
   document.getElementById('burger-btn').addEventListener('click', openDrawer);
   document.getElementById('nav-backdrop').addEventListener('click', closeDrawer);
   document.querySelectorAll('.nav-item').forEach(item => {
-    item.addEventListener('click', () => {
-      navigateTo(item.dataset.page);
-      closeDrawer();
-    });
+    item.addEventListener('click', () => { navigateTo(item.dataset.page); closeDrawer(); });
   });
-
-  // Set initial active nav item
   document.querySelector('.nav-item[data-page="match"]').classList.add('active');
 
   registerSW();

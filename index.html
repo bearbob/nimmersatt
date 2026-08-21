@@ -39,7 +39,7 @@
         <span class="nav-item-icon">🃏</span> Match
       </button>
       <button class="nav-item" data-page="favourites">
-        <span class="nav-item-icon">⭐</span> Favourites
+        <span class="nav-item-icon">❤️</span> Favourites
       </button>
       <button class="nav-item" data-page="about">
         <span class="nav-item-icon">ℹ️</span> About
@@ -64,7 +64,7 @@
 
     <div id="pages">
 
-      <!-- ── Match page ─────────────────────────────────────── -->
+      <!-- ── Match page ──────────────────────────────────── -->
       <div id="page-match" class="page">
         <main id="deck-area">
           <div id="deck"></div>
@@ -102,16 +102,59 @@
         </div>
       </div>
 
-      <!-- ── Favourites page ────────────────────────────────── -->
+      <!-- ── Favourites page ─────────────────────────────── -->
       <div id="page-favourites" class="page hidden">
-        <div id="fav-items"></div>
-        <div id="fav-empty" class="hidden">
-          <div class="empty-emoji">⭐</div>
-          <p>Star recipes from your weekly list to save them here.</p>
+
+        <!-- Overview: list of named lists -->
+        <div id="fav-overview">
+          <div id="fav-list-rows"></div>
+          <div id="fav-overview-empty" class="hidden">
+            <div class="empty-emoji">❤️</div>
+            <p>Create your first list to save recipes.</p>
+          </div>
+          <div id="fav-new-input-row" class="hidden">
+            <input type="text" id="fav-new-input" placeholder="List name…" maxlength="40" autocomplete="off">
+            <button id="fav-new-create-btn">Create</button>
+          </div>
+          <button id="fav-new-list-btn">+ New list</button>
         </div>
+
+        <!-- Detail: recipes inside one list -->
+        <div id="fav-detail" class="hidden">
+          <div id="fav-detail-header">
+            <button id="fav-back-btn" aria-label="Back to lists">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"/>
+              </svg>
+            </button>
+            <h3 id="fav-detail-title"></h3>
+            <div class="fav-detail-actions">
+              <button id="fav-rename-btn" aria-label="Rename list">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                  <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                </svg>
+              </button>
+              <button id="fav-delete-btn" aria-label="Delete list">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="3 6 5 6 21 6"/>
+                  <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+                  <path d="M10 11v6M14 11v6"/>
+                  <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div id="fav-detail-items"></div>
+          <div id="fav-detail-empty" class="hidden">
+            <div class="empty-emoji">❤️</div>
+            <p>Heart recipes from your weekly list to add them here.</p>
+          </div>
+        </div>
+
       </div>
 
-      <!-- ── About page ─────────────────────────────────────── -->
+      <!-- ── About page ──────────────────────────────────── -->
       <div id="page-about" class="page hidden">
         <div id="about-content">
           <div class="about-logo">🧑‍🍳</div>
@@ -127,8 +170,8 @@
               <p>Swipe <strong>left</strong> to skip a recipe</p>
             </div>
             <div class="about-step">
-              <span>⭐</span>
-              <p>Star recipes in your list to save them as <strong>Favourites</strong></p>
+              <span>♡</span>
+              <p>Heart recipes in your list to save them to a <strong>Favourites</strong> list</p>
             </div>
           </div>
           <div class="about-version">Version <span id="version-display">—</span></div>
@@ -136,7 +179,6 @@
       </div>
 
     </div><!-- /#pages -->
-
   </div><!-- /#app -->
 
   <!-- Weekly list panel -->
@@ -159,6 +201,26 @@
       <div class="empty-emoji">📋</div>
       <p>Swipe right on recipes to add them here!</p>
     </div>
+  </div>
+
+  <!-- List picker (choose which favourite list to add to) -->
+  <div id="list-picker-backdrop" class="hidden"></div>
+  <div id="list-picker" role="dialog" aria-modal="true" aria-label="Save to favourites list" class="hidden">
+    <div id="list-picker-header">
+      <h3 id="list-picker-title">Save to list</h3>
+      <button id="list-picker-close-btn" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div id="list-picker-lists"></div>
+    <div id="list-picker-new-row" class="hidden">
+      <input type="text" id="list-picker-new-input" placeholder="List name…" maxlength="40" autocomplete="off">
+      <button id="list-picker-new-add-btn">Add</button>
+    </div>
+    <button id="list-picker-new-btn">+ New list</button>
   </div>
 
   <script src="version.js"></script>
