@@ -8,6 +8,7 @@ const RECIPES_EN = [
   {
     "name": "Sriracha Corn",
     "link": "https://www.jamieoliver.com/recipes/vegetables/sriracha-corn/",
+    "icon": "🌽",
     "tags": ["dinner", "vegan"],
     "language": "en",
   },
