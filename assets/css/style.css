@@ -1125,6 +1125,109 @@ body {
   margin-top: 4px;
 }
 
+/* ── Search page ───────────────────────────────────────────────── */
+#page-search {
+  overflow: hidden;
+}
+
+#search-bar-container {
+  flex: 0 0 auto;
+  padding: 10px 16px;
+  border-bottom: var(--border-w) solid var(--border);
+  background: var(--bg);
+}
+
+#search-bar-wrapper {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px; height: 18px;
+  color: var(--text-secondary);
+  pointer-events: none;
+}
+
+#search-input {
+  width: 100%;
+  padding: 11px 36px 11px 42px;
+  border: var(--border-w) solid var(--border);
+  border-radius: 16px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  background: white;
+  box-shadow: var(--shadow-sm);
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+#search-input:focus {
+  border-color: var(--like);
+  box-shadow: 0 0 0 3px rgba(76, 201, 160, 0.2), var(--shadow-sm);
+}
+#search-input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  width: 16px; height: 16px;
+  background: var(--text-secondary);
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+#search-results {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.search-message {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+  padding: 32px 24px;
+}
+.search-message .empty-emoji { font-size: 3.5rem; }
+.search-message p {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  max-width: 260px;
+}
+
+.search-result-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: background 0.1s;
+  -webkit-tap-highlight-color: transparent;
+}
+.search-result-item:last-child { border-bottom: none; }
+.search-result-item:hover { background: rgba(0,0,0,0.02); }
+.search-result-count {
+  padding: 6px 14px;
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin: 10px 16px 4px;
+  align-self: flex-start;
+  box-shadow: var(--shadow-sm);
+}
+
 /* ── About page ────────────────────────────────────────────────── */
 #page-about {
   overflow-y: auto;

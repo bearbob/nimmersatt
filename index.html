@@ -38,6 +38,9 @@
       <button class="nav-item" data-page="match">
         <span class="nav-item-icon">🃏</span> Match
       </button>
+      <button class="nav-item" data-page="search">
+        <span class="nav-item-icon">🔍</span> Search
+      </button>
       <button class="nav-item" data-page="favourites">
         <span class="nav-item-icon">❤️</span> Favourites
       </button>
@@ -99,6 +102,28 @@
               <polyline points="20 6 9 17 4 12"/>
             </svg>
           </button>
+        </div>
+      </div>
+
+      <!-- ── Search page ────────────────────────────────────── -->
+      <div id="page-search" class="page hidden">
+        <div id="search-bar-container">
+          <div id="search-bar-wrapper">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input type="search" id="search-input" placeholder="Name or ingredient…" autocomplete="off" autocorrect="off" spellcheck="false">
+          </div>
+        </div>
+        <div id="search-results" class="hidden"></div>
+        <div id="search-initial" class="search-message">
+          <div class="empty-emoji">🔍</div>
+          <p>Search by name or ingredient.<br>Use spaces between terms to narrow results.</p>
+        </div>
+        <div id="search-no-results" class="search-message hidden">
+          <div class="empty-emoji">😕</div>
+          <p>No recipes found.<br>Try a different term.</p>
         </div>
       </div>
 

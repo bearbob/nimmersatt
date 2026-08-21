@@ -608,6 +608,7 @@ function closeListPicker() {
   panel.addEventListener('transitionend', () => {
     panel.classList.add('hidden'); backdrop.classList.add('hidden');
     hidePickerNewRow();
+    refreshSearchHearts();
   }, { once: true });
   pickerRecipe = null;
 }
@@ -846,6 +847,95 @@ function createListFromOverview() {
   openFavDetail(list.id);
 }
 
+// ── Search ─────────────────────────────────────────────────────────────────
+
+function performSearch(query) {
+  const terms = query.trim().toLowerCase().split(/\s+/).filter(t => t.length > 0);
+  if (terms.length === 0) return null; // null = show initial state
+
+  return state.allRecipes.filter(recipe => {
+    const name = recipe.name.toLowerCase();
+    const ingredients = (recipe.ingredients || []).join(' ').toLowerCase();
+    return terms.every(term => name.includes(term) || ingredients.includes(term));
+  });
+}
+
+function renderSearchResults(results) {
+  const resultsEl = document.getElementById('search-results');
+  const initialEl = document.getElementById('search-initial');
+  const noResultsEl = document.getElementById('search-no-results');
+
+  if (results === null) {
+    resultsEl.classList.add('hidden');
+    noResultsEl.classList.add('hidden');
+    initialEl.classList.remove('hidden');
+    return;
+  }
+
+  initialEl.classList.add('hidden');
+
+  if (results.length === 0) {
+    resultsEl.classList.add('hidden');
+    noResultsEl.classList.remove('hidden');
+    return;
+  }
+
+  noResultsEl.classList.add('hidden');
+  resultsEl.classList.remove('hidden');
+
+  const countEl = document.createElement('div');
+  countEl.className = 'search-result-count';
+  countEl.textContent = `${results.length} recipe${results.length !== 1 ? 's' : ''}`;
+
+  resultsEl.innerHTML = '';
+  resultsEl.appendChild(countEl);
+
+  results.forEach(recipe => {
+    const key = recipeKey(recipe);
+    const inAny = isInAnyList(key);
+    const sub = recipe.subtitle || recipe.time || (recipe.tags || []).slice(0, 2).join(', ') || '';
+
+    const item = document.createElement('div');
+    item.className = 'search-result-item';
+    item.innerHTML = `
+      <div class="list-item-emoji">${getEmoji(recipe)}</div>
+      <div class="list-item-info">
+        <div class="list-item-name">${escHtml(recipe.name)}</div>
+        ${sub ? `<div class="list-item-sub">${escHtml(sub)}</div>` : ''}
+      </div>
+      <button class="heart-btn" data-key="${escHtml(key)}" aria-label="${inAny ? 'Edit favourites' : 'Save to favourites'}">${inAny ? '❤️' : '♡'}</button>`;
+
+    item.querySelector('.heart-btn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      openListPicker(recipe);
+    });
+
+    item.addEventListener('click', (e) => {
+      if (e.target.closest('.heart-btn')) return;
+      openRecipeDetail(recipe);
+    });
+
+    resultsEl.appendChild(item);
+  });
+}
+
+function onSearchInput() {
+  const query = document.getElementById('search-input').value;
+  const nonWhitespace = query.replace(/\s/g, '');
+  renderSearchResults(nonWhitespace.length >= 3 ? performSearch(query) : null);
+}
+
+// Re-render search results after list picker changes so hearts stay in sync
+function refreshSearchHearts() {
+  const resultsEl = document.getElementById('search-results');
+  if (resultsEl.classList.contains('hidden')) return;
+  resultsEl.querySelectorAll('.heart-btn').forEach(btn => {
+    const inAny = isInAnyList(btn.dataset.key);
+    btn.textContent = inAny ? '❤️' : '♡';
+    btn.setAttribute('aria-label', inAny ? 'Edit favourites' : 'Save to favourites');
+  });
+}
+
 // ── Filter chips ───────────────────────────────────────────────────────────
 
 function renderFilterBar() {
@@ -898,7 +988,12 @@ function navigateTo(page) {
   } else {
     filterChips.classList.add('hidden');
     pageTitle.classList.remove('hidden');
-    pageTitle.textContent = page === 'favourites' ? 'Favourites' : 'About';
+    const titles = { search: 'Search', favourites: 'Favourites', about: 'About' };
+    pageTitle.textContent = titles[page] || page;
+  }
+
+  if (page === 'search') {
+    requestAnimationFrame(() => document.getElementById('search-input').focus());
   }
 
   document.querySelectorAll('.nav-item').forEach(item => {
@@ -972,6 +1067,9 @@ function init() {
   document.getElementById('list-backdrop').addEventListener('click', closeList);
   document.getElementById('clear-list-btn').addEventListener('click', clearList);
   document.getElementById('reset-btn').addEventListener('click', () => { buildDeck(); renderDeck(); });
+
+  // Search
+  document.getElementById('search-input').addEventListener('input', onSearchInput);
 
   // Recipe detail sheet
   document.getElementById('recipe-detail-backdrop').addEventListener('click', closeRecipeDetail);
