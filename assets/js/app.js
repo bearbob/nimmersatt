@@ -281,11 +281,11 @@ function renderDeck() {
   const recipes = state.deck.slice(state.currentIndex, state.currentIndex + 3);
   if (recipes.length === 0) { emptyEl.classList.remove('hidden'); return; }
 
-  [...recipes].reverse().forEach((recipe, reverseIdx) => {
+  recipes.forEach((recipe, idx) => {
     const card = createCardEl(recipe);
-    card.dataset.stack = String(reverseIdx);
+    card.dataset.stack = String(idx);
     card.style.transition = 'none';
-    deckEl.prepend(card);
+    deckEl.appendChild(card);
   });
 
   requestAnimationFrame(() => {
