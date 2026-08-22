@@ -165,9 +165,10 @@ const RECIPES = [
     "tags": ["dinner", "herzhaft"],
   },
   {
-    "name": "One-Pot-Paste mit Zitronenkäsesauce",
+    "name": "One-Pot-Pasta mit Zitronenkäsesauce",
     "link": "https://www.penny.de/clever-kochen/rezepte-und-ernaehrung/one-pot-pasta-mit-zitronen-kaesesauce",
     "tags": ["dinner", "herzhaft"],
+    "time": "30 min",
   },
   {
     "name": "Fischstäbchen",
@@ -176,11 +177,6 @@ const RECIPES = [
   },
   {
     "name": "Kartoffelsuppe",
-    "tags": ["dinner", "herzhaft"],
-  },
-  {
-    "name": "Sheperds Pie",
-    "link": "https://www.jamieoliver.com/recipes/lamb-recipes/super-shepherd-s-pie/",
     "tags": ["dinner", "herzhaft"],
   },
   {

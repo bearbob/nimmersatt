@@ -308,7 +308,7 @@ function advanceDeck(leavingCard) {
     newCard.style.transform = 'scale(0.88) translateY(42px)';
     newCard.style.zIndex = '5';
     newCard.style.pointerEvents = 'none';
-    deckEl.prepend(newCard);
+    deckEl.appendChild(newCard);
   }
 
   const activeCards = [...deckEl.querySelectorAll('.card:not(.leaving)')];
@@ -320,7 +320,7 @@ function advanceDeck(leavingCard) {
     card.style.pointerEvents = i === 0 ? '' : 'none';
   });
 
-  const newTop = deckEl.querySelector('.card[data-stack="0"]');
+  const newTop = activeCards[0];
   if (newTop) initSwipe(newTop, state.deck[state.currentIndex]);
 
   leavingCard.addEventListener('transitionend', () => {
@@ -394,7 +394,7 @@ function triggerSwipe(cardEl, recipe, direction) {
 }
 
 function buttonSwipe(direction) {
-  const topCard = document.querySelector('.card[data-stack="0"]');
+  const topCard = document.querySelector('.card:not(.leaving)[data-stack="0"]');
   if (!topCard) return;
   const recipe = state.deck[state.currentIndex];
   if (!recipe) return;
