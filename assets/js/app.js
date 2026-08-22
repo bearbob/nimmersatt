@@ -27,6 +27,7 @@ const state = {
   activeFilters: new Set(),
   activeLanguages: new Set(),  // e.g. Set(['de', 'en'])
   weeklyList: [],
+  skippedKeys: new Set(),
   favouriteLists: [],   // [{ id, name, recipeKeys[] }]
   customRecipes: [],    // [{ id, name, custom: true, ...opts }]
   customInMatch: false,
@@ -48,6 +49,11 @@ function loadStorage() {
     const list = JSON.parse(localStorage.getItem('nimmersatt_list') || '[]');
     state.weeklyList = Array.isArray(list) ? list : [];
   } catch (_) { state.weeklyList = []; }
+
+  try {
+    const skipped = JSON.parse(localStorage.getItem('nimmersatt_skipped') || '[]');
+    state.skippedKeys = new Set(Array.isArray(skipped) ? skipped : []);
+  } catch (_) { state.skippedKeys = new Set(); }
 
   try {
     const stored = JSON.parse(localStorage.getItem('nimmersatt_favlists') || 'null');
@@ -89,6 +95,15 @@ function saveLanguages() {
 
 function saveList() {
   localStorage.setItem('nimmersatt_list', JSON.stringify(state.weeklyList));
+}
+
+function saveSkipped() {
+  localStorage.setItem('nimmersatt_skipped', JSON.stringify([...state.skippedKeys]));
+}
+
+function clearSkipped() {
+  state.skippedKeys = new Set();
+  localStorage.removeItem('nimmersatt_skipped');
 }
 
 function saveFavouriteLists() {
@@ -164,6 +179,8 @@ function initData() {
 }
 
 function buildDeck() {
+  const listedKeys = new Set(state.weeklyList.map(r => recipeKey(r)));
+
   let pool = state.allRecipes.filter(r => state.activeLanguages.has(r.language || 'de'));
 
   if (state.customInMatch) {
@@ -178,6 +195,8 @@ function buildDeck() {
     }
     pool = pool.filter(r => (r.tags || []).some(t => activeTags.has(t.toLowerCase())));
   }
+
+  pool = pool.filter(r => !listedKeys.has(recipeKey(r)) && !state.skippedKeys.has(recipeKey(r)));
 
   state.deck = shuffle(pool);
   state.currentIndex = 0;
@@ -419,6 +438,7 @@ function triggerSwipe(cardEl, recipe, direction) {
   cardEl.style.transform = `translateX(${dx}px) rotate(${rotate}deg)`;
   cardEl.style.opacity = '0';
   if (direction === 'right') addToList(recipe);
+  else { state.skippedKeys.add(recipeKey(recipe)); saveSkipped(); }
   state.currentIndex++;
   advanceDeck(cardEl);
 }
@@ -576,6 +596,9 @@ function addToList(recipe) {
 function clearList() {
   state.weeklyList = [];
   saveList();
+  clearSkipped();
+  buildDeck();
+  renderDeck();
   updateListBadge();
   renderListPanel();
 }
@@ -1440,7 +1463,7 @@ function init() {
   document.getElementById('close-list-btn').addEventListener('click', closeList);
   document.getElementById('list-backdrop').addEventListener('click', closeList);
   document.getElementById('clear-list-btn').addEventListener('click', clearList);
-  document.getElementById('reset-btn').addEventListener('click', () => { buildDeck(); renderDeck(); });
+  document.getElementById('reset-btn').addEventListener('click', () => { clearSkipped(); buildDeck(); renderDeck(); });
 
   // Search
   document.getElementById('search-input').addEventListener('input', onSearchInput);
