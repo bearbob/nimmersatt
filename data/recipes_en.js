@@ -2,15 +2,18 @@ const RECIPES_EN = [
   {
     "name": "Baked Bread & Tomato Soup",
     "link": "https://www.jamieoliver.com/recipes/tomato/baked-bread-tomato-soup/",
-    "tags": ["dinner"],
+    "image": "https://asset.jamieoliver.com/images/cq7w2e71/production/d2e6c1d126a238e2a37afcaa74103d90bbe1648e-1333x2000.jpg",
+    "subtitle": "Inspired from Tuscan pappa al pomodoro and grilled mountain soups, this recipe is an epic riff on tinned tomato soup. Deep, sweet and robust, it feels really generous and warming.",
+    "tags": ["dinner", "vegetarian"],
     "language": "en",
   },
   {
     "name": "Sriracha Corn",
     "subtitle": "Super easy and spicy salad as a side dish for your next BBQ",
     "link": "https://www.jamieoliver.com/recipes/vegetables/sriracha-corn/",
+    "image": "https://asset.jamieoliver.com/images/cq7w2e71/production/a66fb9093f51b93e7e7582fdd2dfb264688b8156-4139x6205.jpg",
     "icon": "🌽",
-    "tags": ["dinner", "vegatarian", "bbq"],
+    "tags": ["dinner", "vegetarian", "bbq"],
     "language": "en",
   },
   {
