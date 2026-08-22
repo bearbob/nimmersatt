@@ -28,16 +28,21 @@ const state = {
   activeLanguages: new Set(),  // e.g. Set(['de', 'en'])
   weeklyList: [],
   favouriteLists: [],   // [{ id, name, recipeKeys[] }]
+  customRecipes: [],    // [{ id, name, custom: true, ...opts }]
+  customInMatch: false,
 };
 
 let currentFavView = 'overview'; // 'overview' | 'detail'
 let currentFavListId = null;
 let pickerRecipe = null;
+let editingCustomRecipe = null;
 
 // ── Storage ────────────────────────────────────────────────────────────────
 
 function loadStorage() {
   loadLanguages();
+  loadCustomRecipes();
+  loadCustomInMatch();
 
   try {
     const list = JSON.parse(localStorage.getItem('nimmersatt_list') || '[]');
@@ -88,6 +93,25 @@ function saveList() {
 
 function saveFavouriteLists() {
   localStorage.setItem('nimmersatt_favlists', JSON.stringify(state.favouriteLists));
+}
+
+function loadCustomRecipes() {
+  try {
+    const stored = JSON.parse(localStorage.getItem('nimmersatt_custom_recipes') || '[]');
+    state.customRecipes = Array.isArray(stored) ? stored.filter(r => r.id && r.name) : [];
+  } catch (_) { state.customRecipes = []; }
+}
+
+function saveCustomRecipes() {
+  localStorage.setItem('nimmersatt_custom_recipes', JSON.stringify(state.customRecipes));
+}
+
+function loadCustomInMatch() {
+  state.customInMatch = localStorage.getItem('nimmersatt_custom_in_match') === 'true';
+}
+
+function saveCustomInMatch() {
+  localStorage.setItem('nimmersatt_custom_in_match', String(state.customInMatch));
 }
 
 // ── Favourite list CRUD ────────────────────────────────────────────────────
@@ -142,6 +166,10 @@ function initData() {
 function buildDeck() {
   let pool = state.allRecipes.filter(r => state.activeLanguages.has(r.language || 'de'));
 
+  if (state.customInMatch) {
+    pool = [...pool, ...state.customRecipes];
+  }
+
   if (state.activeFilters.size > 0) {
     const activeTags = new Set();
     for (const id of state.activeFilters) {
@@ -165,7 +193,9 @@ function shuffle(arr) {
 }
 
 function getRecipeByKey(key) {
-  return state.allRecipes.find(r => recipeKey(r) === key) || null;
+  return state.allRecipes.find(r => recipeKey(r) === key)
+      || state.customRecipes.find(r => recipeKey(r) === key)
+      || null;
 }
 
 // ── Card helpers ───────────────────────────────────────────────────────────
@@ -889,12 +919,21 @@ function performSearch(query) {
   const terms = query.trim().toLowerCase().split(/\s+/).filter(t => t.length > 0);
   if (terms.length === 0) return null; // null = show initial state
 
-  return state.allRecipes.filter(recipe => {
-    if (!state.activeLanguages.has(recipe.language || 'de')) return false;
+  const matches = recipe => {
     const name = recipe.name.toLowerCase();
     const ingredients = (recipe.ingredients || []).join(' ').toLowerCase();
-    return terms.every(term => name.includes(term) || ingredients.includes(term));
+    return terms.every(t => name.includes(t) || ingredients.includes(t));
+  };
+
+  const builtIn = state.allRecipes.filter(r => {
+    if (!state.activeLanguages.has(r.language || 'de')) return false;
+    return matches(r);
   });
+
+  const seen = new Set(builtIn.map(r => r.name));
+  const custom = state.customRecipes.filter(r => matches(r) && !seen.has(r.name));
+
+  return [...builtIn, ...custom];
 }
 
 function renderSearchResults(results) {
@@ -1056,6 +1095,256 @@ function updateChips() {
   });
 }
 
+// ── My Recipes page ────────────────────────────────────────────────────────
+
+function renderMyRecipesPage() {
+  const toggle = document.getElementById('my-recipes-match-row');
+  toggle.setAttribute('aria-checked', String(state.customInMatch));
+  document.getElementById('my-recipes-match-toggle').setAttribute('aria-checked', String(state.customInMatch));
+
+  const listEl = document.getElementById('my-recipes-list');
+  const emptyEl = document.getElementById('my-recipes-empty');
+
+  if (state.customRecipes.length === 0) {
+    listEl.innerHTML = '';
+    emptyEl.classList.remove('hidden');
+    return;
+  }
+  emptyEl.classList.add('hidden');
+
+  listEl.innerHTML = '';
+  state.customRecipes.forEach(recipe => {
+    const sub = [recipe.time, ...(recipe.tags || []).slice(0, 2)].filter(Boolean).join(' · ');
+    const item = document.createElement('div');
+    item.className = 'my-recipe-item';
+    item.innerHTML = `
+      <div class="my-recipe-emoji">${getEmoji(recipe)}</div>
+      <div class="my-recipe-info">
+        <div class="my-recipe-name">${escHtml(recipe.name)}</div>
+        ${sub ? `<div class="my-recipe-sub">${escHtml(sub)}</div>` : ''}
+      </div>
+      <div class="my-recipe-actions">
+        <button class="my-recipe-edit-btn" aria-label="Edit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+          </svg>
+        </button>
+        <button class="my-recipe-delete-btn" aria-label="Delete">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="3 6 5 6 21 6"/>
+            <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+            <path d="M10 11v6M14 11v6"/>
+            <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>
+          </svg>
+        </button>
+      </div>`;
+
+    item.querySelector('.my-recipe-edit-btn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      const r = state.customRecipes.find(r => r.id === recipe.id);
+      if (r) openCustomRecipeModal(r);
+    });
+
+    item.querySelector('.my-recipe-delete-btn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      const btn = e.currentTarget;
+      if (btn.dataset.confirm === '1') {
+        deleteCustomRecipe(recipe.id);
+      } else {
+        btn.dataset.confirm = '1';
+        btn.classList.add('danger');
+        setTimeout(() => { btn.dataset.confirm = ''; btn.classList.remove('danger'); }, 3000);
+      }
+    });
+
+    item.addEventListener('click', (e) => {
+      if (e.target.closest('.my-recipe-edit-btn, .my-recipe-delete-btn')) return;
+      openRecipeDetail(recipe);
+    });
+
+    listEl.appendChild(item);
+  });
+}
+
+function toggleCustomInMatch() {
+  state.customInMatch = !state.customInMatch;
+  saveCustomInMatch();
+  renderMyRecipesPage();
+  buildDeck();
+  renderDeck();
+}
+
+function deleteCustomRecipe(id) {
+  state.customRecipes = state.customRecipes.filter(r => r.id !== id);
+  saveCustomRecipes();
+  buildDeck();
+  renderDeck();
+  renderMyRecipesPage();
+}
+
+// ── Custom recipe modal ────────────────────────────────────────────────────
+
+function openCustomRecipeModal(recipe) {
+  editingCustomRecipe = recipe || null;
+  document.getElementById('custom-recipe-modal-title').textContent = recipe ? 'Edit Recipe' : 'New Recipe';
+  document.getElementById('crm-name').value = recipe ? recipe.name : '';
+  document.getElementById('crm-name').classList.remove('error');
+  document.getElementById('crm-time').value = recipe ? (recipe.time || '') : '';
+  document.getElementById('crm-link').value = recipe ? (recipe.link || '') : '';
+  document.getElementById('crm-video').value = recipe ? (recipe.video || '') : '';
+  document.getElementById('crm-ingredients').value = recipe ? (recipe.ingredients || []).join('\n') : '';
+  renderCrmTags(recipe ? (recipe.tags || []) : []);
+
+  const modal = document.getElementById('custom-recipe-modal');
+  const backdrop = document.getElementById('custom-recipe-backdrop');
+  modal.classList.remove('hidden');
+  backdrop.classList.remove('hidden');
+  requestAnimationFrame(() => { modal.classList.add('open'); backdrop.classList.add('open'); });
+  setTimeout(() => document.getElementById('crm-name').focus(), 350);
+}
+
+function closeCustomRecipeModal() {
+  const modal = document.getElementById('custom-recipe-modal');
+  const backdrop = document.getElementById('custom-recipe-backdrop');
+  modal.classList.remove('open');
+  backdrop.classList.remove('open');
+  modal.addEventListener('transitionend', () => {
+    modal.classList.add('hidden');
+    backdrop.classList.add('hidden');
+  }, { once: true });
+  editingCustomRecipe = null;
+}
+
+function renderCrmTags(selectedTags) {
+  const container = document.getElementById('crm-tags');
+  container.innerHTML = '';
+  FILTERS.forEach(f => {
+    const chip = document.createElement('button');
+    chip.type = 'button';
+    chip.className = 'crm-tag-chip';
+    chip.dataset.id = f.id;
+    chip.dataset.filterTags = JSON.stringify(f.tags);
+    chip.style.setProperty('--chip-color', f.color);
+    chip.textContent = `${f.emoji} ${f.label}`;
+    if (selectedTags.some(t => f.tags.includes(t.toLowerCase()))) chip.classList.add('active');
+    chip.addEventListener('click', () => chip.classList.toggle('active'));
+    container.appendChild(chip);
+  });
+}
+
+function saveCustomRecipeFromModal() {
+  const nameEl = document.getElementById('crm-name');
+  const name = nameEl.value.trim();
+  if (!name) { nameEl.classList.add('error'); nameEl.focus(); return; }
+  nameEl.classList.remove('error');
+
+  const time = document.getElementById('crm-time').value.trim();
+  const link = document.getElementById('crm-link').value.trim();
+  const video = document.getElementById('crm-video').value.trim();
+  const ingredientsRaw = document.getElementById('crm-ingredients').value;
+  const ingredients = ingredientsRaw.split('\n').map(s => s.trim()).filter(Boolean);
+
+  const tags = [];
+  document.querySelectorAll('.crm-tag-chip.active').forEach(chip => {
+    tags.push(...JSON.parse(chip.dataset.filterTags));
+  });
+
+  if (editingCustomRecipe) {
+    const idx = state.customRecipes.findIndex(r => r.id === editingCustomRecipe.id);
+    if (idx >= 0) {
+      const updated = { ...state.customRecipes[idx], name };
+      if (time) updated.time = time; else delete updated.time;
+      if (link) updated.link = link; else delete updated.link;
+      if (video) updated.video = video; else delete updated.video;
+      if (ingredients.length) updated.ingredients = ingredients; else delete updated.ingredients;
+      if (tags.length) updated.tags = tags; else delete updated.tags;
+      state.customRecipes[idx] = updated;
+    }
+  } else {
+    const recipe = { id: 'custom_' + Date.now(), name, custom: true };
+    if (time) recipe.time = time;
+    if (link) recipe.link = link;
+    if (video) recipe.video = video;
+    if (ingredients.length) recipe.ingredients = ingredients;
+    if (tags.length) recipe.tags = tags;
+    state.customRecipes.push(recipe);
+  }
+
+  saveCustomRecipes();
+  buildDeck();
+  renderDeck();
+  renderMyRecipesPage();
+  closeCustomRecipeModal();
+}
+
+// ── Clipboard export / import ──────────────────────────────────────────────
+
+async function exportCustomRecipes() {
+  if (state.customRecipes.length === 0) { showToast('No custom recipes to export.'); return; }
+  try {
+    await navigator.clipboard.writeText(JSON.stringify({ version: '1', customRecipes: state.customRecipes }));
+    showToast(`${state.customRecipes.length} recipe${state.customRecipes.length !== 1 ? 's' : ''} copied to clipboard.`);
+  } catch (_) {
+    showToast('Could not copy — check browser permissions.');
+  }
+}
+
+async function importCustomRecipes() {
+  let text;
+  try { text = await navigator.clipboard.readText(); }
+  catch (_) { showToast('Could not read clipboard — check browser permissions.'); return; }
+
+  let parsed;
+  try { parsed = JSON.parse(text); } catch (_) { showToast('Clipboard does not contain valid recipe data.'); return; }
+  if (!parsed || !Array.isArray(parsed.customRecipes)) { showToast('Clipboard does not contain valid recipe data.'); return; }
+
+  const existing = new Set(state.customRecipes.map(r => r.name));
+  let added = 0, skipped = 0;
+
+  for (const r of parsed.customRecipes) {
+    if (!r.name || typeof r.name !== 'string') continue;
+    if (existing.has(r.name)) { skipped++; continue; }
+    const recipe = { id: 'custom_' + (Date.now() + added), name: r.name, custom: true };
+    if (r.time) recipe.time = r.time;
+    if (r.link) recipe.link = r.link;
+    if (r.video) recipe.video = r.video;
+    if (Array.isArray(r.ingredients) && r.ingredients.length) recipe.ingredients = r.ingredients;
+    if (Array.isArray(r.tags) && r.tags.length) recipe.tags = r.tags;
+    state.customRecipes.push(recipe);
+    existing.add(r.name);
+    added++;
+  }
+
+  if (added === 0 && skipped === 0) { showToast('No valid recipes found in clipboard.'); return; }
+  saveCustomRecipes();
+  buildDeck();
+  renderDeck();
+  renderMyRecipesPage();
+
+  const parts = [];
+  if (added) parts.push(`${added} recipe${added !== 1 ? 's' : ''} imported`);
+  if (skipped) parts.push(`${skipped} skipped`);
+  showToast(parts.join(', ') + '.');
+}
+
+// ── Toast ──────────────────────────────────────────────────────────────────
+
+function showToast(message) {
+  const existing = document.getElementById('app-toast');
+  if (existing) existing.remove();
+  const toast = document.createElement('div');
+  toast.id = 'app-toast';
+  toast.className = 'app-toast';
+  toast.textContent = message;
+  document.body.appendChild(toast);
+  requestAnimationFrame(() => requestAnimationFrame(() => toast.classList.add('show')));
+  setTimeout(() => {
+    toast.classList.remove('show');
+    toast.addEventListener('transitionend', () => toast.remove(), { once: true });
+  }, 2800);
+}
+
 // ── Navigation ─────────────────────────────────────────────────────────────
 
 function navigateTo(page) {
@@ -1070,11 +1359,12 @@ function navigateTo(page) {
   } else {
     filterChips.classList.add('hidden');
     pageTitle.classList.remove('hidden');
-    const titles = { search: 'Search', favourites: 'Favourites', language: 'Language', about: 'About' };
+    const titles = { search: 'Search', favourites: 'Favourites', language: 'Language', about: 'About', 'my-recipes': 'My Recipes' };
     pageTitle.textContent = titles[page] || page;
   }
 
   if (page === 'language') renderLanguagePage();
+  if (page === 'my-recipes') renderMyRecipesPage();
 
   if (page === 'search') {
     requestAnimationFrame(() => document.getElementById('search-input').focus());
@@ -1178,6 +1468,21 @@ function init() {
   document.getElementById('fav-new-input').addEventListener('keydown', e => {
     if (e.key === 'Enter') createListFromOverview();
     if (e.key === 'Escape') toggleFavNewInputRow();
+  });
+
+  // My Recipes page
+  document.getElementById('my-recipes-match-row').addEventListener('click', toggleCustomInMatch);
+  document.getElementById('my-recipes-add-btn').addEventListener('click', () => openCustomRecipeModal(null));
+  document.getElementById('my-recipes-export-btn').addEventListener('click', exportCustomRecipes);
+  document.getElementById('my-recipes-import-btn').addEventListener('click', importCustomRecipes);
+
+  // Custom recipe modal
+  document.getElementById('custom-recipe-backdrop').addEventListener('click', closeCustomRecipeModal);
+  document.getElementById('custom-recipe-modal-close').addEventListener('click', closeCustomRecipeModal);
+  document.getElementById('crm-cancel-btn').addEventListener('click', closeCustomRecipeModal);
+  document.getElementById('crm-save-btn').addEventListener('click', saveCustomRecipeFromModal);
+  document.getElementById('crm-name').addEventListener('keydown', e => {
+    if (e.key === 'Enter') { e.preventDefault(); saveCustomRecipeFromModal(); }
   });
 
   // Navigation

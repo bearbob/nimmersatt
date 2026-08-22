@@ -44,6 +44,9 @@
       <button class="nav-item" data-page="favourites">
         <span class="nav-item-icon">❤️</span> Favourites
       </button>
+      <button class="nav-item" data-page="my-recipes">
+        <span class="nav-item-icon">📝</span> My Recipes
+      </button>
       <button class="nav-item" data-page="language">
         <span class="nav-item-icon">🌐</span> Language
       </button>
@@ -182,6 +185,29 @@
 
       </div>
 
+      <!-- ── My Recipes page ──────────────────────────────────── -->
+      <div id="page-my-recipes" class="page hidden">
+        <div id="my-recipes-match-row" role="switch" aria-checked="false">
+          <div class="my-recipes-match-info">
+            <div class="my-recipes-match-label">Show in Match</div>
+            <div class="my-recipes-match-sub">Include your recipes in the swipe deck</div>
+          </div>
+          <div id="my-recipes-match-toggle" aria-hidden="true"></div>
+        </div>
+        <div id="my-recipes-actions">
+          <button id="my-recipes-export-btn">📋 Export</button>
+          <button id="my-recipes-import-btn">📥 Import</button>
+        </div>
+        <div id="my-recipes-content">
+          <div id="my-recipes-list"></div>
+          <div id="my-recipes-empty" class="hidden">
+            <div class="empty-emoji">📝</div>
+            <p>No custom recipes yet.<br>Add your first one below!</p>
+          </div>
+        </div>
+        <button id="my-recipes-add-btn">+ Add recipe</button>
+      </div>
+
       <!-- ── Language page ──────────────────────────────────── -->
       <div id="page-language" class="page hidden">
         <div id="language-content">
@@ -281,6 +307,50 @@
       <button id="list-picker-new-add-btn">Add</button>
     </div>
     <button id="list-picker-new-btn">+ New list</button>
+  </div>
+
+  <!-- Custom recipe modal -->
+  <div id="custom-recipe-backdrop" class="hidden"></div>
+  <div id="custom-recipe-modal" role="dialog" aria-modal="true" aria-label="Recipe" class="hidden">
+    <div id="custom-recipe-modal-header">
+      <h3 id="custom-recipe-modal-title">New Recipe</h3>
+      <button id="custom-recipe-modal-close" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div id="custom-recipe-modal-body">
+      <div class="crm-field">
+        <label class="crm-label" for="crm-name">Title <span class="crm-required">*</span></label>
+        <input type="text" id="crm-name" placeholder="Recipe name" maxlength="100" autocomplete="off">
+      </div>
+      <div class="crm-field">
+        <label class="crm-label" for="crm-time">Time</label>
+        <input type="text" id="crm-time" placeholder="e.g. 30 min" maxlength="30" autocomplete="off">
+      </div>
+      <div class="crm-field">
+        <label class="crm-label" for="crm-link">Recipe URL</label>
+        <input type="url" id="crm-link" placeholder="https://…" autocomplete="off">
+      </div>
+      <div class="crm-field">
+        <label class="crm-label" for="crm-video">Video URL</label>
+        <input type="url" id="crm-video" placeholder="https://…" autocomplete="off">
+      </div>
+      <div class="crm-field">
+        <label class="crm-label" for="crm-ingredients">Ingredients <span class="crm-hint">(one per line)</span></label>
+        <textarea id="crm-ingredients" placeholder="Tomatoes&#10;Pasta&#10;Olive oil" rows="4"></textarea>
+      </div>
+      <div class="crm-field">
+        <div class="crm-label">Tags</div>
+        <div id="crm-tags"></div>
+      </div>
+    </div>
+    <div id="custom-recipe-modal-footer">
+      <button id="crm-cancel-btn">Cancel</button>
+      <button id="crm-save-btn">Save</button>
+    </div>
   </div>
 
   <script src="version.js"></script>
