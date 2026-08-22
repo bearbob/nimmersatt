@@ -248,7 +248,7 @@ function createCardEl(recipe) {
   card.innerHTML = `
     <div class="card-indicator like">❤️ ADD</div>
     <div class="card-indicator skip">✕ SKIP</div>
-    <div class="card-hero" style="background:${cat.color}30;">${emoji}</div>
+    <div class="card-hero" style="${recipe.image ? '' : `background:${cat.color}30;`}">${recipe.image ? `<img src="${escHtml(recipe.image)}" alt="" onerror="this.parentElement.style.background='${cat.color}30';this.replaceWith(document.createTextNode('${emoji}'));">` : emoji}</div>
     <div class="card-body">
       <div class="card-category" style="background:${cat.color};color:${cat.id === 'sweet' ? '#1A1A2E' : '#fff'};">
         ${cat.emoji} ${cat.label}

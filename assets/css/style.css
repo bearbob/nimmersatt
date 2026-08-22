@@ -229,6 +229,14 @@ body {
   border-bottom: var(--border-w) solid var(--border);
   font-size: 5rem;
   line-height: 1;
+  overflow: hidden;
+}
+
+.card-hero img {
+  width: 100%;
+  align-self: stretch;
+  object-fit: cover;
+  display: block;
 }
 
 /* ── Card body ─────────────────────────────────────────────────── */
