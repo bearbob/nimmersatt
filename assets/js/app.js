@@ -300,7 +300,7 @@ function advanceDeck(leavingCard) {
   const deckEl = document.getElementById('deck');
   const emptyEl = document.getElementById('empty-state');
 
-  const nextBackIdx = state.currentIndex + 3;
+  const nextBackIdx = state.currentIndex + 2;
   if (nextBackIdx < state.deck.length) {
     const newCard = createCardEl(state.deck[nextBackIdx]);
     newCard.dataset.stack = '99';
