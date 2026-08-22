@@ -262,6 +262,11 @@ function createCardEl(recipe) {
       ${linksHtml ? `<div class="card-links">${linksHtml}</div>` : ''}
     </div>
   `;
+  // Links stop pointerdown propagation so the card never captures the pointer
+  // for a link tap — the link receives its own pointerup and fires a click normally.
+  card.querySelectorAll('a').forEach(a => {
+    a.addEventListener('pointerdown', e => e.stopPropagation());
+  });
   return card;
 }
 
@@ -328,24 +333,22 @@ function advanceDeck(leavingCard) {
 // ── Swipe logic ────────────────────────────────────────────────────────────
 
 function initSwipe(cardEl, recipe) {
-  let startX = 0, startY = 0, hasDragged = false;
+  let startX = 0, startY = 0, isDown = false, hasDragged = false;
   const likeEl = cardEl.querySelector('.card-indicator.like');
   const skipEl = cardEl.querySelector('.card-indicator.skip');
 
   function onDown(e) {
+    isDown = true;
     startX = e.clientX; startY = e.clientY; hasDragged = false;
-    // Do NOT capture here — capturing immediately prevents link clicks.
-    // Capture is deferred until actual dragging is detected in onMove.
+    cardEl.setPointerCapture(e.pointerId); // capture immediately so pointerup always reaches the card
     cardEl.style.transition = 'none';
   }
   function onMove(e) {
+    if (!isDown) return; // ignore hover
     const dx = e.clientX - startX;
     const dy = e.clientY - startY;
     if (!hasDragged && Math.abs(dx) < 4 && Math.abs(dy) < 4) return;
-    if (!hasDragged) {
-      hasDragged = true;
-      cardEl.setPointerCapture(e.pointerId); // capture only once dragging starts
-    }
+    hasDragged = true;
     const rotate = dx * 0.07;
     cardEl.style.transform = `translateX(${dx}px) translateY(${Math.min(Math.abs(dx) * 0.03, 8)}px) rotate(${rotate}deg)`;
     const progress = Math.min(1, Math.abs(dx) / SWIPE_THRESHOLD);
@@ -354,6 +357,8 @@ function initSwipe(cardEl, recipe) {
     else { likeEl.style.opacity = '0'; skipEl.style.opacity = '0'; }
   }
   function onUp(e) {
+    if (!isDown) return;
+    isDown = false;
     if (!hasDragged) return;
     const dx = e.clientX - startX;
     likeEl.style.opacity = '0'; skipEl.style.opacity = '0';
@@ -366,6 +371,7 @@ function initSwipe(cardEl, recipe) {
   cardEl.addEventListener('pointermove', onMove);
   cardEl.addEventListener('pointerup', onUp);
   cardEl.addEventListener('pointercancel', () => {
+    isDown = false;
     likeEl.style.opacity = '0'; skipEl.style.opacity = '0'; snapBack(cardEl);
   });
 }
