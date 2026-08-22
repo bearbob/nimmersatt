@@ -7,9 +7,10 @@ const RECIPES_EN = [
   },
   {
     "name": "Sriracha Corn",
+    "subtitle": "Super easy and spicy salad as a side dish for your next BBQ",
     "link": "https://www.jamieoliver.com/recipes/vegetables/sriracha-corn/",
     "icon": "🌽",
-    "tags": ["dinner", "vegan"],
+    "tags": ["dinner", "vegatarian", "bbq"],
     "language": "en",
   },
   {
