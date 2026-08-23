@@ -480,8 +480,16 @@ const RECIPES = [
     "name": "Arroz de Pato",
     "subtitle": "Entenreis",
     "ingredients": ["ente", "zwiebeln", "lauchstange", "karotte", "knoblauch", "olivenöl", "lorbeerblätter", "glatte petersilie", "chorizo", "serrano schinken", "schwarze pfefferkörner", "orange", "tomatenmark", "wasser", "langkornreis natur", "salz", "iberico käse", "grüne oliven"],
-    "time": "3 Stunden",
-    "link": "https://www.foodundco.de/arroz-de-pato-entenreis/"
+    "time": "3 hours",
+    "link": "https://www.foodundco.de/arroz-de-pato-entenreis/",
+    "image": "https://www.foodundco.de/wp-content/uploads/2019/03/Arroz-de-Pato-Entenreis-Kitchen-Impossible-1.jpg"
+  },
+  {
+    "name": "Erdäpfelkäs und Buttermilchbrot",
+    "link": "https://www.foodundco.de/erdaepfelkaes-und-buttermilchbrot-jause-aus-kitchen-impossible/",
+    "image": "https://www.foodundco.de/wp-content/uploads/2026/05/Erdaepfelkaes-Buttermilchbrot-Kitchen-Impossible-5.jpg",
+    "tags": ["dinner", "beilage", "vegetarian"],
+    "language": "de",
   },
   {
     "name": "Chorizo & mozzarella gnocchi bake",
@@ -491,7 +499,8 @@ const RECIPES = [
   },
   {
     "name": "Griessschnitten",
-    "link": "https://www.tim-maelzer-shop.de/blogs/rezepte/griessschnitten",
+    "link": "https://aus-omas-kochtopf.de/griess-schnitten/",
+    "image": "https://aus-omas-kochtopf.de/wp-content/uploads/2023/04/omas-griessschnitten.jpg",
     "ingredients": ["butter", "milch", "weichweizengrieß", "zucker", "eier", "salz", "vanillezucker", "orange"],
     "tags": ["sweet"],
     "time": "75 min"
@@ -504,6 +513,9 @@ const RECIPES = [
   },
   {
     "name": "Buttermilchwaffeln",
+    "icon": "🧇",
+    "link": "https://www.oetker.de/rezepte/r/buttermilchwaffeln",
+    "image": "https://www.oetker.de/assets/recipes/assets/3c0555dc08b64e158df91c4c25b7be80/1272x764/buttermilchwaffeln-qf-27388.webp",
     "tags": ["sweet"],
     "time": "40 min",
     "ingredients": ["zucker", "butter", "vanillezucker", "salz", "eier", "weizenmehl", "buttermilch", "backpulver"]
@@ -528,6 +540,7 @@ const RECIPES = [
   {
     "name": "Spicy root & lentil casserole",
     "link": "https://www.bbcgoodfood.com/recipes/spicy-root-lentil-casserole",
+    "image": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/recipe-image-legacy-id-488691_11-ca2ba1d.jpg?quality=90&webp=true&resize=440,400",
     "ingredients": ["pflanzenöl", "zwiebeln", "Knoblauch", "kartoffeln", "karotte", "pastinake", "currypulver", "gemüsebrühe", "rote linsen", "koriander", "joghurt"],
     "time": "45 min",
     "tags": ["dinner", "vegan"],
@@ -613,6 +626,7 @@ const RECIPES = [
     "name": "Vegane Teriyaki-Krautwickel",
     "subtitle": "japanisch inspirierte Wirsingrouladen",
     "link": "https://www.eat-this.org/vegane-teriyaki-krautwickel-japanisch-inspirierte-wirsingrouladen/#recipe",
+    "image": "https://www.eat-this.org/wp-content/uploads/2023/01/eat_this_vegane_teriyaki-krautwickel_%E2%80%93_japanisch_inspirierte_wirsingrouladen_010-1280x853@2x.jpg",
     "time": "35 min",
     "tags": ["dinner", "vegan", "eaththis"],
   },

@@ -57,6 +57,7 @@ const RECIPES_EN = [
     "name": "Quick Fish Curry",
     "subtitle": "With a crisp & fluffy rice cake",
     "link": "https://www.jamieoliver.com/recipes/fish/quick-fish-curry/",
+    "image": "https://asset.jamieoliver.com/images/cq7w2e71/production/ffefe9a7332584b0b134da95dc220c60cab1bab3-2073x3109.jpg",
     "time": "15 min",
     "tags": ["dinner"],
     "ingredients": ["long grain rice", "onion", "fresh coriander", "tikka masala paste", "plum tomatoes", "frozen white fish", "frozen green beans", "coconut milk", "honey"],
@@ -85,6 +86,7 @@ const RECIPES_EN = [
     "name": "Slow-Cooker Chilli Con Carne",
     "subtitle": "Super-charged beef brisket & beans",
     "link": "https://www.jamieoliver.com/recipes/beef/slow-cooker-chilli-con-carne/",
+    "image": "https://asset.jamieoliver.com/images/cq7w2e71/production/efcf15963bffd4bbeb32cca0019a372037c6b6a1-959x1279.jpg",
     "time": "8 hours 20 min",
     "tags": ["dinner"],
     "ingredients": ["beef brisket", "bay leaves", "cumin seeds", "coriander seeds", "chilli powder", "plum tomatoes", "onion", "celery", "carrots", "black beans", "beef stock"],
@@ -255,4 +257,21 @@ const RECIPES_EN = [
     "tags": ["desert", "sweet"],
     "ingredients": ["cream cheese", "sour cream", "sugar", "vanilla extract", "lemon juice", "heavy cream", "butter", "graham crackers"],
   },
+  {
+    "name": "Easy Focaccia Bread",
+    "subtitle": "This no-knead bread is light, fluffy, and savory with a simple sprinkle of flaky sea salt and fresh herbs.",
+    "link": "https://preppykitchen.com/focaccia/",
+    "image": "https://preppykitchen.com/wp-content/uploads/2024/11/Focaccia-Feature.jpg",
+    "tags": ["bread", "bbq"],
+    "ingredients": ["flour", "yeast", "honey", "salt", "water", "olive oil", "rosemary", "flaky salt"],
+    "language": "en",
+  },
+  {
+    "name": "Focaccia Pizza with crushed San Marzanos & Mozarella",
+    "link": "https://www.gordonramsay.com/gr/recipes/sheetpanfocacciapizza/",
+    "image": "https://www.gordonramsay.com/assets/Uploads/_resampled/CroppedFocusedImage192072050-50-GR-March-Foccacia-Still.jpg",
+    "tags": ["bread", "pizza", "dinner"],
+    "ingredients": ["flour", "yeast", "honey", "salt", "water", "olive oil", "rosemary", "flaky salt", "tomatoes", "mozzarella", "garlic", "basil", "balsamic vinegar", "pepper", "cheese"],
+    "language": "en",
+  }
 ];
