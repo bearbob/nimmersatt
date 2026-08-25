@@ -3,8 +3,6 @@
 An offline, local-first web-app (PWA) to help you figure out what to cook next week more easily. Replicating the UX of dating apps, Nimmersatt let's you find matches with recipes you like.
 It is not designed to show full recipes, but to be a collection of recipes found elsewhere.
 
-Inspired by http://www.dammitwhatdoyouwant.co.uk/
-
 ## Contributing
 
 This project is open source - You are welcome to suggest improvements through [pull requests](https://github.com/bearbob/nimmersatt/pulls). 
