@@ -2,11 +2,13 @@
 
 const FILTERS = [
   { id: 'dinner', label: 'Dinner', emoji: '🍽️', color: '#FF6B6B',
-    tags: ['dinner', 'herzhaft', 'pasta', 'nudeln', 'vegetarisch'] },
+    tags: ['dinner'] },
   { id: 'sweet',  label: 'Sweet',  emoji: '🍰', color: '#FFD166',
     tags: ['sweet', 'süß', 'kuchen', 'kaffee', 'cookie'] },
   { id: 'bread',  label: 'Bread',  emoji: '🥖', color: '#F4A261',
     tags: ['brot', 'brötchen'] },
+  { id: 'vegetarian',  label: 'Veggy',  emoji: '🌿', color: '#34ea58',
+    tags: ['vegetarian', 'vegetarisch'] },
   { id: 'vegan',  label: 'Vegan',  emoji: '🌱', color: '#4CC9A0',
     tags: ['vegan'] },
 ];
