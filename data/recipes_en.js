@@ -273,5 +273,14 @@ const RECIPES_EN = [
     "tags": ["bread", "pizza", "dinner"],
     "ingredients": ["flour", "yeast", "honey", "salt", "water", "olive oil", "rosemary", "flaky salt", "tomatoes", "mozzarella", "garlic", "basil", "balsamic vinegar", "pepper", "cheese"],
     "language": "en",
+  },
+  {
+    "name": "Omlette with spinach",
+    "link": "https://www.bbc.co.uk/food/recipes/theperfectomelette_86680",
+    "image": "https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/theperfectomelette_86680_16x9.jpg",
+    "tags": ["vegetarian"],
+    "time": "30 min",
+    "ingredients": ["eggs", "butter", "spinach", "cheddar", "salt", "pepper"],
+    "language": "en",
   }
 ];
