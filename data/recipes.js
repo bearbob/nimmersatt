@@ -7,9 +7,10 @@ const RECIPES = [
       "page": 32,
     },
     "link": "https://www.jamieoliver.com/recipes/rice-recipes/cherry-chard-wild-rice/",
+    "image": "https://asset.jamieoliver.com/images/cq7w2e71/production/87ef162391093f37bdd85f20b705b0dbf739f7d3-853x1280.jpg",
     "ingredients": ["wildreis", "mangold", "kirschen", "fetakäse", "walnüsse"],
     "time": "30 min",
-    "tags": ["dinner", "herzhaft"]
+    "tags": ["dinner", "vegetarian"]
   },
   {
     "name": "Geniale Grüne Spaghetti",
@@ -28,6 +29,7 @@ const RECIPES = [
       "page": 52,
     },
     "link": "https://www.tastesheriff.com/blitzschnelle-bratwurst-carbonara-aus-jamies-5-zutaten-kueche/",
+    "image": "https://www.tastesheriff.com/wp-content/uploads/2017/12/wuerstchen_carbonara_jamie-8.jpg",
     "ingredients": ["Tagliatelle", "Bratwurst", "glatte petersilie", "ei", "parmesan", "olivenöl", "pfeffer", "salz"],
     "tags": ["dinner", "herzhaft"]
   },
@@ -45,6 +47,8 @@ const RECIPES = [
       "id": "jamies5zutaten",
       "page": 80,
     },
+    "link": "https://kochkunstgenuss.com/recipes/schnelle-koreanische-eierreis",
+    "image": "https://kochkunstgenuss.com/assets/images/1746032276195-qio7d0he.webp",
     "tags": ["dinner", "herzhaft"]
   },
   {
@@ -132,24 +136,32 @@ const RECIPES = [
   {
     "name": "Milchreis",
     "icon": "🍚",
+    "link": "https://sallys-blog.de/rezepte/milchreis-grundrezept",
+    "image": "https://sallyshop.b-cdn.net/media/ed/96/bb/1772190007/sally-milchreis-grundrezept.jpg",
     "tags": ["sweet", "dinner"],
+    "time": "30min",
     "ingredients": ["reis", "milch", "zimt"],
   },
   {
     "name": "Black-eyed bean mole with salsa",
     "link": "https://www.bbcgoodfood.com/recipes/black-eye-bean-mole-salsa",
+    "image": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/black-bean-mole-bae2318.jpg",
     "tags": ["dinner", "herzhaft"],
+    "time": "30min",
     "ingredients": ["zwiebeln", "tomaten", "koriander", "limette", "rapsöl", "knoblauch", "chilipulver", "zimt", "bohnen", "kakoa", "gemüsebrühe", "tomatenmark"]
   },
   {
     "name": "Auberginencurry",
     "link": "https://www.lidl-kochen.de/rezeptwelt/auberginen-curry-268581",
+    "image": "https://cdn.recipes.lidl/images-v2/recipes/de-DE/9e38a341-03b3-4a5c-86e0-ffb3c6b22fd2/16x9_768w_auberginen-curry-1774376791.avif",
     "tags": ["dinner", "herzhaft"],
     "ingredients": ["auberginen", "salz", "spitzpaprika", "knoblauch", "zwiebeln", "peperoni", "öl", "currypulver", "passierte tomaten", "kokosnussmilch", "basmatireis", "speisestärke", "koriander", "pfeffer" ]
   },
   {
     "name": "Bananenbrot",
     "time": "80 Minuten",
+    "link": "https://sallys-blog.de/rezepte/bananenbrot-klassisch-banana-bread-basic",
+    "image": "https://sallyshop.b-cdn.net/media/53/b1/af/1717687602/1433_22145_bananenbrot_klassisch_1.jpg",
     "tags": ["sweet"],
     "ingredients": ["butter", "puderzucker", "salz", "vanillezucker", "eier", "bananen", "zimt", "weizenmehl 405", "backpulver", "naturjoghurt", "haselnüsse", "sultaninen"],
   },
@@ -157,16 +169,14 @@ const RECIPES = [
     "name": "Kung Pao Chicken",
     "link": "https://www.edeka.de/rezepte/rezept/kung-pao-chicken.jsp",
     "video": "https://www.youtube.com/watch?v=nKOpKflSNkc",
+    "image": "https://www.edeka.de/uploads/rezepte/rez-edeka-kung-pao-chicken-rezept-i-p.jpg",
     "tags": ["dinner", "herzhaft"],
     "ingredients": ["Hähnchenbrustfilet", "Sojasauce", "Reiswein", "Rohrzucker", "Maisstärke", "Karotte", "Mini Pak Choi", "Frühlingszwiebel", "Chilischote", "ingwer", "knoblauch", "szechuanpfeffer", "grobes salz", "erdnussöl", "hühnerbrühe", "honig", "erdnüsse", "sesamöl"]
   },
   {
-    "name": "Eierreis",
-    "tags": ["dinner", "herzhaft"],
-  },
-  {
     "name": "One-Pot-Pasta mit Zitronenkäsesauce",
     "link": "https://www.penny.de/clever-kochen/rezepte-und-ernaehrung/one-pot-pasta-mit-zitronen-kaesesauce",
+    "image": "https://cdn.penny.de/dam/jcr:74f18f51-ed84-4a29-a5d3-23f81a34ec45/One%20Pot%20Pasta%20I%20Foto%20Jennifer%20Braun-4105-45.jpeg",
     "tags": ["dinner", "herzhaft"],
     "time": "30 min",
   },
@@ -177,6 +187,8 @@ const RECIPES = [
   },
   {
     "name": "Kartoffelsuppe",
+    "link": "https://sallys-blog.de/rezepte/kartoffelsuppe",
+    "image": "https://sallyshop.b-cdn.net/media/8c/dc/d4/1733313604/sally-kartoffelsuppe-kenwood-rezept.jpg",
     "tags": ["dinner", "herzhaft"],
   },
   {
@@ -186,7 +198,8 @@ const RECIPES = [
   {
     "name": "Pizza-Kranz",
     "subtext": "Tortano – italienisches Pizza-Brot",
-    "link": "https://sallys-blog.de/Sallys-Blog/Herzhafte-Rezepte/Pizza-Kranz/Tortano-italienisches-Pizza-Brot",
+    "link": "https://sallys-blog.de/rezepte/pizza-kranz-tortano-italienisches-pizza-brot",
+    "image": "https://sallyshop.b-cdn.net/media/54/2e/4d/1717679186/479_13454_dsc03921_blog_1.jpg",
     "tags": ["dinner", "herzhaft"],
   },
   {
@@ -197,6 +210,8 @@ const RECIPES = [
   },
   {
     "name": "Flammkuchen",
+    "link": "https://sallys-blog.de/rezepte/flammkuchen-grundrezept",
+    "image": "https://sallyshop.b-cdn.net/media/0c/83/a3/1717677957/174_16147_dsc00232gr_1.jpg",
     "tags": ["dinner", "herzhaft"],
   },
   {
@@ -277,6 +292,7 @@ const RECIPES = [
     "name": "Gerösteter Curry-Blumenkohl",
     "subtitle": "mit frischer Zitronen-Raita",
     "link": "https://www.eat-this.org/curry-blumenkohl-mit-zitronen-raita/",
+    "image": "https://www.eat-this.org/wp-content/uploads/2018/02/geroesteter_curry-blumenkohl-1-1280x854@2x.jpg",
     "tags": ["dinner", "herzhaft"],
     "ingredients": ["blumenkohl", "reis"],
   },
@@ -284,26 +300,30 @@ const RECIPES = [
     "name": "Cremige Süßkartoffelsuppe",
     "subtitle": "mit rauchigen Rosenkohl-Chips",
     "link": "https://www.eat-this.org/cremige-suesskartoffelsuppe-mit-rauchigen-rosenkohl-chips/",
+    "image": "https://www.eat-this.org/wp-content/uploads/2021/11/eat_this_suesskartoffelsuppe_mit_rauchigen_rosenkohl-chips-005-1280x853@2x.jpg",
     "tags": ["dinner", "herzhaft"],
   },
   {
     "name": "Pasta e fagioli",
     "subtitle": "das bohnigste Pastagericht überhaupt",
     "link": "https://www.eat-this.org/vegane-pasta-e-fagioli/",
+    "image": "https://www.eat-this.org/wp-content/uploads/2022/01/eat_this_pasta_e_fagioli_%E2%80%93_das_bohnigste_nudelgericht-005-1280x853@2x.jpg",
     "tags": ["pasta", "nudeln", "dinner"],
     "time": "20 min",
     "ingredients": ["zwiebeln", "karotten", "stangensellerie", "knoblauch", "olivenöl", "salz", "chiliflocken", "tomatenmark", "weiße bohnen", "aquafaba", "tomaten", "oregano", "thymian", "fenchelsamen", "lorbeer", "dunkle misopaste", "pasta", "endivie"],
   },
   {
     "name": "Pastinakensuppe",
-    "link": "https://sallys-blog.de/blog/detail/sCategory/218/blogArticle/1815",
+    "link": "https://www.leckerschmecker.me/pastinakensuppe/63743511338719",
+    "image": "https://www.leckerschmecker.me/wp-content/uploads/sites/6/2024/02/pastinaken-suppe.jpeg",
     "tags": ["dinner"],
     "ingredients": ["pastinaken", "kartoffeln", "zwiebeln", "butterschmalz", "mehl", "wasser", "milch", "salz", "pfeffer"],
   },
   {
     "name": "One Pot Taco Pasta",
     "subtitle": "würzige, cremige 20 Minuten Nudelpfanne",
-    "link": "https://sallys-blog.de/one-pot-taco-pasta-wurzige-cremige-20-minuten-nudelpfanne",
+    "link": "https://sallys-blog.de/rezepte/one-pot-taco-pasta-wuerzige-cremige-20-minuten-nudelpfanne",
+    "image": "https://sallyshop.b-cdn.net/media/77/7e/54/1717688277/1576_24808_one_pot_taco_pasta_1.jpg",
     "ingredients": ["olivenöl", "hackfleisch", "zwiebeln", "knoblauch", "tomatenmark", "gemüsebrühe", "sahne", "salz", "pfeffer", "chiliflocken", "kreuzkümmel", "lorbeer", "oregano", "nudel", "parmesan", "erbsen"],
   },
   {
@@ -311,13 +331,22 @@ const RECIPES = [
     "tags": ["dinner"],
   },
   {
-    "name": "Quiche",
-    "tags": ["dinner"],
+    "name": "Vegane Kürbis-Quiche mit Rosmarin-Crust",
+    "link": "https://www.eat-this.org/vegane-kuerbis-quiche-mit-rosmarin-crust/",
+    "image": "https://www.eat-this.org/wp-content/uploads/2023/10/eat_this_vegane_kuerbis-quiche_mit_spinat_und_champignons_011-1280x853@2x.jpg",
+    "tags": ["dinner", "vegan"],
+  },
+  {
+    "name": "Spinat-Feta-Quiche mit Röstiboden",
+    "link": "https://sallys-blog.de/rezepte/spinat-feta-quiche-mit-roestiboden-herzhafter-kartoffelkuchen",
+    "image": "https://sallyshop.b-cdn.net/media/31/d2/b7/1717683129/97_26405_spinat_feta_quiche_1.jpg",
+    "tags": ["dinner", "vegetarian"],
   },
   {
     "name": "Chile relleno",
     "subtitle": "mexikanische gefüllte Paprika",
     "link": "https://www.rewe.de/rezepte/gefuellte-paprika-chile-relleno/",
+    "image": "https://c.rewe-static.de/30230226/7/30230226.png",
     "ingredients": ["spitzpaprika", "mozzarella", "tomaten", "zwiebeln", "knoblauch", "gemüsebrühe", "öl", "salz", "pfeffer", "eier", "mehl", "sonnenblumenöl", "petersilie"],
     "tags": ["dinner"],
   },
@@ -329,8 +358,10 @@ const RECIPES = [
   {
     "name": "Chicken & chorizo jambalaya",
     "link": "https://www.bbcgoodfood.com/recipes/chicken-chorizo-jambalaya",
+    "image": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/recipe-image-legacy-id-1274503_8-05ae02b.jpg",
     "ingredients": ["öl", "hähnchenbrust", "zwiebeln", "paprika", "knoblauch", "chorizo", "cajungewürz", "reis", "tomaten", "hühnerbrühe"],
     "tags": ["dinner"],
+    "language": "en",
   },
   {
     "name": "Wirsingrouladen",
@@ -350,6 +381,7 @@ const RECIPES = [
     "name": "Bierrisotto",
     "subtitle": "mit Pilzen und Chorizo-Chips",
     "link": "https://www.rewe.de/rezepte/bierrisotto-pilze-chorizo-chips/",
+    "image": "https://c.rewe-static.de/30230398/8/30230398.png",
     "ingredients": ["champignons", "schalotte", "chorizo", "petersilie", "olivenöl", "risotto-reis", "bier", "gemüsefond", "butter", "salz", "pfeffer", "parmesan"],
     "tags": ["dinner"],
   },
@@ -426,6 +458,7 @@ const RECIPES = [
   {
     "name": "Geröstete Knoblauch-Shiitake auf Miso-Steckrübenpüree",
     "link": "https://www.eat-this.org/geroestete-shiitake-auf-miso-steckruebenpueree/",
+    "image": "https://www.eat-this.org/wp-content/uploads/2020/01/geroestete_knoblauch-shiitake_auf_miso-steckruebenpueree-5-1280x854@2x.jpg",
     "time": "20 min",
     "ingredients": ["steckrüben", "kartoffeln", "hafermilch", "olivenöl", "dunkle misopaste", "sesamöl", "salz", "sojasauce", "zitrone", "ahornsirup", "knoblauch", "ingwer", "schwarzer pfeffer", "sesam", "radieschen", "frühlingszwiebeln"],
   },
@@ -439,6 +472,7 @@ const RECIPES = [
     "name": "Kaiserschmarrn",
     "subtitle": "Omas Original Rezept für einen vorzüglich feinen Schmarrn",
     "link": "https://emmikochteinfach.de/kaiserschmarrn-ganz-klassisch/",
+    "image": "https://emmikochteinfach.de/wp-content/uploads/2022/10/Kaiserschmarrn-ganz-klassisch-einfach-1.jpg",
     "ingredients": ["mehl", "salz", "milch", "ei"],
   },
   {
@@ -507,7 +541,8 @@ const RECIPES = [
   },
   {
     "name": "Königsberger Klopse",
-    "link": "https://www.tim-maelzer-shop.de/blogs/rezepte/konigsberger-klopse",
+    "link": "https://www.bushcook.de/2015/02/konigsberger-klopse-aus-heimat-von-tim.html",
+    "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiucik35SPivd9hXGnodgXCxkit8wang4Nf8jM-CfwHKH2flSrczd6umNaOnHCu9_mVrPcG882vHrxmwjC0wpOl6YluGFd3nvO01OZj1EqZ7FsCywGTOpl1w3JLTalj4hDoUSJKKxD89LSx/s1600/IMG_3125-001.jpg",
     "ingredients": ["toastbrot", "sahne", "getrocknete tomaten", "zwiebeln", "knoblauch", "olivenöl", "trockener weißwein", "pinienkerne", "petersilie", "sardellenfilets in öl", "parmesan", "geschälte tomaten", "butter", "mehl", "kalbshackfleisch", "ei", "salz", "pfeffer", "hühnerbrühe", "cayennpfeffer", "basilikum", "basmatireis", "oliven"],
     "time": "1 Stunde 20 min"
   },
@@ -533,6 +568,7 @@ const RECIPES = [
   {
     "name": "Asiatische Steckrübensuppe",
     "link": "https://www.rewe.de/rezepte/asia-steckruebensuppe/",
+    "image": "https://c.rewe-static.de/32301301/7/32301301.png",
     "time": "30 min",
     "ingredients": ["kartoffeln", "steckrüben", "ingwer", "chili", "rapsöl", "currypulver", "gemüsebrühe", "kokosmilch", "sternanis", "salz", "pfeffer", "lauch", "shiitake", "koriander", "sesam", "tabasco"],
     "tags": ["dinner", "vegan"],
@@ -547,13 +583,15 @@ const RECIPES = [
   },
   {
     "name": "Orientalischer Steckrüben-Eintopf mit Kichererbsen",
-    "link": "https://www.ndr.de/ratgeber/kochen/rezepte/rezeptdb6_id-14377_broadcast-1572_station-ndrtv.html",
+    "link": "https://www.ndr.de/ratgeber/kochen/rezepte/Orientalischer-Steckrueben-Eintopf-mit-Kichererbsen,rezept3824.html",
+    "image": "https://images.ndr.de/image/a4cbebd9-dfaf-4a86-881c-bc9a182af5d7/AAABkXaqgq8/AAABnSSvrFg/16x9-big/steckruebeneintopf154.webp",
     "ingredients": ["steckrüben", "Kichererbsen", "backpulver", "pastinake", "rote zwiebeln", "karotte", "knoblauch", "limette", "orange", "baharat/harissa", "tomatensaft", "sojasauce", "chili-schote", "honig", "sesam", "petersilie", "olivenöl", "salz"],
     "tags": ["dinner"],
   },
   {
     "name": "Glasierter Ofenkürbis mit Tomaten & Spinat",
     "link": "https://www.lecker.de/glasierter-ofenkuerbis-mit-tomaten-spinat-70386.html",
+    "image": "https://images.lecker.de/glasierter-ofenkurbis-mit-tomaten-und-spinat,id=c4eb467d,b=lecker,w=910,rm=sk.webp",
     "ingredients": ["hokkaidokürbis", "schalotten", "ahornsirup", "balsamico-essig", "olivenöl", "salz", "cayennpfeffer", "kirschtomaten", "blattspinat"],
     "time": "50 min",
     "tags": ["dinner"],
@@ -561,6 +599,7 @@ const RECIPES = [
   {
     "name": "Rührei-Burrito",
     "link": "https://www.rewe.de/rezepte/ruehrei-burrito",
+    "image": "https://c.rewe-static.de/34138207/2/34138207.png",
     "tags": ["vegetarisch", "dinner"],
     "time": "35 min",
     "ingredients": ["tortillla wraps", "paprika", "schnittlauch", "cheddar", "rapsöl", "eier", "milch", "salz", "pfeffer", "paprikapulver edelsüß", "avocado", "kräuterquark"],
@@ -568,6 +607,7 @@ const RECIPES = [
   {
     "name": "Zwiebelkuchen",
     "link": "https://www.lecker.de/zwiebelkuchen-26596.html",
+    "image": "https://images.lecker.de/zwiebelkuchen-b-f4971001,id=658d97b7,b=lecker,w=910,rm=sk.webp",
     "time": "1 Stunde 10 min",
     "tags": ["dinner"],
     "ingredients": ["mehl", "hefe", "milch", "zucker", "butter", "eier", "salz", "zwiebeln", "öl", "speck", "pfeffer", "saure sahne", "speisestärke", "kümmel"],
@@ -595,30 +635,35 @@ const RECIPES = [
   {
     "name": "Gelbes Thai Curry",
     "link": "https://www.eat-this.org/veganes-gelbes-thai-curry/#recipe",
+    "image": "https://img.eat-this.org/spai/q_glossy+w_875+h_1313+to_auto+ret_img/www.eat-this.org/wp-content/uploads/2021/01/eat_this_veganes_gelbes_thai-curry-008-scaled-960x1440.jpg",
     "time": "30 min",
     "tags": ["dinner", "vegan", "eaththis"],
   },
   {
     "name": "Veganer Mapo Tofu",
     "link": "https://www.eat-this.org/veganer-mapo-tofu/#recipe",
+    "image": "https://img.eat-this.org/spai/q_glossy+w_875+h_1313+to_auto+ret_img/www.eat-this.org/wp-content/uploads/2019/10/veganer_mapo-tofu-9-700x1050@2x.jpg",
     "time": "30 min",
     "tags": ["dinner", "vegan", "eaththis"],
   },
   {
     "name": "Gerösteter Blumenkohl mit Zatar & veganer Feta-Creme",
     "link": "https://www.eat-this.org/geroesteter-blumenkohl-mit-zatar-und-veganer-feta-creme/#recipe",
+    "image": "https://www.eat-this.org/wp-content/uploads/2023/03/eat_this_geroesteter_blumenkohl_mit_zatar_und_veganer_feta-creme_006-1280x853@2x.jpg",
     "time": "30 min",
     "tags": ["dinner", "vegan", "eaththis"],
   },
   {
     "name": "Geschmorter Fenchel mit Zitronen-Couscous",
     "link": "https://www.eat-this.org/geschmorter-fenchel-mit-zitronen-couscous/#recipe",
+    "image": "https://www.eat-this.org/wp-content/uploads/2023/02/eat_this_geschmorter_fenchel_mit_zitronen-couscous_002-1280x853@2x.jpg",
     "time": "30 min",
     "tags": ["dinner", "vegan", "eaththis"],
   },
   {
     "name": "Kürbis-Bohnen-Püree mit Currypaste und knusprigen Pilzen",
     "link": "https://www.eat-this.org/kuerbis-bohnen-pueree-mit-currypaste-und-knusprigen-pilzen/#recipe",
+    "image": "https://www.eat-this.org/wp-content/uploads/2023/10/eat_this_kuerbis-bohnen-pueree_mit_currypaste_und_knusprigen_pilzen_004-1280x853@2x.jpg",
     "time": "25 min",
     "tags": ["dinner", "vegan", "eaththis"],
   },
@@ -633,6 +678,7 @@ const RECIPES = [
   {
     "name": "Tagliatelle in samtiger Erbsensauce",
     "link": "https://www.zentrum-der-gesundheit.de/rezepte/hauptgerichte/nudel-rezepte/nudeln-erbsensauce",
+    "image": "https://s.zentrum-der-gesundheit.de/img/nudeln-erbsensauce?width=1500&height=843",
     "time": "30 min",
     "tags": ["dinner", "vegan"],
   },
@@ -644,6 +690,7 @@ const RECIPES = [
   {
     "name": "Cremige Gnocchi-Pfanne mit Blumenkohlsauce, Grünkohl und Veggie-Salami",
     "link": "https://www.eat-this.org/gnocchi-pfanne-mit-cremiger-blumenkohlsauce-und-gruenkohl/#recipe",
+    "image": "https://www.eat-this.org/wp-content/uploads/2023/11/eat_this_gnocchi-mit-blumenkohlsauce-gruenkohl_veggie-salami_007_2-1280x853@2x.jpg",
     "time": "25 min",
     "tags": ["dinner", "vegan", "eaththis"],
   },

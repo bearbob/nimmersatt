@@ -325,5 +325,15 @@ const RECIPES_EN = [
     "tags": ["dinner", "vegetarian"],
     "time": "50 min",
     "language": "en",
-  }
+  },
+  {
+    "name": "Cherry chard wild rice",
+    "icon": "🍚",
+    "link": "https://www.jamieoliver.com/recipes/rice-recipes/cherry-chard-wild-rice/",
+    "image": "https://asset.jamieoliver.com/images/cq7w2e71/production/87ef162391093f37bdd85f20b705b0dbf739f7d3-853x1280.jpg",
+    "ingredients": ["wild rice", "sour cherries", "feta cheese", "walnuts", "mixed-colour chard"],
+    "time": "30 min",
+    "language": "en",
+    "tags": ["dinner", "vegetarian"]
+  },
 ];
