@@ -196,13 +196,6 @@ const RECIPES = [
     "tags": ["dinner", "herzhaft"],
   },
   {
-    "name": "Pizza-Kranz",
-    "subtext": "Tortano – italienisches Pizza-Brot",
-    "link": "https://sallys-blog.de/rezepte/pizza-kranz-tortano-italienisches-pizza-brot",
-    "image": "https://sallyshop.b-cdn.net/media/54/2e/4d/1717679186/479_13454_dsc03921_blog_1.jpg",
-    "tags": ["dinner", "herzhaft"],
-  },
-  {
     "name": "Grießbrei",
     "subtitle": "mit Mandeln und Erdbeeren",
     "tags": ["dinner", "sweet"],
@@ -685,6 +678,7 @@ const RECIPES = [
   {
     "name": "Möhren-Tarte",
     "link": "https://filiale.kaufland.de/rezepte/rezeptwelten/detail/rezept.voll-auf-die-moehre-tarte.r_id=Recipe_20890641.html",
+    "image": "https://kaufland.media.schwarz/is/image/schwarz/recipe20890641_voll-auf-die-moehre-tarte-1?JGstbGVnYWN5LW9uc2l0ZS00JA==",
     "tags": ["dinner", "vegetarisch"],
   },
   {
@@ -698,24 +692,28 @@ const RECIPES = [
     "name": "Veganer Colcannon",
     "subtitle": "irischer Kartoffelbrei mit Grün- und Spitzkohl",
     "link": "https://www.eat-this.org/veganer-colcannon-irischer-kartoffelbrei/#recipe",
+    "image": "https://www.eat-this.org/wp-content/uploads/2023/02/eat_this_veganer_colcannon_irischer_kartoffelbrei_mit_gruenkohl_002-1280x853@2x.jpg",
     "time": "30 min",
     "tags": ["dinner", "vegan", "eaththis"],
   },
   {
     "name": "Einfache Kartoffelfrikadellen mit Buchweizen",
     "link": "https://www.eat-this.org/einfache-kartoffelfrikadellen-mit-buchweizen/#recipe",
+    "image": "https://www.eat-this.org/wp-content/uploads/2020/02/einfache_kartoffelfrikadellen_mit_buchweizen_eat_this_vegan_food_blog-3-1280x854@2x.jpg",
     "time": "40 min",
     "tags": ["dinner", "vegan", "eaththis"],
   },
   {
     "name": "Sweet Potato Chickpea and Coconut Curry",
     "link": "https://biancazapatka.com/en/sweet-potato-chickpea-coconut-curry/",
+    "image": "https://biancazapatka.com/wp-content/uploads/2019/03/coconut-curry-sweet-potato-chickpea-creamy-vegan-recipe-easy-quick-healthy-glutenfree-broccoli-kichererbsen-suesskartoffel-rezept-720x1008.jpg",
     "time": "40 min",
     "tags": ["dinner", "vegan"],
   },
   {
     "name": "Tofu Stir-Fry with Peanut Sauce",
     "link": "https://themodernproper.com/tofu-stir-fry-with-peanut-sauce",
+    "image": "https://images.themodernproper.com/production/posts/2019/tofu-stir-fry-with-broccoli-and-cabbage-12.jpg",
     "time": "40 min",
     "tags": ["dinner", "vegan"],
   },
@@ -723,11 +721,13 @@ const RECIPES = [
     "name": "Spaghetti Aglio Olio",
     "link": "https://slurrp.club/recipe/spaghetti-aglio-olio/",
     "time": "20 min",
+    "image": "https://slurrp.club/wp-content/uploads/2019/06/DSC_1375.jpg",
     "tags": ["dinner", "vegan"],
   },
   {
     "name": "Black Bean Tacos",
     "link": "https://www.cookingclassy.com/black-bean-tacos-with-avocado-cilantro-lime-crema/",
+    "image": "https://www.cookingclassy.com/wp-content/uploads/2017/02/black-bean-tacos-11-768x1152.jpg",
     "time": "30 min",
     "tags": ["dinner", "vegan"],
   },
@@ -736,26 +736,31 @@ const RECIPES = [
         "language": "en",
         "time": "40min",
         "link": "https://www.tasteofhome.com/recipes/cream-of-celery-soup/",
-        "tags": ["dinner", "herzhaft", "pasta", "nudeln", "vegetarian"]
+        "image": "https://www.tasteofhome.com/wp-content/uploads/2018/01/Cream-of-Celery-Soup_EXPS_FT21_28681_F_1105_1.jpg",
+        "tags": ["dinner", "vegetarian"]
     }, {
         "name": "Celery Gratin",
         "language": "en",
         "link": "https://www.tasteofhome.com/recipes/celery-gratin/",
+        "image": "https://www.tasteofhome.com/wp-content/uploads/2025/08/Celery-Gratin_EXPS_TOHD25_261162_RatulaChakraborti_17.jpg",
         "tags": ["dinner", "vegetarisch"]
     }, {
         "name": "One-Pan-Hähnchen mit Pfirsichen",
         "language": "de",
         "link": "https://www.kitchenstories.com/de/rezepte/one-pan-hahnchen-mit-pfirsichen",
-        "tags": ["dinner", "nudeln"]
+        "image": "https://www.kitchenstories.com/wp-content/uploads/sites/13/2026/09/r3507-final-e1788938200186-d4b894.jpg",
+        "tags": ["dinner"]
     }, {
         "name": "Bagel mit Lachsfilet und Erbsen-Hummmus",
         "language": "de",
         "link": "https://www.kitchenstories.com/de/rezepte/bagel-mit-lachsfilet-und-erbsen-hummus",
+        "image": "https://www.kitchenstories.com/wp-content/uploads/sites/13/2026/09/r1212-photo-final.jpg",
         "tags": ["dinner"]
     }, {
         "name": "Ofenbohnen mit Tomaten und Toast",
         "language": "de",
         "link": "https://www.kitchenstories.com/de/rezepte/weisse-bohnen-aus-dem-ofen-mit-tomaten-und-toast",
+        "image": "https://www.kitchenstories.com/wp-content/uploads/sites/13/2026/09/r2626-photo-final-3.jpg",
         "tags": ["dinner", "vegetarisch"]
     }, {
         "name": "Knusprige vegane Dumplings aus Reispapier",
@@ -768,7 +773,8 @@ const RECIPES = [
         "name": "Orecchiette mit Mais, Speck und wachsweichen Eiern",
         "language": "de",
         "time": "35 min",
-        "link": "https://www.kitchenstories.com/de/rezepte/orecchiette-mit-mais-speck-und-wachsweichen-eiern?utm_source=nimmersatt",
+        "link": "https://www.kitchenstories.com/de/rezepte/orecchiette-mit-mais-speck-und-wachsweichen-eiern",
+        "image": "https://www.kitchenstories.com/wp-content/uploads/sites/13/2026/09/r2413-photo-final-1.jpg",
         "ingredients": ["Orecchiette", "süße Maiskolben", "Schinkenspeck", "Zwiebel", "Knoblauch", "Frühlingszwiebel", "Chili", "Eier", "Kirschtomaten", "Salz", "Pfeffer"],
         "tags": ["dinner", "herzhaft", "pasta", "nudeln"]
     }, {
@@ -776,12 +782,14 @@ const RECIPES = [
         "language": "de",
         "time": "25 min",
         "link": "https://www.eat-this.org/gruene-erbsen-puffer-mit-veganem-speck/",
+        "image": "https://www.eat-this.org/wp-content/uploads/2026/04/eat_this_gruene-erbsen-puffer_mit_veganem_speck_005-1280x854@2x.jpg",
         "tags": ["dinner", "herzhaft", "vegetarisch", "vegan"]
     }, {
         "name": "Sommerlicher Nudelsalat mit Zucchini",
         "language": "de",
         "time": "30 min",
         "link": "https://www.kitchenstories.com/de/rezepte/sommerlicher-nudelsalat-mit-zucchini",
+        "image": "https://www.kitchenstories.com/wp-content/uploads/sites/13/2026/09/r2678-photo-final-1.jpg",
         "ingredients": ["Zucchini", "Rigatoni", "rote Zwiebeln", "Zitrone", "Mandeln", "entsteinte grüne Oliven aus dem Glas", "Petersilie", "Minze", "Knoblauch", "Olivenöl", "Salz", "Pfeffer", "Chiliflocken", "Parmesan"],
         "tags": ["dinner", "pasta", "nudeln", "vegetarisch"]
     }, {
@@ -789,152 +797,184 @@ const RECIPES = [
         "language": "de",
         "time": "50 min",
         "link": "https://www.lecker.de/cevapcici-pita-oriental-style-129243.html",
+        "image": "https://images.lecker.de/cevapcici-pita-f9699601-lecker-06-2024,id=b9962cec,b=lecker,w=910,ca=13.20,13.60,86.00,86.67,rm=sk.webp",
         "tags": ["dinner", "herzhaft"]
     }, {
         "name": "Japanische kalte Sobandnudeln",
         "language": "de",
         "link": "https://www.lecker.de/japanische-kalte-sobandnudeln-128884.html",
+        "image": "https://images.lecker.de/kalte-sobandnudeln-lecker-04-2024,id=615e4ba0,b=lecker,w=910,ca=16.00,21.87,70.00,75.73,rm=sk.webp",
         "tags": ["dinner", "pasta", "nudeln", "vegetarisch"]
     }, {
         "name": "Gemüse-Tacos mit Koriander-Soße",
         "language": "de",
         "time": "45 min",
         "link": "https://www.lecker.de/gemuese-tacos-mit-koriander-sosse-127782.html",
+        "image": "https://images.lecker.de/uno-dos-tacos-lecker-11-2023,id=63663e2a,b=lecker,w=910,rm=sk.webp",
         "tags": ["dinner", "vegetarisch", "vegan"]
     }, {
         "name": "Eierschwammerl Strudel mit Joghurt-Kräutersauce",
         "language": "de",
         "time": "2h 35min",
         "link": "https://www.spar.at/mahlzeit/rezepte/beliebte-rezepte/vegetarisch/eierschwammerl-strudel-mit-jogurt-kraeutersauce",
+        "image": "https://www.spar.at/content/dam/spardam/at/hz830/spar-mahlzeit/kitchenstory/rezeptfotos/eierschwammerl/kitchenstory-eierschwammerl-sparonline-7.jpg/jcr:content/renditions/responsive.1936.1090.noborder.250a0baf721e1f34.jpg",
         "tags": ["dinner", "herzhaft", "vegetarisch"]
     }, {
         "name": "Gnocchi mit Spinat & Lachs",
         "language": "de",
         "time": "60 min",
         "link": "https://www.spar.at/mahlzeit/rezepte/beliebte-rezepte/fisch/schnelle-selbstgemachte-gnocchi-mit-spinat-lachs",
+        "image": "https://www.spar.at/content/dam/spardam/at/recipe/mahlzeit-2025/mahlzeit-4-25/meeresfruechte/kitchenstory-spar-mahlzeit-meeresfruechte-12.jpg/jcr:content/renditions/responsive.1936.1090.noborder.250a0baf721e1f34.jpg",
         "tags": ["dinner"]
     }, {
         "name": "Finnischer Pilzkuchen",
         "language": "de",
         "time": "3h 5min",
         "link": "https://www.spar.at/mahlzeit/rezepte/beliebte-rezepte/vegetarisch/finnischer-pilzkuchen",
+        "image": "https://www.spar.at/content/dam/spardam/at/recipe/mahlzeit-2025/mahlzeit-sonderausgabe-veggie/veggie-international/kitchenstory-veggi-sparmahlzeit-5.jpg/jcr:content/renditions/responsive.1936.1090.noborder.250a0baf721e1f34.jpg",
         "tags": ["dinner", "herzhaft", "vegetarisch"]
     }, {
         "name": "Tomaten Quiche",
         "language": "de",
         "time": "2h 20min",
         "link": "https://www.spar.at/mahlzeit/rezepte/beliebte-rezepte/vegetarisch/tomaten-quiche",
+        "image": "https://www.spar.at/content/dam/spardam/at/recipe/mahlzeit-2024/tragetaschen/kitchenstory-tagetaschen-spar-4.jpg/jcr:content/renditions/responsive.1936.1090.noborder.250a0baf721e1f34.jpg",
         "tags": ["dinner", "vegetarisch"]
     }, {
         "name": "Peanut Chicken Bowl",
         "language": "de",
         "time": "25 min",
         "link": "https://www.spar.at/mahlzeit/rezepte/beliebte-rezepte/fleisch/peanut-chicken-bowl",
+        "image": "https://www.spar.at/content/dam/spardam/at/hz830/spar-mahlzeit/nadja-hudovernik/rezeptfotos/schnell-und-einfach/spar-mahlzeit-alltagsrezepte-c-nadja-hudovernik-4.jpg/jcr:content/renditions/responsive.1936.1090.noborder.250a0baf721e1f34.jpg",
         "tags": ["dinner"]
     }, {
         "name": "Mediterrane Brotsticks mit Rosmarin",
         "language": "de",
         "time": "2h 25min",
         "link": "https://eat.de/rezept/mediterrane-brotsticks-mit-rosmarin/",
+        "image": "https://eat.de/wp-content/uploads/2024/07/mediterrane-brotsticks-mit-rosmarin-9957-1170x780.jpg",
         "tags": ["brot", "brötchen", "vegan"]
     }, {
         "name": "Keto Sausage Cheddar Biscuits",
         "language": "en",
         "link": "https://thebestketorecipes.com/keto-sausage-cheddar-biscuits/",
+        "image": "https://thebestketorecipes.com/wp-content/uploads/2021/03/keto-sausage-cheddar-biscuits.jpg",
         "tags": ["dinner"]
     }, {
         "name": "Frittata mit Kartoffeln, Spinat, Zucchini und Erbsen",
         "language": "de",
         "link": "https://www.spar.at/mahlzeit/rezepte/beliebte-rezepte/vegetarisch/Frittata-mit-kartoffeln-spinat-zucchini-und-erbsen?ecid=at_spar_1242",
-        "tags": ["dinner"]
+        "image": "https://www.spar.at/content/dam/sparatwebsite/mahlzeit/rezepte/vegetarisch/kitchenstory-sparpicknickhighres2.jpg/jcr:content/renditions/responsive.1936.1090.noborder.250a0baf721e1f34.jpg",
+        "tags": ["dinner", "vegetarisch"]
     }, {
         "name": "Dampfnudeln",
         "language": "de",
         "time": "55 min",
         "link": "https://sallys-blog.de/rezepte/dampfnudeln",
-        "tags": ["dinner", "herzhaft", "pasta", "nudeln", "vegetarisch", "sweet", "süß", "kuchen", "kaffee", "cookie"]
+        "image": "https://sallyshop.b-cdn.net/media/f2/91/cd/1728038561/sally-dampfnudeln-rezept.jpg",
+        "tags": ["dinner", "vegetarisch", "sweet", "süß"]
     }, {
         "name": "Steamed Dumplings with vanilla sauce",
         "language": "en",
+        "time": "55 min",
         "video": "https://m.youtube.com/watch?v=ENk1I5ueTcg",
-        "tags": ["dinner", "herzhaft", "pasta", "nudeln", "vegetarisch", "sweet", "süß", "kuchen", "kaffee", "cookie"]
+        "image": "https://sallyshop.b-cdn.net/media/f2/91/cd/1728038561/sally-dampfnudeln-rezept.jpg",
+        "tags": ["dinner", "vegetarisch", "sweet", "süß"]
     }, {
         "name": "Pizzakranz",
+        "subtext": "Tortano – italienisches Pizza-Brot",
         "language": "de",
         "time": "1h 5min",
         "link": "https://sallys-blog.de/rezepte/pizza-kranz-tortano-italienisches-pizza-brot",
         "video": "https://m.youtube.com/watch?v=mQIND17WwQI",
+        "image": "https://sallyshop.b-cdn.net/media/54/2e/4d/1717679186/479_13454_dsc03921_blog_1.jpg",
         "tags": ["dinner"]
     }, {
         "name": "Cheesy Bacon Frittata",
         "language": "en",
         "link": "https://www.eatwell101.com/frittata-recipe",
+        "image": "https://www.eatwell101.com/wp-content/uploads/2025/07/Cheesy-Bacon-Frittata-recipe-1200x800.jpg",
         "tags": ["dinner"]
     }, {
         "name": "Fruchtiges Chili Gazpacho",
         "language": "de",
         "link": "https://www.eat-this.org/fruchtige-chili-gazpacho/",
+        "image": "https://www.eat-this.org/wp-content/uploads/2015/07/chili-gazpacho-1.jpg",
         "tags": ["dinner", "herzhaft", "pasta", "nudeln", "vegetarisch", "vegan"]
     }, {
         "name": "Bohnenpfanne mit Tofu",
         "language": "de",
         "link": "https://www.ndr.de/ratgeber/kochen/rezepte/bohnenpfanne-mit-tofu,bohnenpfanne-100.html",
+        "image": "https://images.ndr.de/image/271e096c-ee42-4236-ae73-7c990377d49b/AAABnBpSK7k/AAABnSSvrFg/16x9-big/bohnenpfanne-102.webp",
         "tags": ["dinner"]
     }, {
         "name": "Apfel-Schmand-Torte",
         "language": "de",
         "link": "https://www.dm.de/tipps-und-trends/rezepte/apfel-schmand-torte-2652212?wt_mc=print.anzeige.alverde.rezept082025",
+        "image": "https://editorial-content.dm-static.com/image/upload/q_auto:eco,f_auto/content/rootpage-dm-shop-de-de/resource/image/2652218/widescreen/1200/500/92c3d260e94c413acf8c821552264a08/DFDF7F26AE848F214CE1F92BFA20B900/apfel-schmand-torte-aufmacher.jpg",
         "tags": ["sweet", "süß", "kuchen", "kaffee", "cookie"]
     }, {
         "name": "Salted Butter and Chocolate Chunk Shortbread",
         "language": "en",
         "link": "https://www.alisoneroman.com/recipes/salted-butter-chocolate-chunk-shortbread/",
+        "image": "https://storage.ghost.io/c/aa/c9/aac954d7-13e7-4d9e-8784-fa2d15230fb2/content/images/size/w1200/format/avif/images-squarespace-cdn-com/content/v1/541b1515e4b0a990b33a796e/1631214228844-VON1H8OTXO8DZZC5W801/salted-butter-and-chocolate-chunk-shortbread.jpg",
         "tags": ["sweet", "süß", "kuchen", "kaffee", "cookie"]
     }, {
         "name": "Black Bean Tofu Chow Mein",
         "language": "en",
         "link": "https://www.bbc.co.uk/food/recipes/tofu_mein_41824",
+        "image": "https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/tofu_mein_41824_16x9.jpg",
         "tags": ["dinner"]
     }, {
         "name": "Jollof Rice",
         "language": "en",
         "time": "45 min",
         "link": "https://www.bbc.co.uk/food/recipes/jollof_rice_with_fried_84889",
+        "image": "https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/jollof_rice_with_fried_84889_16x9.jpg",
         "tags": ["dinner"]
     }, {
         "name": "Spanish-inspired Frittata Wrap",
+        "subtitle": "Kickstart your morning with this hearty frittata wrap developed with nutritionist to the Red Roses, Aimee Ellen O'Keeffe. Packed with carbs and a source of protein designed to keep you energised and satisfied.",
         "language": "en",
         "link": "https://www.bbc.co.uk/food/recipes/spanish-inspired_21079",
-        "tags": ["dinner"]
+        "image": "https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/spanish-inspired_21079_16x9.jpg",
+        "time": "45min",
+        "tags": ["dinner", "vegetarian"]
     }, {
         "name": "Shakshuka",
         "language": "en",
         "link": "https://www.bbc.co.uk/food/recipes/shakshouka_74716",
+        "image": "https://ichef.bbci.co.uk/food/ic/food_16x9_832/recipes/shakshouka_74716_16x9.jpg",
         "tags": ["dinner"]
     }, {
         "name": "Mexican Tortilla Bake",
         "language": "en",
         "link": "https://www.bbc.co.uk/food/recipes/mexican_tortilla_bake_28158",
+        "image": "https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/mexican_tortilla_bake_28158_16x9.jpg",
         "tags": ["dinner"]
     }, {
         "name": "Tunnbrödrulle (Swedish Hot Dogs)",
         "language": "en",
         "link": "https://true-north-kitchen.com/tunnsbrodrulle-swedish-hot-dogs/",
+        "image": "https://true-north-kitchen.com/wp-content/uploads/2022/08/tunnsbro%CC%88drulle-1.jpg",
         "tags": ["dinner"]
     }, {
         "name": "Erdbeer-Swirl Cheesecake",
         "language": "de",
         "link": "https://www.kuchentratsch.com/blogs/omas-backrezepte/erdbeer-swirl-cheesecake-rezept",
+        "image": "https://www.kuchentratsch.com/cdn/shop/articles/20230705144248-erdbeer-cheesecake-blog-kuchentratsch.webp",
         "tags": ["sweet", "süß", "kuchen", "kaffee", "cookie"]
     }, {
         "name": "Eierlikör-Muffins",
         "language": "de",
         "link": "https://www.brigitte.de/rezepte/eierlikoer-muffins-10553396.html",
+        "image": "https://image.brigitte.de/10553394/t/CJ/v7/w960/r1/-/eierlikoer-muffins.jpg",
         "tags": ["sweet", "süß", "kuchen", "kaffee", "cookie"]
     }, {
         "name": "Bohnensalat mit Kichererbsen, Spitzpaprika & Feta",
         "language": "de",
         "link": "https://www.malteskitchen.de/bohnensalat-kichererbsen-spitzpaprika-feta/",
+        "image": "https://www.malteskitchen.de/wp-content/uploads/2018/04/bohnen-kichererbsen-salat-04-1200x680.jpg",
         "tags": ["dinner"]
     }
 ];
