@@ -2,11 +2,11 @@
 
 // Order of filters matters for details page - First hit is returned
 const FILTERS = [
-  { id: 'vegan',  label: 'Vegan',  emoji: '🌱', color: '#4CC9A0',
+  { id: 'vegan',  label: 'Vegan',  emoji: '🌱', color: '#79ec88',
     tags: ['vegan'] },
-  { id: 'vegetarian',  label: 'Veggy',  emoji: '🌿', color: '#34ea58',
+  { id: 'vegetarian',  label: 'Veggy',  emoji: '🌿', color: '#165300',
     tags: ['vegetarian', 'vegetarisch'] },
-  { id: 'sweet',  label: 'Sweet',  emoji: '🍰', color: '#FFD166',
+  { id: 'sweet',  label: 'Sweet',  emoji: '🍰', color: '#ffe096',
     tags: ['sweet', 'süß', 'kuchen', 'kaffee', 'cookie'] },
   { id: 'dinner', label: 'Dinner', emoji: '🍽️', color: '#FF6B6B',
     tags: ['dinner'] },
