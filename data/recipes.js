@@ -10,6 +10,7 @@ const RECIPES = [
     "image": "https://asset.jamieoliver.com/images/cq7w2e71/production/87ef162391093f37bdd85f20b705b0dbf739f7d3-853x1280.jpg",
     "ingredients": ["wildreis", "mangold", "kirschen", "fetakäse", "walnüsse"],
     "time": "30 min",
+    "minutes": 30,
     "tags": ["dinner", "vegetarian"]
   },
   {
@@ -83,6 +84,7 @@ const RECIPES = [
       "page": 176,
     },
     "link": "https://www.jamieoliver.com/recipes/vegetable-recipes/peas-beans-chilli-mint/",
+    "image": "https://asset.jamieoliver.com/images/cq7w2e71/production/0965953dfcf460734352829d31230224e4fc9109-958x1280.jpg",
     "tags": ["dinner", "herzhaft"]
   },
   {
@@ -115,6 +117,8 @@ const RECIPES = [
       "id": "jamies5zutaten",
       "page": 244,
     },
+    "link": "https://www.gaumenfreundin.de/gebratener-reis-mit-gemuese-und-ei/",
+    "image": "https://www.gaumenfreundin.de/wp-content/uploads/2025/05/Gebratener-Reis-mit-Ei-Rezept.jpg",
     "tags": ["dinner", "herzhaft"]
   },
   {
@@ -140,6 +144,7 @@ const RECIPES = [
     "image": "https://sallyshop.b-cdn.net/media/ed/96/bb/1772190007/sally-milchreis-grundrezept.jpg",
     "tags": ["sweet", "dinner"],
     "time": "30min",
+    "minutes": 30,
     "ingredients": ["reis", "milch", "zimt"],
   },
   {
@@ -147,7 +152,8 @@ const RECIPES = [
     "link": "https://www.bbcgoodfood.com/recipes/black-eye-bean-mole-salsa",
     "image": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/black-bean-mole-bae2318.jpg",
     "tags": ["dinner", "herzhaft"],
-    "time": "30min",
+    "time": "30  min",
+    "minutes": 30 ,
     "ingredients": ["zwiebeln", "tomaten", "koriander", "limette", "rapsöl", "knoblauch", "chilipulver", "zimt", "bohnen", "kakoa", "gemüsebrühe", "tomatenmark"]
   },
   {
@@ -159,7 +165,8 @@ const RECIPES = [
   },
   {
     "name": "Bananenbrot",
-    "time": "80 Minuten",
+    "time": "80  min",
+"minutes": 80 ,
     "link": "https://sallys-blog.de/rezepte/bananenbrot-klassisch-banana-bread-basic",
     "image": "https://sallyshop.b-cdn.net/media/53/b1/af/1717687602/1433_22145_bananenbrot_klassisch_1.jpg",
     "tags": ["sweet"],
@@ -177,13 +184,16 @@ const RECIPES = [
     "name": "One-Pot-Pasta mit Zitronenkäsesauce",
     "link": "https://www.penny.de/clever-kochen/rezepte-und-ernaehrung/one-pot-pasta-mit-zitronen-kaesesauce",
     "image": "https://cdn.penny.de/dam/jcr:74f18f51-ed84-4a29-a5d3-23f81a34ec45/One%20Pot%20Pasta%20I%20Foto%20Jennifer%20Braun-4105-45.jpeg",
-    "tags": ["dinner", "herzhaft"],
-    "time": "30 min",
+    "tags": ["dinner", "pasta"],
+    "time": "30  min",
+"minutes": 30 ,
   },
   {
     "name": "Fischstäbchen",
     "subtext": "mit Buttergemüse und Kartoffelbrei oder Erbsen und Reis",
-    "tags": ["dinner", "herzhaft"],
+    "link": "https://www.iglo.de/rezepte/rezeptkategorien/fisch-rezepte/buttergemuese-mit-fischstaebchen-und-kartoffelbrei",
+    "image": "https://www.iglo.de/_/media/project/bluesteel/iglo-de/rezepte/fisch-rezepte-neu/buttergemuese-mit-fischstaebchen-und-kartoffelbrei-hero_280825.jpg",
+    "tags": ["dinner"],
   },
   {
     "name": "Kartoffelsuppe",
@@ -312,7 +322,8 @@ const RECIPES = [
     "link": "https://www.eat-this.org/vegane-pasta-e-fagioli/",
     "image": "https://www.eat-this.org/wp-content/uploads/2022/01/eat_this_pasta_e_fagioli_%E2%80%93_das_bohnigste_nudelgericht-005-1280x853@2x.jpg",
     "tags": ["pasta", "nudeln", "dinner"],
-    "time": "20 min",
+    "time": "20  min",
+"minutes": 20 ,
     "ingredients": ["zwiebeln", "karotten", "stangensellerie", "knoblauch", "olivenöl", "salz", "chiliflocken", "tomatenmark", "weiße bohnen", "aquafaba", "tomaten", "oregano", "thymian", "fenchelsamen", "lorbeer", "dunkle misopaste", "pasta", "endivie"],
   },
   {
@@ -391,7 +402,8 @@ const RECIPES = [
   {
     "name": "Rotkohl-Schupfnudel-Gratin mit Schafskäse",
     "ingredients": ["rotkohl", "rosinen", "orangen", "zwiebeln", "olivenöl", "mandeln", "salz", "pfeffer", "zucker", "obstessig", "schupfnudeln", "schafskäse", "gemahlene muskatblüte"],
-    "time": "80 min",
+    "time": "80  min",
+"minutes": 80 ,
     "tags": ["dinner"],
   },
   {
@@ -400,7 +412,8 @@ const RECIPES = [
       "id": "greenbox",
       "page": 162,
     },
-    "time": "45 min",
+    "time": "45  min",
+"minutes": 45 ,
     "ingredients": ["kartoffeln", "sellerie", "salz", "butter", "dicke bohnen", "grüner spargel", "knackerbsen", "erbsen", "knoblauch", "mehl", "gemüsebrühe", "minze", "frühlingszwiebeln", "muskatnuss", "zitronensaft"],
   },
   {
@@ -409,33 +422,38 @@ const RECIPES = [
       "id": "greenbox",
       "page": 253,
     },
-    "time": "45 min",
+    "time": "45  min",
+"minutes": 45 ,
     "ingredients": ["wirsing", "mehl", "weichweizengrieß", "eier", "olivenöl", "salz", "öl", "ingwer", "thymian", "gemüsebrühe", "schlagsahne", "zitrone", "zucker", "pfeffer", "butter", "sauerrahm", "schnittlauch"],
   },
   {
     "name": "Protein-Packed Muscle-Building Chili",
     "link": "https://www.bodybuilding.com/recipes/protein-packed-muscle-building-chili",
-    "time": "35 min",
+    "time": "35  min",
+"minutes": 35 ,
     "ingredients": ["hähnchenbrust", "olivenöl", "paprika", "pilze", "zwiebeln", "mais", "kidneybohnen", "pintobohnen", "tomaten", "chilipulver", "knoblauch", "petersilie", "kreuzkümmel", "worcestershire sauce"],
   },
   {
     "name": "Coconut & squash dhansak",
     "link": "https://www.bbcgoodfood.com/recipes/coconut-squash-dhansak",
-    "time": "20 min",
+    "time": "20  min",
+"minutes": 20 ,
     "tags": ["dinner"],
     "ingredients": ["öl", "butternut squash", "zwiebeln", "korma curry paste", "tomaten", "kokosnussmilch", "linsen", "babyspinat", "kokosnussjoghurt"],
   },
   {
     "name": "Caponata pasta",
     "link": "https://www.bbcgoodfood.com/recipes/caponata-pasta",
-    "time": "20 min",
+    "time": "20  min",
+"minutes": 20 ,
     "tags": ["dinner"],
     "ingredients": ["olivenöl", "zwiebeln", "knoblauch", "paprika", "auberginen", "tomaten", "kapern", "rosinen", "nudeln", "basilikum", "parmesan"],
   },
   {
     "name": "Gnocchi cacio e pepe",
     "link": "https://www.bbcgoodfood.com/recipes/gnocchi-cacio-e-pepe",
-    "time": "10 min",
+    "time": "10  min",
+"minutes": 10 ,
     "ingredients": ["gnocchi", "butter", "parmesan", "pfeffer"],
   },
   {
@@ -455,20 +473,23 @@ const RECIPES = [
     "name": "Kitchari",
     "subtitle": "Indiens einfaches, leckeres Reis-Porridge",
     "link": "https://www.eat-this.org/kitchari-indisches-reis-porridge/",
-    "time": "1 Stunde 30 min",
+    "time": "1 Stunde 30  min",
+"minutes": 90,
     "ingredients": ["mungbohnen", "basmatireis", "zwiebeln", "kokosöl", "kreuzkümmel", "senfsamen", "karotten", "tomaten", "kurkuma", "ingwerpulver", "salz", "spinat", "koriander"],
   },
   {
     "name": "Geröstete Knoblauch-Shiitake auf Miso-Steckrübenpüree",
     "link": "https://www.eat-this.org/geroestete-shiitake-auf-miso-steckruebenpueree/",
     "image": "https://www.eat-this.org/wp-content/uploads/2020/01/geroestete_knoblauch-shiitake_auf_miso-steckruebenpueree-5-1280x854@2x.jpg",
-    "time": "20 min",
+    "time": "20  min",
+"minutes": 20 ,
     "ingredients": ["steckrüben", "kartoffeln", "hafermilch", "olivenöl", "dunkle misopaste", "sesamöl", "salz", "sojasauce", "zitrone", "ahornsirup", "knoblauch", "ingwer", "schwarzer pfeffer", "sesam", "radieschen", "frühlingszwiebeln"],
   },
   {
     "name": "Roasted veggie curry",
     "link": "https://www.jamieoliver.com/recipes/curry-recipes/roasted-veggie-curry/",
-    "time": "1 Stunde 10 min",
+    "time": "1 Stunde 10  min",
+"minutes": 70,
     "ingredients": ["madras curry paste", "olivenöl", "essig", "karotten", "pastinake", "butternut kürbis", "zucchini", "blumenkohl", "ingwer", "knoblauch", "mango chutney", "tomaten", "kokosnussmilch", "erbsen"]
   },
   {
@@ -482,13 +503,15 @@ const RECIPES = [
     "name": "Crispy Greek-style pie",
     "link": "https://www.bbcgoodfood.com/recipes/crispy-greek-style-pie",
     "ingredients": ["spinat", "tomaten", "fetakäse", "eier", "blätterteig"],
-    "time": "40 min"
+    "time": "40 min",
+    "minutes": 40
   },
   {
     "name": "Hot-smoked salmon pasta",
     "subtitle": "With asparagus & crème fraîche",
     "link": "https://www.jamieoliver.com/recipes/salmon-recipes/hot-smoked-salmon-pasta/",
-    "time": "15 min",
+    "time": "15  min",
+"minutes": 15 ,
     "ingredients": ["spargel", "pasta", "lachs", "zitrone", "creme fraiche"]
   },
   {
@@ -498,7 +521,8 @@ const RECIPES = [
   {
     "name": "Beetroot & red onion tarte tatin",
     "link": "https://www.bbcgoodfood.com/recipes/beetroot-red-onion-tarte-tatin",
-    "time": "1 Stunde 30 min",
+    "time": "1 Stunde 30  min",
+"minutes": 90,
     "ingredients": ["rote beete", "zwiebeln", "olivenöl", "reisweinessig", "brauner zucker", "sternanis", "mehl", "blätterteig", "orange"]
   },
   {
@@ -510,7 +534,8 @@ const RECIPES = [
   {
     "name": "Japanese ramen noodle soup",
     "link": "https://www.bbcgoodfood.com/recipes/japanese-ramen-noodle-soup",
-    "time": "40 min",
+    "time": "40  min",
+"minutes": 40 ,
     "ingredients": ["hühnerbrühe", "knoblauch", "sojasauce", "worcestershire sauce", "ingwer", "chilipulver", "zucker", "ramennudeln", "tofu/hähnchen/schweinefilet", "sesamöl", "blattspinat", "zuckermais", "eier", "nori", "frühlingszwiebeln", "sesam"]
   },
   {
@@ -531,7 +556,8 @@ const RECIPES = [
   {
     "name": "Chorizo & mozzarella gnocchi bake",
     "link": "https://www.bbcgoodfood.com/recipes/chorizo-mozzarella-gnocchi-bake",
-    "time": "35 min",
+    "time": "35  min",
+"minutes": 35 ,
     "ingredients": ["olivenöl", "zwiebeln", "knoblauch", "chorizo", "gehackte tomaten", "zucker", "gnocchi", "mozzarella", "basilikum"]
   },
   {
@@ -555,7 +581,8 @@ const RECIPES = [
     "link": "https://www.oetker.de/rezepte/r/buttermilchwaffeln",
     "image": "https://www.oetker.de/assets/recipes/assets/3c0555dc08b64e158df91c4c25b7be80/1272x764/buttermilchwaffeln-qf-27388.webp",
     "tags": ["sweet"],
-    "time": "40 min",
+    "time": "40  min",
+"minutes": 40 ,
     "ingredients": ["zucker", "butter", "vanillezucker", "salz", "eier", "weizenmehl", "buttermilch", "backpulver"]
   },
   {
@@ -572,7 +599,8 @@ const RECIPES = [
     "name": "Asiatische Steckrübensuppe",
     "link": "https://www.rewe.de/rezepte/asia-steckruebensuppe/",
     "image": "https://c.rewe-static.de/32301301/7/32301301.png",
-    "time": "30 min",
+    "time": "30  min",
+"minutes": 30 ,
     "ingredients": ["kartoffeln", "steckrüben", "ingwer", "chili", "rapsöl", "currypulver", "gemüsebrühe", "kokosmilch", "sternanis", "salz", "pfeffer", "lauch", "shiitake", "koriander", "sesam", "tabasco"],
     "tags": ["dinner", "vegan"],
   },
@@ -581,7 +609,8 @@ const RECIPES = [
     "link": "https://www.bbcgoodfood.com/recipes/spicy-root-lentil-casserole",
     "image": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/recipe-image-legacy-id-488691_11-ca2ba1d.jpg?quality=90&webp=true&resize=440,400",
     "ingredients": ["pflanzenöl", "zwiebeln", "Knoblauch", "kartoffeln", "karotte", "pastinake", "currypulver", "gemüsebrühe", "rote linsen", "koriander", "joghurt"],
-    "time": "45 min",
+    "time": "45  min",
+"minutes": 45 ,
     "tags": ["dinner", "vegan"],
   },
   {
@@ -596,7 +625,8 @@ const RECIPES = [
     "link": "https://www.lecker.de/glasierter-ofenkuerbis-mit-tomaten-spinat-70386.html",
     "image": "https://images.lecker.de/glasierter-ofenkurbis-mit-tomaten-und-spinat,id=c4eb467d,b=lecker,w=910,rm=sk.webp",
     "ingredients": ["hokkaidokürbis", "schalotten", "ahornsirup", "balsamico-essig", "olivenöl", "salz", "cayennpfeffer", "kirschtomaten", "blattspinat"],
-    "time": "50 min",
+    "time": "50  min",
+"minutes": 50 ,
     "tags": ["dinner"],
   },
   {
@@ -604,70 +634,80 @@ const RECIPES = [
     "link": "https://www.rewe.de/rezepte/ruehrei-burrito",
     "image": "https://c.rewe-static.de/34138207/2/34138207.png",
     "tags": ["vegetarisch", "dinner"],
-    "time": "35 min",
+    "time": "35  min",
+"minutes": 35 ,
     "ingredients": ["tortillla wraps", "paprika", "schnittlauch", "cheddar", "rapsöl", "eier", "milch", "salz", "pfeffer", "paprikapulver edelsüß", "avocado", "kräuterquark"],
   },
   {
     "name": "Zwiebelkuchen",
     "link": "https://www.lecker.de/zwiebelkuchen-26596.html",
     "image": "https://images.lecker.de/zwiebelkuchen-b-f4971001,id=658d97b7,b=lecker,w=910,rm=sk.webp",
-    "time": "1 Stunde 10 min",
+    "time": "1 Stunde 10  min",
+"minutes": 70,
     "tags": ["dinner"],
     "ingredients": ["mehl", "hefe", "milch", "zucker", "butter", "eier", "salz", "zwiebeln", "öl", "speck", "pfeffer", "saure sahne", "speisestärke", "kümmel"],
   },
   {
     "name": "Pasta mit Erbsen-Joghurt-Soße",
     "link": "https://www.rewe.de/rezepte/pasta-erbsen-joghurt-sosse/",
-    "time": "30 min",
+    "time": "30  min",
+"minutes": 30 ,
     "tags": ["dinner"],
     "ingredients": ["erbsen", "orechiette / nudeln", "salz", "zitrone", "pinienkerne", "minze", "knoblauch", "griechischer joghurt", "pfeffer", "fetakäse", "olivenöl"],
   },
   {
     "name": "Auberginen-Reispfanne mit Feta",
     "link": "https://www.rewe.de/rezepte/auberginen-reis-pfanne-feta/",
-    "time": "35 min",
+    "time": "35  min",
+"minutes": 35 ,
     "tags": ["dinner", "vegetarisch"],
     "ingredients": ["auberginen", "paprika", "Kichererbsen", "zwiebeln", "knoblauch", "olivenöl", "tomatenmark", "reis", "gemüsebrühe", "thymian", "fetakäse", "salz", "pfeffer"],
   },
   {
     "name": "Geröstete Shiitake auf Miso-Steckrübenpüree",
     "link": "https://www.eat-this.org/geroestete-shiitake-auf-miso-steckruebenpueree/#recipe",
-    "time": "30 min",
+    "time": "30  min",
+"minutes": 30 ,
     "tags": ["dinner", "vegan", "eaththis"],
   },
   {
     "name": "Gelbes Thai Curry",
     "link": "https://www.eat-this.org/veganes-gelbes-thai-curry/#recipe",
     "image": "https://img.eat-this.org/spai/q_glossy+w_875+h_1313+to_auto+ret_img/www.eat-this.org/wp-content/uploads/2021/01/eat_this_veganes_gelbes_thai-curry-008-scaled-960x1440.jpg",
-    "time": "30 min",
+    "time": "30  min",
+"minutes": 30 ,
     "tags": ["dinner", "vegan", "eaththis"],
   },
   {
     "name": "Veganer Mapo Tofu",
     "link": "https://www.eat-this.org/veganer-mapo-tofu/#recipe",
     "image": "https://img.eat-this.org/spai/q_glossy+w_875+h_1313+to_auto+ret_img/www.eat-this.org/wp-content/uploads/2019/10/veganer_mapo-tofu-9-700x1050@2x.jpg",
-    "time": "30 min",
+    "time": "30  min",
+"minutes": 30 ,
     "tags": ["dinner", "vegan", "eaththis"],
   },
   {
     "name": "Gerösteter Blumenkohl mit Zatar & veganer Feta-Creme",
     "link": "https://www.eat-this.org/geroesteter-blumenkohl-mit-zatar-und-veganer-feta-creme/#recipe",
     "image": "https://www.eat-this.org/wp-content/uploads/2023/03/eat_this_geroesteter_blumenkohl_mit_zatar_und_veganer_feta-creme_006-1280x853@2x.jpg",
-    "time": "30 min",
+    "time": "30  min",
+"minutes": 30 ,
     "tags": ["dinner", "vegan", "eaththis"],
   },
   {
     "name": "Geschmorter Fenchel mit Zitronen-Couscous",
     "link": "https://www.eat-this.org/geschmorter-fenchel-mit-zitronen-couscous/#recipe",
     "image": "https://www.eat-this.org/wp-content/uploads/2023/02/eat_this_geschmorter_fenchel_mit_zitronen-couscous_002-1280x853@2x.jpg",
-    "time": "30 min",
+    "time": "30  min",
+"minutes": 30 ,
     "tags": ["dinner", "vegan", "eaththis"],
   },
   {
     "name": "Kürbis-Bohnen-Püree mit Currypaste und knusprigen Pilzen",
     "link": "https://www.eat-this.org/kuerbis-bohnen-pueree-mit-currypaste-und-knusprigen-pilzen/#recipe",
     "image": "https://www.eat-this.org/wp-content/uploads/2023/10/eat_this_kuerbis-bohnen-pueree_mit_currypaste_und_knusprigen_pilzen_004-1280x853@2x.jpg",
-    "time": "25 min",
+    "time": "25  min",
+"minutes": 25 ,
     "tags": ["dinner", "vegan", "eaththis"],
   },
   {
@@ -675,14 +715,16 @@ const RECIPES = [
     "subtitle": "japanisch inspirierte Wirsingrouladen",
     "link": "https://www.eat-this.org/vegane-teriyaki-krautwickel-japanisch-inspirierte-wirsingrouladen/#recipe",
     "image": "https://www.eat-this.org/wp-content/uploads/2023/01/eat_this_vegane_teriyaki-krautwickel_%E2%80%93_japanisch_inspirierte_wirsingrouladen_010-1280x853@2x.jpg",
-    "time": "35 min",
+    "time": "35  min",
+"minutes": 35 ,
     "tags": ["dinner", "vegan", "eaththis"],
   },
   {
     "name": "Tagliatelle in samtiger Erbsensauce",
     "link": "https://www.zentrum-der-gesundheit.de/rezepte/hauptgerichte/nudel-rezepte/nudeln-erbsensauce",
     "image": "https://s.zentrum-der-gesundheit.de/img/nudeln-erbsensauce?width=1500&height=843",
-    "time": "30 min",
+    "time": "30  min",
+"minutes": 30 ,
     "tags": ["dinner", "vegan"],
   },
   {
@@ -695,7 +737,8 @@ const RECIPES = [
     "name": "Cremige Gnocchi-Pfanne mit Blumenkohlsauce, Grünkohl und Veggie-Salami",
     "link": "https://www.eat-this.org/gnocchi-pfanne-mit-cremiger-blumenkohlsauce-und-gruenkohl/#recipe",
     "image": "https://www.eat-this.org/wp-content/uploads/2023/11/eat_this_gnocchi-mit-blumenkohlsauce-gruenkohl_veggie-salami_007_2-1280x853@2x.jpg",
-    "time": "25 min",
+    "time": "25  min",
+"minutes": 25 ,
     "tags": ["dinner", "vegan", "eaththis"],
   },
   {
@@ -703,34 +746,39 @@ const RECIPES = [
     "subtitle": "irischer Kartoffelbrei mit Grün- und Spitzkohl",
     "link": "https://www.eat-this.org/veganer-colcannon-irischer-kartoffelbrei/#recipe",
     "image": "https://www.eat-this.org/wp-content/uploads/2023/02/eat_this_veganer_colcannon_irischer_kartoffelbrei_mit_gruenkohl_002-1280x853@2x.jpg",
-    "time": "30 min",
+    "time": "30  min",
+"minutes": 30 ,
     "tags": ["dinner", "vegan", "eaththis"],
   },
   {
     "name": "Einfache Kartoffelfrikadellen mit Buchweizen",
     "link": "https://www.eat-this.org/einfache-kartoffelfrikadellen-mit-buchweizen/#recipe",
     "image": "https://www.eat-this.org/wp-content/uploads/2020/02/einfache_kartoffelfrikadellen_mit_buchweizen_eat_this_vegan_food_blog-3-1280x854@2x.jpg",
-    "time": "40 min",
+    "time": "40  min",
+"minutes": 40 ,
     "tags": ["dinner", "vegan", "eaththis"],
   },
   {
     "name": "Sweet Potato Chickpea and Coconut Curry",
     "link": "https://biancazapatka.com/en/sweet-potato-chickpea-coconut-curry/",
     "image": "https://biancazapatka.com/wp-content/uploads/2019/03/coconut-curry-sweet-potato-chickpea-creamy-vegan-recipe-easy-quick-healthy-glutenfree-broccoli-kichererbsen-suesskartoffel-rezept-720x1008.jpg",
-    "time": "40 min",
+    "time": "40  min",
+"minutes": 40 ,
     "tags": ["dinner", "vegan"],
   },
   {
     "name": "Tofu Stir-Fry with Peanut Sauce",
     "link": "https://themodernproper.com/tofu-stir-fry-with-peanut-sauce",
     "image": "https://images.themodernproper.com/production/posts/2019/tofu-stir-fry-with-broccoli-and-cabbage-12.jpg",
-    "time": "40 min",
+    "time": "40  min",
+"minutes": 40 ,
     "tags": ["dinner", "vegan"],
   },
   {
     "name": "Spaghetti Aglio Olio",
     "link": "https://slurrp.club/recipe/spaghetti-aglio-olio/",
-    "time": "20 min",
+    "time": "20  min",
+"minutes": 20 ,
     "image": "https://slurrp.club/wp-content/uploads/2019/06/DSC_1375.jpg",
     "tags": ["dinner", "vegan"],
   },
@@ -738,13 +786,15 @@ const RECIPES = [
     "name": "Black Bean Tacos",
     "link": "https://www.cookingclassy.com/black-bean-tacos-with-avocado-cilantro-lime-crema/",
     "image": "https://www.cookingclassy.com/wp-content/uploads/2017/02/black-bean-tacos-11-768x1152.jpg",
-    "time": "30 min",
+    "time": "30  min",
+"minutes": 30 ,
     "tags": ["dinner", "vegan"],
   },
   {
         "name": "Cream of Celery Soup",
         "language": "en",
-        "time": "40min",
+        "time": "40 min",
+"minutes": 40,
         "link": "https://www.tasteofhome.com/recipes/cream-of-celery-soup/",
         "image": "https://www.tasteofhome.com/wp-content/uploads/2018/01/Cream-of-Celery-Soup_EXPS_FT21_28681_F_1105_1.jpg",
         "tags": ["dinner", "vegetarian"]
@@ -775,14 +825,16 @@ const RECIPES = [
     }, {
         "name": "Knusprige vegane Dumplings aus Reispapier",
         "language": "de",
-        "time": "40 min",
+        "time": "40  min",
+"minutes": 40 ,
         "link": "https://www.kitchenstories.com/de/rezepte/knusprige-vegane-dumplings-aus-reispapier",
         "ingredients": ["Reispapier", "Tofu Natur", "Karotte", "Champignons", "Ingwer", "Knoblauch", "Sesamöl", "Sojasauce", "Salz", "Pfeffer", "Geröstete Chili in Öl"],
         "tags": ["dinner", "vegetarisch", "vegan"]
     }, {
         "name": "Orecchiette mit Mais, Speck und wachsweichen Eiern",
         "language": "de",
-        "time": "35 min",
+        "time": "35  min",
+"minutes": 35 ,
         "link": "https://www.kitchenstories.com/de/rezepte/orecchiette-mit-mais-speck-und-wachsweichen-eiern",
         "image": "https://www.kitchenstories.com/wp-content/uploads/sites/13/2026/09/r2413-photo-final-1.jpg",
         "ingredients": ["Orecchiette", "süße Maiskolben", "Schinkenspeck", "Zwiebel", "Knoblauch", "Frühlingszwiebel", "Chili", "Eier", "Kirschtomaten", "Salz", "Pfeffer"],
@@ -790,14 +842,16 @@ const RECIPES = [
     }, {
         "name": "Grüne-Erbsen-Puffer mit veganem Speck",
         "language": "de",
-        "time": "25 min",
+        "time": "25  min",
+"minutes": 25 ,
         "link": "https://www.eat-this.org/gruene-erbsen-puffer-mit-veganem-speck/",
         "image": "https://www.eat-this.org/wp-content/uploads/2026/04/eat_this_gruene-erbsen-puffer_mit_veganem_speck_005-1280x854@2x.jpg",
         "tags": ["dinner", "herzhaft", "vegetarisch", "vegan"]
     }, {
         "name": "Sommerlicher Nudelsalat mit Zucchini",
         "language": "de",
-        "time": "30 min",
+        "time": "30  min",
+"minutes": 30 ,
         "link": "https://www.kitchenstories.com/de/rezepte/sommerlicher-nudelsalat-mit-zucchini",
         "image": "https://www.kitchenstories.com/wp-content/uploads/sites/13/2026/09/r2678-photo-final-1.jpg",
         "ingredients": ["Zucchini", "Rigatoni", "rote Zwiebeln", "Zitrone", "Mandeln", "entsteinte grüne Oliven aus dem Glas", "Petersilie", "Minze", "Knoblauch", "Olivenöl", "Salz", "Pfeffer", "Chiliflocken", "Parmesan"],
@@ -805,7 +859,8 @@ const RECIPES = [
     }, {
         "name": "Cevapcici-Pita",
         "language": "de",
-        "time": "50 min",
+        "time": "50  min",
+"minutes": 50 ,
         "link": "https://www.lecker.de/cevapcici-pita-oriental-style-129243.html",
         "image": "https://images.lecker.de/cevapcici-pita-f9699601-lecker-06-2024,id=b9962cec,b=lecker,w=910,ca=13.20,13.60,86.00,86.67,rm=sk.webp",
         "tags": ["dinner", "herzhaft"]
@@ -818,49 +873,56 @@ const RECIPES = [
     }, {
         "name": "Gemüse-Tacos mit Koriander-Soße",
         "language": "de",
-        "time": "45 min",
+        "time": "45  min",
+"minutes": 45 ,
         "link": "https://www.lecker.de/gemuese-tacos-mit-koriander-sosse-127782.html",
         "image": "https://images.lecker.de/uno-dos-tacos-lecker-11-2023,id=63663e2a,b=lecker,w=910,rm=sk.webp",
         "tags": ["dinner", "vegetarisch", "vegan"]
     }, {
         "name": "Eierschwammerl Strudel mit Joghurt-Kräutersauce",
         "language": "de",
-        "time": "2h 35min",
+        "time": "2h 35 min",
+"minutes": 155,
         "link": "https://www.spar.at/mahlzeit/rezepte/beliebte-rezepte/vegetarisch/eierschwammerl-strudel-mit-jogurt-kraeutersauce",
         "image": "https://www.spar.at/content/dam/spardam/at/hz830/spar-mahlzeit/kitchenstory/rezeptfotos/eierschwammerl/kitchenstory-eierschwammerl-sparonline-7.jpg/jcr:content/renditions/responsive.1936.1090.noborder.250a0baf721e1f34.jpg",
         "tags": ["dinner", "herzhaft", "vegetarisch"]
     }, {
         "name": "Gnocchi mit Spinat & Lachs",
         "language": "de",
-        "time": "60 min",
+        "time": "60  min",
+"minutes": 60 ,
         "link": "https://www.spar.at/mahlzeit/rezepte/beliebte-rezepte/fisch/schnelle-selbstgemachte-gnocchi-mit-spinat-lachs",
         "image": "https://www.spar.at/content/dam/spardam/at/recipe/mahlzeit-2025/mahlzeit-4-25/meeresfruechte/kitchenstory-spar-mahlzeit-meeresfruechte-12.jpg/jcr:content/renditions/responsive.1936.1090.noborder.250a0baf721e1f34.jpg",
         "tags": ["dinner"]
     }, {
         "name": "Finnischer Pilzkuchen",
         "language": "de",
-        "time": "3h 5min",
+        "time": "3h 5 min",
+"minutes": 185,
         "link": "https://www.spar.at/mahlzeit/rezepte/beliebte-rezepte/vegetarisch/finnischer-pilzkuchen",
         "image": "https://www.spar.at/content/dam/spardam/at/recipe/mahlzeit-2025/mahlzeit-sonderausgabe-veggie/veggie-international/kitchenstory-veggi-sparmahlzeit-5.jpg/jcr:content/renditions/responsive.1936.1090.noborder.250a0baf721e1f34.jpg",
         "tags": ["dinner", "herzhaft", "vegetarisch"]
     }, {
         "name": "Tomaten Quiche",
         "language": "de",
-        "time": "2h 20min",
+        "time": "2h 20 min",
+"minutes": 140,
         "link": "https://www.spar.at/mahlzeit/rezepte/beliebte-rezepte/vegetarisch/tomaten-quiche",
         "image": "https://www.spar.at/content/dam/spardam/at/recipe/mahlzeit-2024/tragetaschen/kitchenstory-tagetaschen-spar-4.jpg/jcr:content/renditions/responsive.1936.1090.noborder.250a0baf721e1f34.jpg",
         "tags": ["dinner", "vegetarisch"]
     }, {
         "name": "Peanut Chicken Bowl",
         "language": "de",
-        "time": "25 min",
+        "time": "25  min",
+"minutes": 25 ,
         "link": "https://www.spar.at/mahlzeit/rezepte/beliebte-rezepte/fleisch/peanut-chicken-bowl",
         "image": "https://www.spar.at/content/dam/spardam/at/hz830/spar-mahlzeit/nadja-hudovernik/rezeptfotos/schnell-und-einfach/spar-mahlzeit-alltagsrezepte-c-nadja-hudovernik-4.jpg/jcr:content/renditions/responsive.1936.1090.noborder.250a0baf721e1f34.jpg",
         "tags": ["dinner"]
     }, {
         "name": "Mediterrane Brotsticks mit Rosmarin",
         "language": "de",
-        "time": "2h 25min",
+        "time": "2h 25 min",
+"minutes": 145,
         "link": "https://eat.de/rezept/mediterrane-brotsticks-mit-rosmarin/",
         "image": "https://eat.de/wp-content/uploads/2024/07/mediterrane-brotsticks-mit-rosmarin-9957-1170x780.jpg",
         "tags": ["brot", "brötchen", "vegan"]
@@ -879,14 +941,16 @@ const RECIPES = [
     }, {
         "name": "Dampfnudeln",
         "language": "de",
-        "time": "55 min",
+        "time": "55  min",
+"minutes": 55 ,
         "link": "https://sallys-blog.de/rezepte/dampfnudeln",
         "image": "https://sallyshop.b-cdn.net/media/f2/91/cd/1728038561/sally-dampfnudeln-rezept.jpg",
         "tags": ["dinner", "vegetarisch", "sweet", "süß"]
     }, {
         "name": "Steamed Dumplings with vanilla sauce",
         "language": "en",
-        "time": "55 min",
+        "time": "55  min",
+"minutes": 55 ,
         "video": "https://m.youtube.com/watch?v=ENk1I5ueTcg",
         "image": "https://sallyshop.b-cdn.net/media/f2/91/cd/1728038561/sally-dampfnudeln-rezept.jpg",
         "tags": ["dinner", "vegetarisch", "sweet", "süß"]
@@ -894,7 +958,8 @@ const RECIPES = [
         "name": "Pizzakranz",
         "subtext": "Tortano – italienisches Pizza-Brot",
         "language": "de",
-        "time": "1h 5min",
+        "time": "1h 5 min",
+"minutes": 65,
         "link": "https://sallys-blog.de/rezepte/pizza-kranz-tortano-italienisches-pizza-brot",
         "video": "https://m.youtube.com/watch?v=mQIND17WwQI",
         "image": "https://sallyshop.b-cdn.net/media/54/2e/4d/1717679186/479_13454_dsc03921_blog_1.jpg",
@@ -938,7 +1003,8 @@ const RECIPES = [
     }, {
         "name": "Jollof Rice",
         "language": "en",
-        "time": "45 min",
+        "time": "45  min",
+"minutes": 45 ,
         "link": "https://www.bbc.co.uk/food/recipes/jollof_rice_with_fried_84889",
         "image": "https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/jollof_rice_with_fried_84889_16x9.jpg",
         "tags": ["dinner"]
@@ -948,7 +1014,8 @@ const RECIPES = [
         "language": "en",
         "link": "https://www.bbc.co.uk/food/recipes/spanish-inspired_21079",
         "image": "https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/spanish-inspired_21079_16x9.jpg",
-        "time": "45min",
+        "time": "45 min",
+"minutes": 45,
         "tags": ["dinner", "vegetarian"]
     }, {
         "name": "Shakshuka",
