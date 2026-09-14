@@ -192,8 +192,18 @@ const RECIPES = [
     "tags": ["dinner", "herzhaft"],
   },
   {
-    "name": "Pizza",
-    "tags": ["dinner", "herzhaft"],
+    "name": "Vegane Pizza",
+    "subtitle": "Eine perfekte vegane Pizza braucht keinen Steinofen. Sie braucht einen Teig, der Zeit hatte, eine Sauce, die nicht gekocht wird, und einen Backofen auf Anschlag.",
+    "link": "https://www.eat-this.org/perfekte-vegane-pizza/",
+    "image": "https://www.eat-this.org/wp-content/uploads/2020/06/eat_this_die_perfekte_vegane_pizza-22-1280x854@2x.jpg",
+    "tags": ["dinner", "vegan"],
+  },
+  {
+    "name": "Pizza Sucuk",
+    "subtitle": "Dieser Pizzateig besteht aus nur wenigen Zutaten und ist sehr einfach zu verarbeiten und super knusprig. Die schnelle Pizzasoße passt hervorragend auf Pizzen mit würzigem Belag.",
+    "link": "https://sallys-blog.de/rezepte/sallys-beste-pizza-grundrezept-pizzateig-und-schnelle-pizzasosse",
+    "image": "https://sallyshop.b-cdn.net/media/a8/78/cb/1717679260/517_18642_pizza4_1.jpg",
+    "tags": ["dinner"],
   },
   {
     "name": "Grießbrei",
