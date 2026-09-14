@@ -290,7 +290,7 @@ function createCardEl(recipe) {
   }
 
   const ingredients = recipe.ingredients
-    ? recipe.ingredients.slice(0, 5).join(', ') + (recipe.ingredients.length > 5 ? '…' : '')
+    ? recipe.ingredients.join(', ')
     : '';
 
   const card = document.createElement('div');
