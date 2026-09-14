@@ -190,18 +190,21 @@ function buildDeck() {
     pool = [...pool, ...state.customRecipes];
   }
 
+  // Apply filter for finding quick recipes, hardcoded to at most 30min
+  if (state.activeFilters.has('quick')) {
+    pool = pool.filter(r => (r.minutes || 60) <= 30);
+  }
+
   if (state.activeFilters.size > 0) {
     const activeTags = new Set();
     for (const id of state.activeFilters) {
       const f = FILTERS.find(f => f.id === id);
       if (f) f.tags.forEach(t => activeTags.add(t));
     }
-    pool = pool.filter(r => (r.tags || []).some(t => activeTags.has(t.toLowerCase())));
-    
-    // Apply filter for finding quick recipes, hardcoded to at most 30min
-    if (state.activeFilters.has('quick')) {
-      pool = pool.filter(r => (r.minutes || 60) <= 30);
-    }
+    if (!state.activeFilters.has('quick') || state.activeFilters.size > 1) {
+      // if only quick filter is active, ignore the active tags
+      pool = pool.filter(r => (r.tags || []).some(t => activeTags.has(t.toLowerCase())));
+    }  
   }
 
   pool = pool.filter(r => !listedKeys.has(recipeKey(r)) && !state.skippedKeys.has(recipeKey(r)));
