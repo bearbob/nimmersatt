@@ -2,9 +2,9 @@
 
 // Order of filters matters for details page - First hit is returned
 const FILTERS = [
-  { id: 'vegan',  label: 'Vegan',  emoji: '🌱', color: '#79ec88',
+  { id: 'vegan',  label: 'Vegan',  emoji: '🌱', color: '#ccffd3',
     tags: ['vegan'] },
-  { id: 'vegetarian',  label: 'Veggy',  emoji: '🌿', color: '#165300',
+  { id: 'vegetarian',  label: 'Veggy',  emoji: '🌻', color: '#abfbc7',
     tags: ['vegetarian', 'vegetarisch'] },
   { id: 'sweet',  label: 'Sweet',  emoji: '🍰', color: '#ffe096',
     tags: ['sweet', 'süß', 'kuchen', 'kaffee', 'cookie'] },
@@ -287,10 +287,6 @@ function createCardEl(recipe) {
   }
   if (recipe.video) {
     linksHtml += `<a href="${recipe.video}" target="_blank" rel="noopener noreferrer" class="card-link">▶️ Video</a>`;
-  }
-  if (!recipe.link && !recipe.video && recipe.book && BOOKS[recipe.book.id]) {
-    const book = BOOKS[recipe.book.id];
-    linksHtml = `<span class="card-book">📚 ${escHtml(book.name)}, p.&nbsp;${recipe.book.page}</span>`;
   }
 
   const ingredients = recipe.ingredients
