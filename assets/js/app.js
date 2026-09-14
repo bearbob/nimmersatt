@@ -3,15 +3,15 @@
 // Order of filters matters for details page - First hit is returned
 const FILTERS = [
   { id: 'vegan',  label: 'Vegan',  emoji: '🌱', color: '#ccffd3',
-    tags: ['vegan'] },
-  { id: 'vegetarian',  label: 'Veggy',  emoji: '🌻', color: '#abfbc7',
-    tags: ['vegetarian', 'vegetarisch'] },
+    fontColor: '#1A1A2E', tags: ['vegan'] },
+  { id: 'vegetarian',  label: 'Veggy',  emoji: '🌻', color: '#127836',
+    fontColor: '#fff', tags: ['vegetarian', 'vegetarisch'] },
   { id: 'sweet',  label: 'Sweet',  emoji: '🍰', color: '#ffe096',
-    tags: ['sweet', 'süß', 'kuchen', 'kaffee', 'cookie'] },
+    fontColor: '#1A1A2E', tags: ['sweet', 'süß', 'kuchen', 'kaffee', 'cookie'] },
   { id: 'dinner', label: 'Dinner', emoji: '🍽️', color: '#FF6B6B',
-    tags: ['dinner'] },
+    fontColor: '#fff', tags: ['dinner'] },
   { id: 'bread',  label: 'Bread',  emoji: '🥖', color: '#F4A261',
-    tags: ['brot', 'brötchen'] },
+    fontColor: '#fff', tags: ['brot', 'brötchen'] },
 ];
 
 const LANGUAGES = [
@@ -300,7 +300,7 @@ function createCardEl(recipe) {
     <div class="card-indicator skip">✕ SKIP</div>
     <div class="card-hero" style="${recipe.image ? '' : `background:${cat.color}30;`}">${recipe.image ? `<img src="${escHtml(recipe.image)}" alt="" onerror="this.parentElement.style.background='${cat.color}30';this.replaceWith(document.createTextNode('${emoji}'));">` : emoji}</div>
     <div class="card-body">
-      <div class="card-category" style="background:${cat.color};color:${cat.id === 'sweet' ? '#1A1A2E' : '#fff'};">
+      <div class="card-category" style="background:${cat.color};color:${cat.fontColor};">
         ${cat.emoji} ${cat.label}
       </div>
       <h2 class="card-name">${escHtml(recipe.name)}</h2>
@@ -525,7 +525,7 @@ function openRecipeDetail(recipe) {
   const catEl = document.getElementById('recipe-detail-category');
   catEl.textContent = `${cat.emoji} ${cat.label}`;
   catEl.style.background = cat.color;
-  catEl.style.color = cat.id === 'sweet' ? '#1A1A2E' : '#fff';
+  catEl.style.color = cat.fontColor;
 
   document.getElementById('recipe-detail-name').textContent = recipe.name;
 
