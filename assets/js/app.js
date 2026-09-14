@@ -200,7 +200,7 @@ function buildDeck() {
     
     // Apply filter for finding quick recipes, hardcoded to at most 30min
     if (state.activeFilters.has('quick')) {
-      pool = pool.filter(r => r.minutes <= 30);
+      pool = pool.filter(r => (r.minutes || 60) <= 30);
     }
   }
 
