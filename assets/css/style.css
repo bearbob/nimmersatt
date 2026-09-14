@@ -127,6 +127,7 @@ body {
   color: white;
 }
 .chip[data-active="true"][data-id="sweet"] { color: var(--text); }
+.chip[data-active="true"][data-id="vegan"] { color: var(--text); }
 
 /* ── Pages ─────────────────────────────────────────────────────── */
 #pages {
