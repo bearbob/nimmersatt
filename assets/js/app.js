@@ -197,6 +197,11 @@ function buildDeck() {
       if (f) f.tags.forEach(t => activeTags.add(t));
     }
     pool = pool.filter(r => (r.tags || []).some(t => activeTags.has(t.toLowerCase())));
+    
+    // Apply filter for finding quick recipes, hardcoded to at most 30min
+    if (state.activeFilters.has('quick')) {
+      pool = pool.filter(r => r.minutes <= 30);
+    }
   }
 
   pool = pool.filter(r => !listedKeys.has(recipeKey(r)) && !state.skippedKeys.has(recipeKey(r)));
@@ -1091,6 +1096,13 @@ function renderFilterBar() {
     state.activeFilters.clear(); buildDeck(); renderDeck(); updateChips();
   });
   bar.appendChild(allChip);
+
+  const quickChip = makeChip('quick', '⏱️ Quick', '#2e1a22', state.activeFilters.has('quick'));
+  quickChip.addEventListener('click', () => {
+    if (state.activeFilters.has('quick')) { state.activeFilters.delete('quick'); } else { state.activeFilters.add('quick'); }
+    buildDeck(); renderDeck(); updateChips();
+  });
+  bar.appendChild(quickChip);
 
   FILTERS.forEach(f => {
     const chip = makeChip(f.id, `${f.emoji} ${f.label}`, f.color, state.activeFilters.has(f.id));

@@ -1,4 +1,4 @@
-const CACHE = 'nimmersatt-v2.3.14';
+const CACHE = 'nimmersatt-v2.4.0';
 
 const ASSETS = [
   './',
