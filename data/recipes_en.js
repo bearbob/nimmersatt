@@ -422,4 +422,49 @@ const RECIPES_EN = [
     "language": "en",
     "tags": ["dinner", "vegetarian"]
   },
+  {
+    "name": "Easy Chili Con Carne",
+    "link": "https://www.bbc.co.uk/food/recipes/chilliconcarne_67875",
+    "image": "https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/chilliconcarne_67875_16x9.jpg",
+    "time": "2h",
+    "minutes": 120,
+    "language": "en",
+    "tags": ["dinner"]
+  },
+  {
+    "name": "Lentil and bacon soup",
+    "link": "https://www.bbc.co.uk/food/recipes/red_lentil_and_bacon_27157",
+    "image": "https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/red_lentil_and_bacon_27157_16x9.jpg",
+    "time": "60 min",
+    "minutes": 60,
+    "language": "en",
+    "tags": ["dinner"]
+  },
+  {
+    "name": "Thai chicken curry",
+    "link": "https://www.bbc.co.uk/food/recipes/thai_chicken_curry_06763",
+    "image": "https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/thai_chicken_curry_06763_16x9.jpg",
+    "time": "60 min",
+    "minutes": 60,
+    "language": "en",
+    "tags": ["dinner"]
+  },
+  {
+    "name": "Lunchbox chorizo frittata",
+    "link": "https://www.bbc.co.uk/food/recipes/lunchbox_chorizo_07622",
+    "image": "https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/lunchbox_chorizo_07622_16x9.jpg",
+    "time": "60 min",
+    "minutes": 60,
+    "language": "en",
+    "tags": ["dinner"]
+  },
+  {
+    "name": "Chicken enchiladas",
+    "link": "https://www.bbc.co.uk/food/recipes/chicken_enchiladas_02595",
+    "image": "https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/chicken_enchiladas_02595_16x9.jpg",
+    "time": "1h 30min",
+    "minutes": 90,
+    "language": "en",
+    "tags": ["dinner"]
+  },
 ];
