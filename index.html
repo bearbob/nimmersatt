@@ -47,6 +47,9 @@
       <button class="nav-item" data-page="my-recipes">
         <span class="nav-item-icon">📝</span> My Recipes
       </button>
+      <button class="nav-item" data-page="shopping">
+        <span class="nav-item-icon">🛒</span> Shopping
+      </button>
       <button class="nav-item" data-page="language">
         <span class="nav-item-icon">🌐</span> Language
       </button>
@@ -208,6 +211,28 @@
         <button id="my-recipes-add-btn">+ Add recipe</button>
       </div>
 
+      <!-- ── Shopping page ─────────────────────────────────── -->
+      <div id="page-shopping" class="page hidden">
+        <div id="shopping-toolbar">
+          <div id="shopping-add-cat-row" class="hidden">
+            <input id="shopping-cat-input" type="text" placeholder="Category name…" maxlength="40" autocomplete="off">
+            <button id="shopping-cat-create-btn">Create</button>
+          </div>
+          <div id="shopping-toolbar-btns">
+            <button id="shopping-add-cat-btn">+ Category</button>
+            <button id="shopping-clear-btn" class="btn-ghost">Clear</button>
+          </div>
+        </div>
+        <div id="shopping-content"></div>
+        <div id="shopping-footer">
+          <div id="shopping-add-row">
+            <input id="shopping-add-input" type="text" placeholder="Add item…" autocomplete="off" autocorrect="off" spellcheck="false">
+            <button id="shopping-add-btn">Add</button>
+          </div>
+          <div id="shopping-suggestions"></div>
+        </div>
+      </div>
+
       <!-- ── Language page ──────────────────────────────────── -->
       <div id="page-language" class="page hidden">
         <div id="language-content">
@@ -360,6 +385,21 @@
       <button id="crm-cancel-btn">Cancel</button>
       <button id="crm-save-btn">Save</button>
     </div>
+  </div>
+
+  <!-- Shopping category picker -->
+  <div id="shopping-cat-picker-backdrop" class="hidden"></div>
+  <div id="shopping-cat-picker" role="dialog" aria-modal="true" aria-label="Move to category" class="hidden">
+    <div id="shopping-cat-picker-header">
+      <h3>Move to category</h3>
+      <button id="shopping-cat-picker-close" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div id="shopping-cat-picker-list"></div>
   </div>
 
   <script src="version.js"></script>

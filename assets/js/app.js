@@ -34,12 +34,18 @@ const state = {
   favouriteLists: [],   // [{ id, name, recipeKeys[] }]
   customRecipes: [],    // [{ id, name, custom: true, ...opts }]
   customInMatch: false,
+  shoppingCategories: [],     // [{ id, name, order }]
+  shoppingOverrides: {},      // { "recipeKey::normIngredient": { checked, deleted, categoryId, order } }
+  shoppingCustomItems: [],    // [{ id, text, checked, categoryId, order }]
+  shoppingIngredientMap: {},  // { normalizedText: categoryId }
+  shoppingHistory: [],        // [string] up to 20 unique items
 };
 
 let currentFavView = 'overview'; // 'overview' | 'detail'
 let currentFavListId = null;
 let pickerRecipe = null;
 let editingCustomRecipe = null;
+let shoppingPickerItem = null;
 
 // ── Storage ────────────────────────────────────────────────────────────────
 
@@ -47,6 +53,7 @@ function loadStorage() {
   loadLanguages();
   loadCustomRecipes();
   loadCustomInMatch();
+  loadShopping();
 
   try {
     const list = JSON.parse(localStorage.getItem('nimmersatt_list') || '[]');
@@ -130,6 +137,35 @@ function loadCustomInMatch() {
 
 function saveCustomInMatch() {
   localStorage.setItem('nimmersatt_custom_in_match', String(state.customInMatch));
+}
+
+function loadShopping() {
+  try { state.shoppingCategories = JSON.parse(localStorage.getItem('nimmersatt_shopping_cats') || '[]'); }
+  catch (_) { state.shoppingCategories = []; }
+  try { state.shoppingOverrides = JSON.parse(localStorage.getItem('nimmersatt_shopping_overrides') || '{}'); }
+  catch (_) { state.shoppingOverrides = {}; }
+  try { state.shoppingCustomItems = JSON.parse(localStorage.getItem('nimmersatt_shopping_custom') || '[]'); }
+  catch (_) { state.shoppingCustomItems = []; }
+  try { state.shoppingIngredientMap = JSON.parse(localStorage.getItem('nimmersatt_shopping_map') || '{}'); }
+  catch (_) { state.shoppingIngredientMap = {}; }
+  try { state.shoppingHistory = JSON.parse(localStorage.getItem('nimmersatt_shopping_history') || '[]'); }
+  catch (_) { state.shoppingHistory = []; }
+}
+
+function saveShoppingCategories() {
+  localStorage.setItem('nimmersatt_shopping_cats', JSON.stringify(state.shoppingCategories));
+}
+function saveShoppingOverrides() {
+  localStorage.setItem('nimmersatt_shopping_overrides', JSON.stringify(state.shoppingOverrides));
+}
+function saveShoppingCustom() {
+  localStorage.setItem('nimmersatt_shopping_custom', JSON.stringify(state.shoppingCustomItems));
+}
+function saveShoppingMap() {
+  localStorage.setItem('nimmersatt_shopping_map', JSON.stringify(state.shoppingIngredientMap));
+}
+function saveShoppingHistory() {
+  localStorage.setItem('nimmersatt_shopping_history', JSON.stringify(state.shoppingHistory));
 }
 
 // ── Favourite list CRUD ────────────────────────────────────────────────────
@@ -1384,6 +1420,427 @@ function showToast(message) {
   }, 2800);
 }
 
+// ── Shopping ───────────────────────────────────────────────────────────────
+
+function normIngredient(s) { return String(s).trim().toLowerCase(); }
+
+function overrideKey(rKey, ingredient) { return rKey + '::' + normIngredient(ingredient); }
+
+function buildShoppingList() {
+  const items = [];
+
+  for (let rIdx = 0; rIdx < state.weeklyList.length; rIdx++) {
+    const recipe = state.weeklyList[rIdx];
+    const rKey = recipeKey(recipe);
+    const ingredients = recipe.ingredients || [];
+    for (let iIdx = 0; iIdx < ingredients.length; iIdx++) {
+      const ingredient = ingredients[iIdx];
+      const oKey = overrideKey(rKey, ingredient);
+      const override = state.shoppingOverrides[oKey] || {};
+      if (override.deleted) continue;
+
+      const norm = normIngredient(ingredient);
+      const categoryId = override.categoryId !== undefined
+        ? override.categoryId
+        : (state.shoppingIngredientMap[norm] || null);
+
+      items.push({
+        id: oKey,
+        text: ingredient,
+        recipeSource: recipe.name,
+        checked: override.checked || false,
+        categoryId,
+        isCustom: false,
+        order: override.order !== undefined ? override.order : (rIdx * 1000 + iIdx),
+      });
+    }
+  }
+
+  for (const item of state.shoppingCustomItems) {
+    items.push({
+      id: item.id,
+      text: item.text,
+      recipeSource: null,
+      checked: item.checked || false,
+      categoryId: item.categoryId || null,
+      isCustom: true,
+      order: item.order !== undefined ? item.order : Infinity,
+    });
+  }
+
+  return items;
+}
+
+function groupByCategory(items) {
+  const catMap = new Map();
+  catMap.set(null, []);
+  for (const cat of state.shoppingCategories) catMap.set(cat.id, []);
+  for (const item of items) {
+    const key = catMap.has(item.categoryId) ? item.categoryId : null;
+    catMap.get(key).push(item);
+  }
+  for (const catItems of catMap.values()) {
+    catItems.sort((a, b) => a.order - b.order);
+  }
+  return catMap;
+}
+
+function renderShoppingPage() {
+  const content = document.getElementById('shopping-content');
+  content.innerHTML = '';
+
+  const allItems = buildShoppingList();
+  if (allItems.length === 0 && state.shoppingCategories.length === 0) {
+    content.innerHTML = `<div class="shopping-empty"><div class="empty-emoji">🛒</div><p>Add recipes to your weekly list to see their ingredients here.</p></div>`;
+    renderShoppingSuggestions('');
+    return;
+  }
+
+  const grouped = groupByCategory(allItems);
+  const sortedCats = [...state.shoppingCategories].sort((a, b) => a.order - b.order);
+
+  sortedCats.forEach((cat, catIdx) => {
+    const catItems = grouped.get(cat.id) || [];
+    renderShoppingSection(content, cat, catItems, catIdx, sortedCats.length);
+  });
+
+  const uncatItems = grouped.get(null) || [];
+  renderShoppingSection(content, null, uncatItems, -1, sortedCats.length);
+
+  renderShoppingSuggestions(document.getElementById('shopping-add-input').value);
+}
+
+function renderShoppingSection(container, cat, items, catIdx, totalCats) {
+  const section = document.createElement('div');
+  section.className = 'shopping-section';
+
+  if (cat) {
+    const isFirst = catIdx === 0;
+    const isLast = catIdx === totalCats - 1;
+    section.innerHTML = `
+      <div class="shopping-cat-header" data-cat-id="${escHtml(cat.id)}">
+        <span class="shopping-cat-name">${escHtml(cat.name)}</span>
+        <div class="shopping-cat-actions">
+          <button class="shopping-cat-btn shopping-cat-up-btn" ${isFirst ? 'disabled' : ''} aria-label="Move category up">↑</button>
+          <button class="shopping-cat-btn shopping-cat-down-btn" ${isLast ? 'disabled' : ''} aria-label="Move category down">↓</button>
+          <button class="shopping-cat-btn shopping-cat-rename-btn" aria-label="Rename category">✏️</button>
+          <button class="shopping-cat-btn shopping-cat-delete-btn" aria-label="Delete category">🗑</button>
+        </div>
+      </div>`;
+
+    const header = section.querySelector('.shopping-cat-header');
+    header.querySelector('.shopping-cat-up-btn').addEventListener('click', () => moveShoppingCategory(cat.id, 'up'));
+    header.querySelector('.shopping-cat-down-btn').addEventListener('click', () => moveShoppingCategory(cat.id, 'down'));
+    header.querySelector('.shopping-cat-rename-btn').addEventListener('click', () => renameCategoryInline(cat.id, section));
+    header.querySelector('.shopping-cat-delete-btn').addEventListener('click', (e) => {
+      const btn = e.currentTarget;
+      if (btn.dataset.confirm === '1') {
+        deleteShoppingCategory(cat.id);
+      } else {
+        btn.dataset.confirm = '1';
+        btn.classList.add('danger');
+        setTimeout(() => { btn.dataset.confirm = ''; btn.classList.remove('danger'); }, 3000);
+      }
+    });
+  } else if (items.length > 0 || totalCats === 0) {
+    section.innerHTML = `<div class="shopping-cat-header shopping-cat-header--uncat"><span class="shopping-cat-name">Other</span></div>`;
+  }
+
+  const itemsContainer = document.createElement('div');
+  itemsContainer.className = 'shopping-items';
+  items.forEach((item, idx) => renderShoppingItem(itemsContainer, item, idx, items.length));
+  section.appendChild(itemsContainer);
+
+  if (cat || items.length > 0) container.appendChild(section);
+}
+
+function renderShoppingItem(container, item, idx, total) {
+  const el = document.createElement('div');
+  el.className = `shopping-item${item.checked ? ' checked' : ''}`;
+
+  const catName = item.categoryId
+    ? (state.shoppingCategories.find(c => c.id === item.categoryId)?.name || '')
+    : '';
+
+  el.innerHTML = `
+    <button class="shopping-check-btn" aria-label="${item.checked ? 'Uncheck' : 'Check'}">${item.checked ? '✓' : ''}</button>
+    <div class="shopping-item-info">
+      <span class="shopping-item-text">${escHtml(item.text)}</span>
+      ${item.recipeSource ? `<span class="shopping-item-source">${escHtml(item.recipeSource)}</span>` : ''}
+    </div>
+    <div class="shopping-item-actions">
+      <button class="shopping-item-cat-btn" aria-label="Change category" title="${escHtml(catName || 'No category')}">🏷</button>
+      <button class="shopping-item-up-btn shopping-order-btn" ${idx === 0 ? 'disabled' : ''} aria-label="Move up">↑</button>
+      <button class="shopping-item-down-btn shopping-order-btn" ${idx === total - 1 ? 'disabled' : ''} aria-label="Move down">↓</button>
+      ${item.isCustom
+        ? `<button class="shopping-item-edit-btn shopping-order-btn" aria-label="Edit">✏️</button>`
+        : ''}
+      <button class="shopping-item-delete-btn shopping-order-btn" aria-label="Delete">✕</button>
+    </div>`;
+
+  el.querySelector('.shopping-check-btn').addEventListener('click', () => toggleShoppingItem(item));
+  el.querySelector('.shopping-item-cat-btn').addEventListener('click', () => openShoppingCatPicker(item));
+  el.querySelector('.shopping-item-up-btn').addEventListener('click', () => moveShoppingItem(item.id, 'up'));
+  el.querySelector('.shopping-item-down-btn').addEventListener('click', () => moveShoppingItem(item.id, 'down'));
+  if (item.isCustom) {
+    el.querySelector('.shopping-item-edit-btn').addEventListener('click', () => editShoppingCustomItem(item.id, el));
+  }
+  el.querySelector('.shopping-item-delete-btn').addEventListener('click', () => deleteShoppingItem(item));
+
+  container.appendChild(el);
+}
+
+function toggleShoppingItem(item) {
+  if (item.isCustom) {
+    const ci = state.shoppingCustomItems.find(i => i.id === item.id);
+    if (ci) { ci.checked = !ci.checked; saveShoppingCustom(); }
+  } else {
+    if (!state.shoppingOverrides[item.id]) state.shoppingOverrides[item.id] = {};
+    state.shoppingOverrides[item.id].checked = !item.checked;
+    saveShoppingOverrides();
+  }
+  renderShoppingPage();
+}
+
+function deleteShoppingItem(item) {
+  if (item.isCustom) {
+    state.shoppingCustomItems = state.shoppingCustomItems.filter(i => i.id !== item.id);
+    saveShoppingCustom();
+  } else {
+    if (!state.shoppingOverrides[item.id]) state.shoppingOverrides[item.id] = {};
+    state.shoppingOverrides[item.id].deleted = true;
+    saveShoppingOverrides();
+  }
+  renderShoppingPage();
+}
+
+function editShoppingCustomItem(itemId, el) {
+  const ci = state.shoppingCustomItems.find(i => i.id === itemId);
+  if (!ci) return;
+  const textEl = el.querySelector('.shopping-item-text');
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.className = 'shopping-item-edit-input';
+  input.value = ci.text;
+  input.maxLength = 100;
+  const finish = () => {
+    const newText = input.value.trim();
+    if (newText && newText !== ci.text) {
+      ci.text = newText;
+      saveShoppingCustom();
+      const norm = normIngredient(newText);
+      state.shoppingHistory = [newText, ...state.shoppingHistory.filter(h => normIngredient(h) !== norm)].slice(0, 20);
+      saveShoppingHistory();
+    }
+    renderShoppingPage();
+  };
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); input.blur(); } if (e.key === 'Escape') renderShoppingPage(); });
+  input.addEventListener('blur', finish);
+  textEl.replaceWith(input);
+  input.focus(); input.select();
+}
+
+function setItemOrder(item, newOrder) {
+  if (item.isCustom) {
+    const ci = state.shoppingCustomItems.find(i => i.id === item.id);
+    if (ci) ci.order = newOrder;
+  } else {
+    if (!state.shoppingOverrides[item.id]) state.shoppingOverrides[item.id] = {};
+    state.shoppingOverrides[item.id].order = newOrder;
+  }
+}
+
+function moveShoppingItem(itemId, direction) {
+  const allItems = buildShoppingList();
+  const item = allItems.find(i => i.id === itemId);
+  if (!item) return;
+
+  const catItems = allItems.filter(i => i.categoryId === item.categoryId).sort((a, b) => a.order - b.order);
+  const idx = catItems.findIndex(i => i.id === itemId);
+  const swapIdx = direction === 'up' ? idx - 1 : idx + 1;
+  if (swapIdx < 0 || swapIdx >= catItems.length) return;
+
+  catItems.forEach((ci, i) => { if (!isFinite(ci.order)) { setItemOrder(ci, i * 100); ci.order = i * 100; } });
+
+  const tempOrder = catItems[idx].order;
+  setItemOrder(catItems[idx], catItems[swapIdx].order);
+  setItemOrder(catItems[swapIdx], tempOrder);
+
+  saveShoppingOverrides();
+  saveShoppingCustom();
+  renderShoppingPage();
+}
+
+function addShoppingCustomItem(text) {
+  const trimmed = text.trim();
+  if (!trimmed) return;
+  const norm = normIngredient(trimmed);
+  const categoryId = state.shoppingIngredientMap[norm] || null;
+  const maxOrder = state.shoppingCustomItems.reduce((m, i) => Math.max(m, i.order || 0), 0);
+  state.shoppingCustomItems.push({ id: 'shop_' + Date.now(), text: trimmed, checked: false, categoryId, order: maxOrder + 100 });
+  saveShoppingCustom();
+  state.shoppingHistory = [trimmed, ...state.shoppingHistory.filter(h => normIngredient(h) !== norm)].slice(0, 20);
+  saveShoppingHistory();
+  renderShoppingPage();
+}
+
+function clearShoppingList() {
+  state.shoppingCustomItems = [];
+  saveShoppingCustom();
+  const newOverrides = {};
+  for (const [key, override] of Object.entries(state.shoppingOverrides)) {
+    if (override.categoryId !== undefined) newOverrides[key] = { categoryId: override.categoryId };
+  }
+  state.shoppingOverrides = newOverrides;
+  saveShoppingOverrides();
+  renderShoppingPage();
+}
+
+function addShoppingCategory(name) {
+  const trimmed = name.trim();
+  if (!trimmed) return;
+  const maxOrder = state.shoppingCategories.reduce((m, c) => Math.max(m, c.order || 0), 0);
+  state.shoppingCategories.push({ id: 'cat_' + Date.now(), name: trimmed, order: maxOrder + 100 });
+  saveShoppingCategories();
+  renderShoppingPage();
+}
+
+function deleteShoppingCategory(catId) {
+  state.shoppingCategories = state.shoppingCategories.filter(c => c.id !== catId);
+  for (const override of Object.values(state.shoppingOverrides)) {
+    if (override.categoryId === catId) override.categoryId = null;
+  }
+  state.shoppingCustomItems.forEach(item => { if (item.categoryId === catId) item.categoryId = null; });
+  for (const [norm, cId] of Object.entries(state.shoppingIngredientMap)) {
+    if (cId === catId) delete state.shoppingIngredientMap[norm];
+  }
+  saveShoppingCategories();
+  saveShoppingOverrides();
+  saveShoppingCustom();
+  saveShoppingMap();
+  renderShoppingPage();
+}
+
+function moveShoppingCategory(catId, direction) {
+  const sorted = [...state.shoppingCategories].sort((a, b) => a.order - b.order);
+  const idx = sorted.findIndex(c => c.id === catId);
+  const swapIdx = direction === 'up' ? idx - 1 : idx + 1;
+  if (swapIdx < 0 || swapIdx >= sorted.length) return;
+
+  sorted.forEach((c, i) => {
+    const sc = state.shoppingCategories.find(cat => cat.id === c.id);
+    if (sc) sc.order = i * 100;
+  });
+
+  const cat1 = state.shoppingCategories.find(c => c.id === sorted[idx].id);
+  const cat2 = state.shoppingCategories.find(c => c.id === sorted[swapIdx].id);
+  if (cat1 && cat2) { const temp = cat1.order; cat1.order = cat2.order; cat2.order = temp; }
+
+  saveShoppingCategories();
+  renderShoppingPage();
+}
+
+function renameCategoryInline(catId, sectionEl) {
+  const cat = state.shoppingCategories.find(c => c.id === catId);
+  if (!cat) return;
+  const nameEl = sectionEl.querySelector('.shopping-cat-name');
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.className = 'shopping-cat-rename-input';
+  input.value = cat.name;
+  input.maxLength = 40;
+  const finish = () => {
+    const newName = input.value.trim();
+    if (newName && newName !== cat.name) { cat.name = newName; saveShoppingCategories(); }
+    renderShoppingPage();
+  };
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); input.blur(); } if (e.key === 'Escape') renderShoppingPage(); });
+  input.addEventListener('blur', finish);
+  nameEl.replaceWith(input);
+  input.focus(); input.select();
+}
+
+function renderShoppingSuggestions(filter) {
+  const suggestionsEl = document.getElementById('shopping-suggestions');
+  const norm = filter.trim().toLowerCase();
+  const matches = state.shoppingHistory.filter(h => !norm || normIngredient(h).includes(norm)).slice(0, 8);
+  if (matches.length === 0) { suggestionsEl.innerHTML = ''; return; }
+  suggestionsEl.innerHTML = matches.map(h => `<button class="shopping-suggestion-chip" type="button">${escHtml(h)}</button>`).join('');
+  suggestionsEl.querySelectorAll('.shopping-suggestion-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      addShoppingCustomItem(chip.textContent.trim());
+      document.getElementById('shopping-add-input').value = '';
+      renderShoppingSuggestions('');
+    });
+  });
+}
+
+function openShoppingCatPicker(item) {
+  shoppingPickerItem = item;
+  const list = document.getElementById('shopping-cat-picker-list');
+  const cats = [{ id: null, name: 'No category' }, ...state.shoppingCategories.slice().sort((a, b) => a.order - b.order)];
+  list.innerHTML = cats.map(cat => `
+    <div class="picker-item shopping-cat-option" data-cat-id="${cat.id || ''}">
+      <span class="picker-item-heart">${item.categoryId === cat.id ? '✓' : ' '}</span>
+      <span class="picker-item-name">${escHtml(cat.name)}</span>
+    </div>`).join('');
+  list.querySelectorAll('.shopping-cat-option').forEach(el => {
+    el.addEventListener('click', () => {
+      const catId = el.dataset.catId || null;
+      assignShoppingItemCategory(shoppingPickerItem, catId);
+      closeShoppingCatPicker();
+    });
+  });
+  const panel = document.getElementById('shopping-cat-picker');
+  const backdrop = document.getElementById('shopping-cat-picker-backdrop');
+  panel.classList.remove('hidden'); backdrop.classList.remove('hidden');
+  requestAnimationFrame(() => { panel.classList.add('open'); backdrop.classList.add('open'); });
+}
+
+function closeShoppingCatPicker() {
+  const panel = document.getElementById('shopping-cat-picker');
+  const backdrop = document.getElementById('shopping-cat-picker-backdrop');
+  panel.classList.remove('open'); backdrop.classList.remove('open');
+  panel.addEventListener('transitionend', () => { panel.classList.add('hidden'); backdrop.classList.add('hidden'); }, { once: true });
+  shoppingPickerItem = null;
+}
+
+function assignShoppingItemCategory(item, categoryId) {
+  if (item.isCustom) {
+    const ci = state.shoppingCustomItems.find(i => i.id === item.id);
+    if (ci) { ci.categoryId = categoryId; saveShoppingCustom(); }
+  } else {
+    if (!state.shoppingOverrides[item.id]) state.shoppingOverrides[item.id] = {};
+    state.shoppingOverrides[item.id].categoryId = categoryId;
+    saveShoppingOverrides();
+  }
+  const norm = normIngredient(item.text);
+  if (categoryId) { state.shoppingIngredientMap[norm] = categoryId; }
+  else { delete state.shoppingIngredientMap[norm]; }
+  saveShoppingMap();
+  renderShoppingPage();
+}
+
+function toggleShoppingAddCatRow() {
+  const row = document.getElementById('shopping-add-cat-row');
+  const btns = document.getElementById('shopping-toolbar-btns');
+  const input = document.getElementById('shopping-cat-input');
+  if (row.classList.contains('hidden')) {
+    row.classList.remove('hidden'); btns.classList.add('hidden');
+    input.value = ''; input.focus();
+  } else {
+    row.classList.add('hidden'); btns.classList.remove('hidden');
+  }
+}
+
+function createShoppingCategoryFromInput() {
+  const input = document.getElementById('shopping-cat-input');
+  addShoppingCategory(input.value);
+  document.getElementById('shopping-add-cat-row').classList.add('hidden');
+  document.getElementById('shopping-toolbar-btns').classList.remove('hidden');
+  input.value = '';
+}
+
 // ── Navigation ─────────────────────────────────────────────────────────────
 
 function navigateTo(page) {
@@ -1398,12 +1855,13 @@ function navigateTo(page) {
   } else {
     filterChips.classList.add('hidden');
     pageTitle.classList.remove('hidden');
-    const titles = { search: 'Search', favourites: 'Favourites', language: 'Language', about: 'About', 'my-recipes': 'My Recipes' };
+    const titles = { search: 'Search', favourites: 'Favourites', language: 'Language', about: 'About', 'my-recipes': 'My Recipes', shopping: 'Shopping' };
     pageTitle.textContent = titles[page] || page;
   }
 
   if (page === 'language') renderLanguagePage();
   if (page === 'my-recipes') renderMyRecipesPage();
+  if (page === 'shopping') renderShoppingPage();
 
   if (page === 'search') {
     requestAnimationFrame(() => document.getElementById('search-input').focus());
@@ -1523,6 +1981,31 @@ function init() {
   document.getElementById('crm-name').addEventListener('keydown', e => {
     if (e.key === 'Enter') { e.preventDefault(); saveCustomRecipeFromModal(); }
   });
+
+  // Shopping page
+  document.getElementById('shopping-add-cat-btn').addEventListener('click', toggleShoppingAddCatRow);
+  document.getElementById('shopping-cat-create-btn').addEventListener('click', createShoppingCategoryFromInput);
+  document.getElementById('shopping-cat-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') createShoppingCategoryFromInput();
+    if (e.key === 'Escape') toggleShoppingAddCatRow();
+  });
+  document.getElementById('shopping-clear-btn').addEventListener('click', clearShoppingList);
+  document.getElementById('shopping-add-btn').addEventListener('click', () => {
+    const input = document.getElementById('shopping-add-input');
+    addShoppingCustomItem(input.value);
+    input.value = '';
+    renderShoppingSuggestions('');
+  });
+  document.getElementById('shopping-add-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      addShoppingCustomItem(e.target.value);
+      e.target.value = '';
+      renderShoppingSuggestions('');
+    }
+  });
+  document.getElementById('shopping-add-input').addEventListener('input', e => renderShoppingSuggestions(e.target.value));
+  document.getElementById('shopping-cat-picker-close').addEventListener('click', closeShoppingCatPicker);
+  document.getElementById('shopping-cat-picker-backdrop').addEventListener('click', closeShoppingCatPicker);
 
   // Navigation
   document.getElementById('burger-btn').addEventListener('click', openDrawer);
