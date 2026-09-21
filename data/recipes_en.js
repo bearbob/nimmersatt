@@ -467,4 +467,48 @@ const RECIPES_EN = [
     "language": "en",
     "tags": ["dinner"]
   },
+  {
+    "name": "Crispy Hash Browns",
+    "link": "https://www.simplyrecipes.com/recipes/crispy_hash_browns/",
+    "image": "https://www.simplyrecipes.com/thmb/jHBpfmgtpmylm7_2bWiOER5Lmfc=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Simply-Best-Crispy-Hash-Browns-LEAD-5-423c2ec1d31d47be90c11cb841152621.jpg",
+    "time": "20min",
+    "minutes": 20,
+    "language": "en",
+    "tags": ["dinner"],
+    "ingredients": ["potatoes", "salt", "pepper", "oil"]
+  },
+  {
+    "name": "3-Ingredient Southern Sandwich",
+    "link": "https://www.simplyrecipes.com/pimento-cheese-and-tomato-sandwich-recipe-12012857",
+    "image": "https://www.simplyrecipes.com/thmb/-VETYInMI7_8cBH49NJ1wtMIB_k=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/simply-recipes-pimento-cheese-tomato-sandwich-lead-1-32c9d38fef1d4ef48f93ea2fc8872838.jpg",
+    "time": "10min",
+    "minutes": 10,
+    "language": "en",
+    "tags": ["sandwich", "dinner", "vegetarian"],
+    "ingredients": [
+      "1 large beefsteak tomato",
+      "1/2 teaspoon salt",
+      "1/4 teaspoon freshly ground black pepper",
+      "(2 tablespoons mayonnaise)"
+    ]
+  },
+  {
+    "name": "White Bean and Salami Toasts",
+    "link": "https://www.simplyrecipes.com/white-bean-and-salami-toasts-recipe-11830716",
+    "image": "https://www.simplyrecipes.com/thmb/HdBLF8TaXRO5IcOrPYM7oqUrct4=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Simply-Recipes-White-Bean-Sal-LEAD-01-1936253b638e4e0ebea0666088b3a656.jpg",
+    "time": "5min",
+    "minutes": 5,
+    "language": "en",
+    "tags": ["sandwich", "dinner", "lunch"],
+    "ingredients": [
+      "2 teaspoons extra-virgin olive oil",
+      "4 slices salami, finely chopped",
+      "2 cloves garlic, minced",
+      "1 1/2 cups (255g) drained cooked or canned white beans",
+      "Freshly ground black pepper",
+      "Dried oregano",
+      "3 tablespoons grated or shredded parmesan",
+      "2 slices sourdough or 1 long piece of baguette"
+    ]
+  }
 ];
