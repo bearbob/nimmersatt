@@ -477,7 +477,8 @@ const RECIPES = [
     "time": "3h 20min",
     "minutes": 200,
     "language": "en",
-    "ingredients": ["hähnchenbrust", "olivenöl", "paprika", "pilze", "zwiebeln", "mais", "kidneybohnen", "pintobohnen", "tomaten", "chilipulver", "knoblauch", "petersilie", "kreuzkümmel", "worcestershire sauce"],
+    "tags": ["dinner"],
+    "ingredients": ["chicken breast", "olive oil", "bell pepper", "mushrooms", "onions", "corn", "kidney beans", "pinto beans", "tomato", "ground chili", "garlic", "worcestershire sauce"],
   },
   {
     "name": "Coconut & squash dhansak",
