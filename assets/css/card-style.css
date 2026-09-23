@@ -1,0 +1,171 @@
+/* ── Cards ─────────────────────────────────────────────────────── */
+.card {
+  position: absolute;
+  inset: 0;
+  background: var(--card-bg);
+  border: var(--border-w) solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  will-change: transform;
+  transition: transform 0.3s ease;
+}
+
+.card[data-stack="0"] {
+  transform: scale(1) translateY(0);
+  z-index: 30;
+  cursor: grab;
+}
+.card[data-stack="0"]:active { cursor: grabbing; }
+.card[data-stack="1"] {
+  transform: scale(0.96) translateY(14px);
+  z-index: 20;
+  pointer-events: none;
+}
+.card[data-stack="2"] {
+  transform: scale(0.92) translateY(28px);
+  z-index: 10;
+  pointer-events: none;
+}
+.card.leaving { pointer-events: none; }
+
+/* ── Card indicators (stamp effect) ───────────────────────────── */
+.card-indicator {
+  position: absolute;
+  top: 28px;
+  z-index: 50;
+  font-size: 1rem;
+  font-weight: 900;
+  padding: 6px 14px;
+  border: 3px solid;
+  border-radius: 8px;
+  opacity: 0;
+  pointer-events: none;
+  letter-spacing: 0.04em;
+}
+.card-indicator.like {
+  left: 20px;
+  color: var(--like);
+  border-color: var(--like);
+  transform: rotate(-15deg);
+}
+.card-indicator.skip {
+  right: 20px;
+  color: var(--skip);
+  border-color: var(--skip);
+  transform: rotate(15deg);
+}
+
+/* ── Card hero ─────────────────────────────────────────────────── */
+.card-hero {
+  flex: 0 0 36%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: var(--border-w) solid var(--border);
+  font-size: 5rem;
+  line-height: 1;
+  overflow: hidden;
+}
+
+.card-hero img {
+  width: 100%;
+  align-self: stretch;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Card body ─────────────────────────────────────────────────── */
+.card-body {
+  flex: 1;
+  padding: 14px 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.card-category {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  align-self: flex-start;
+}
+
+.card-name {
+  font-size: 1.45rem;
+  font-weight: 900;
+  line-height: 1.15;
+  color: var(--text);
+}
+
+.card-subtitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  line-height: 1.3;
+  margin-top: -4px;
+}
+
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+}
+
+.card-time, .card-ingredients {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.card-ingredients {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-links {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--text);
+  text-decoration: none;
+  background: white;
+  box-shadow: 2px 2px 0 var(--border);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.card-link:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--border);
+}
+
+.card-book {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+}

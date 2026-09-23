@@ -1,4 +1,4 @@
-const CACHE = 'nimmersatt-v2.5.2';
+const CACHE = 'nimmersatt-v2.5.3';
 
 const ASSETS = [
   './',
@@ -6,6 +6,10 @@ const ASSETS = [
   './manifest.json',
   './version.js',
   './assets/css/style.css',
+  './assets/css/card-style.css',
+  './assets/css/favourites-style.css',
+  './assets/css/custom-style.css',
+  './assets/css/shopping-style.css',
   './assets/js/app.js',
   './assets/icons/icon.svg',
   './assets/icons/icon-192.svg',
