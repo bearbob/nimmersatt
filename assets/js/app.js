@@ -7,7 +7,7 @@ const FILTERS = [
   { id: 'vegetarian',  label: 'Veggy',  emoji: '🌻', color: '#127836',
     fontColor: '#fff', tags: ['vegetarian', 'vegetarisch'] },
   { id: 'sweet',  label: 'Sweet',  emoji: '🍰', color: '#ffe096',
-    fontColor: '#1A1A2E', tags: ['sweet', 'süß', 'kuchen', 'kaffee', 'cookie'] },
+    fontColor: '#1A1A2E', tags: ['sweet', 'cookie'] },
   { id: 'dinner', label: 'Dinner', emoji: '🍽️', color: '#FF6B6B',
     fontColor: '#fff', tags: ['dinner'] },
   { id: 'bread',  label: 'Bread',  emoji: '🥖', color: '#F4A261',

@@ -514,7 +514,6 @@ const RECIPES_EN = [
   {
       "language": "de",
       "name": "Paneer Tikka Masala",
-      "custom": true,
       "time": "35 min",
       "link": "https://www.aline-made.com/de/paneer-tikka-masala/#recipe",
       "image": "https://www.aline-made.com/wp-content/uploads/2023/05/Paneer-Tikka-Masala-5.jpg",
@@ -547,7 +546,6 @@ const RECIPES_EN = [
       "language": "de",
       "name": "Grünkohl-Nudeln mit Tofu & Pfeffersauce",
       "image": "https://www.eat-this.org/wp-content/uploads/2015/03/eat_this_gruenkohl-nudeln_mit_tofu_und_pfeffersauce_003-1280x854@2x.jpg",
-      "custom": true,
       "link": "https://www.eat-this.org/gruenkohl-nudeln-mit-tofu-und-pfeffersauce/#recipe",
       "tags": [
         "dinner",
@@ -562,7 +560,6 @@ const RECIPES_EN = [
     {
       "language": "en",
       "name": "Tomato Tart with Garlic & Capers",
-      "custom": true,
       "link": "https://www.alisoneroman.com/recipes/tomato-tart-with-garlic-and-capers",
       "image": "https://storage.ghost.io/c/aa/c9/aac954d7-13e7-4d9e-8784-fa2d15230fb2/content/images/size/w1200/format/avif/images-squarespace-cdn-com/content/v1/541b1515e4b0a990b33a796e/1723511614855-HXD1SR2315VVF0BE2QYE/tomato_tart_137.jpg",
       "tags": [
@@ -575,7 +572,6 @@ const RECIPES_EN = [
     {
       "language": "de",
       "name": "Pasta mit Brokkoli & Salsiccia",
-      "custom": true,
       "link": "https://www.kitchenstories.com/de/rezepte/pasta-mit-brokkoli-und-salsiccia",
       "image": "https://www.kitchenstories.com/wp-content/uploads/sites/13/2026/09/r1963-photo-final-2.jpg",
       "time": "25min",
@@ -590,7 +586,6 @@ const RECIPES_EN = [
     {
       "language": "en",
       "name": "Greek Spinach Pie",
-      "custom": true,
       "link": "https://www.themediterraneandish.com/spanakopita-recipe-greek-spinach-pie/",
       "ingredients": [
         "16 oz frozen chopped spinach",
@@ -626,48 +621,47 @@ const RECIPES_EN = [
     {
       "language": "en",
       "name": "Mediterranean Salmon with Veggies and Feta",
-      "custom": true,
+      "subtitle": "This easy Mediterranean salmon recipe is a healthy sheet pan dinner that’s ready in 20 minutes",
       "link": "https://www.themediterraneandish.com/baked-salmon-with-vegetables/",
+      "image": "https://www.themediterraneandish.com/wp-content/uploads/2025/10/Easy-Baked-Salmon-Edited-9.jpg",
+      "time": "25min",
+      "minutes": 25,
       "tags": [
         "dinner",
-        "herzhaft",
-        "pasta",
-        "nudeln",
-        "vegetarisch"
+        "fish"
       ]
     },
     {
       "language": "en",
       "name": "Stuffed Bell Pepper",
-      "custom": true,
       "link": "https://insanelygoodrecipes.com/stuffed-bell-peppers/",
+      "image": "https://insanelygoodrecipes.com/wp-content/uploads/2021/08/Stuffed-Bell-Peppers-with-Rice-and-Ground-Beef.jpg",
+      "time": "1h 20min",
+      "minutes": 80,
       "tags": [
-        "dinner",
-        "herzhaft",
-        "pasta",
-        "nudeln",
-        "vegetarisch"
+        "dinner"
       ]
     },
     {
       "language": "en",
-      "name": "Old Fashioned Beef Stew Recipe",
-      "custom": true,
+      "name": "Old Fashioned Beef Stew",
+      "subtitle": "This hearty classic is loaded with tender chunks of beef, fresh vegetables, and a rich, savory broth.",
       "link": "https://insanelygoodrecipes.com/old-fashioned-beef-stew/",
+      "image": "https://insanelygoodrecipes.com/wp-content/uploads/2022/06/Comforting-Beef-Stew-with-Vegetables-and-Bread.jpg",
+      "time": "2h 20min",
+      "minutes": 140,
       "tags": [
         "dinner",
-        "herzhaft",
-        "pasta",
-        "nudeln",
-        "vegetarisch"
+        "beef"
       ]
     },
     {
       "language": "en",
       "name": "Chlorella, basil and lemon pesto",
-      "custom": true,
       "time": "10 min",
+      "minutes": 10,
       "link": "https://www.korodrogerie.de/en/f/chlorella-pesto",
+      "image": "https://eu-central-1-shared-euc1-02.graphassets.com/cm7apu66e0fnh07vv4ymk1zk8/resize=fit:crop,height:340,width:1200/cmr0hqeqi64k306vyaoknq1to",
       "tags": [
         "dinner",
         "vegetarian",
@@ -678,8 +672,10 @@ const RECIPES_EN = [
     {
       "language": "en",
       "name": "Vegan Banana Pudding Matcha",
-      "custom": true,
       "link": "https://www.korodrogerie.de/en/f/banana-pudding-matcha-vegan",
+      "image": "https://eu-central-1-shared-euc1-02.graphassets.com/cm7apu66e0fnh07vv4ymk1zk8/resize=fit:crop,height:340,width:1200/cmobiwclqvaaf07w5vrnsdwao",
+      "time": "2h 25min",
+      "minutes": 145,
       "tags": [
         "sweet",
         "süß",
@@ -694,9 +690,11 @@ const RECIPES_EN = [
     {
       "language": "en",
       "name": "Protein Peanut Dessert",
-      "custom": true,
-      "time": "5 min",
+      "subtitle": "Creamy, nutty, chocolatey! This quick protein dessert packs 45 g of protein per serving and is ready in just 15 minutes. Grab a spoon and enjoy!",
+      "time": "20 min",
+      "minutes": 20,
       "link": "https://www.korodrogerie.de/en/f/protein-peanut-dessert",
+      "image": "https://eu-central-1-shared-euc1-02.graphassets.com/cm7apu66e0fnh07vv4ymk1zk8/resize=fit:crop,height:340,width:1200/cmnep7yfq61is07urlb3m1e0x",
       "tags": [
         "sweet",
         "süß",
@@ -708,9 +706,10 @@ const RECIPES_EN = [
     {
       "language": "en",
       "name": "Spaghetti all'assassina",
-      "custom": true,
-      "time": "5 min",
+      "time": "25 min",
+      "minutes": 25,
       "link": "https://www.korodrogerie.de/en/f/authentic-spaghetti-all-assassina",
+      "image": "https://eu-central-1-shared-euc1-02.graphassets.com/cm7apu66e0fnh07vv4ymk1zk8/resize=fit:crop,height:340,width:1200/cmmvv74mszr7f07ur8mt75fvf",
       "tags": [
         "dinner",
         "vegetarian",
@@ -721,8 +720,10 @@ const RECIPES_EN = [
     {
       "language": "en",
       "name": "Cheese-Leak-Mince Soup with Tortelloni",
-      "custom": true,
       "link": "https://www.korodrogerie.de/en/f/cheese-leak-mince-soup-with-tortelloni",
+      "image": "https://eu-central-1-shared-euc1-02.graphassets.com/cm7apu66e0fnh07vv4ymk1zk8/resize=fit:crop,height:340,width:1200/cmm3fwrsidjxg07upz93w8226",
+      "time": "30 min",
+      "minutes": 30,
       "tags": [
         "dinner",
         "vegetarian",
@@ -730,11 +731,13 @@ const RECIPES_EN = [
       ]
     },
     {
-      "language": "en",
+      "language": "de",
       "name": "Sonnenbörek",
-      "custom": true,
       "link": "https://sallys-blog.de/rezepte/sonnen-boerek-vegetarisch-ramadan",
       "video": "https://m.youtube.com/watch?v=XjzmHWmW6eA",
+      "image": "https://sallyshop.b-cdn.net/media/5e/e9/a0/1717681623/923_14109_dsc00416_blog_1.jpg?width=1920",
+      "time": "1h 15min",
+      "minutes": 75,
       "tags": [
         "vegetarian",
         "vegetarisch"
@@ -742,36 +745,38 @@ const RECIPES_EN = [
     },
     {
       "language": "en",
-      "name": "Lasagne",
-      "custom": true,
+      "name": "Lasagna",
       "time": "1h 45min",
+      "minutes": 105,
       "link": "https://www.simplyrecipes.com/recipes/lasagna/",
+      "image": "https://www.simplyrecipes.com/thmb/2uFNtHERihqUNOLlsOf1_Kv2wjo=/750x0/filters:no_upscale():max_bytes(150000):strip_icc()/Simply-Best-Homemade-Lasagna-LEAD-4-7cb54b4d2b264bb3a2b4fbdb85e90d22.jpg",
       "ingredients": [
         "2 teaspoons extra virgin olive oil",
         "1 pound ground beef chuck",
         "1/2 medium onion, diced (about 3/4 cup)",
-        "1/2 large bell pepper (green, red, or yellow), diced (about 3/4 cup)",
+        "1/2 large bell pepper",
         "2 cloves garlic, minced",
-        "1 (28-ounce)can good-quality tomato sauce",
+        "1 (28-ounce)can tomato sauce",
         "3 ounces tomato paste (half a 6-ounce can)",
         "1 (14 ounce) can crushed tomatoey",
         "2 tablespoons chopped fresh oregano, or 2 teaspoons dried oregano",
-        "1/4 cup chopped fresh parsley (preferably flat leaf), packed",
+        "1/4 cup chopped fresh parsley",
         "1 tablespoon Italian seasoning",
         "1 pinch garlic powder and/or garlic salt",
         "1 tablespoon red or white wine vinegar",
-        "1 tablespoon to 1/4 cup sugar (to taste, optional)",
+        "1 tablespoon to 1/4 cup sugar",
         "Salt"
       ],
       "tags": [
-        "dinner"
+        "dinner",
+        "pasta",
       ]
     },
     {
       "language": "en",
       "name": "Eggs Benedict",
-      "custom": true,
       "time": "30min",
+      "minutes": 30,
       "link": "https://www.simplyrecipes.com/recipes/eggs_benedict/",
       "ingredients": [
         "8 slices bacon or 4 slices Canadian bacon",
@@ -791,10 +796,13 @@ const RECIPES_EN = [
       ]
     },
     {
-      "language": "en",
+      "language": "de",
       "name": "Spinatknödel mit Parmesan",
-      "custom": true,
+      "subtitle": "Diese kleinen grünen Köstlichkeiten eignen sich perfekt für Familienessen, festliche Anlässe oder einfach als leckeres Mittagessen. Mit ihrem herzhaften Geschmack und der cremigen Konsistenz des Parmesans sind sie ein Highlight der vegetarischen Küche.",
       "link": "https://sarahkocht.de/spinatknoedel-mit-parmesan/",
+      "image": "https://sarahkocht.de/wp-content/uploads/2026/05/Spinatknoedel_mit_Parmesan_1.webp",
+      "time": "45min",
+      "minutes": 45,
       "ingredients": [
         "225 g Weißbrot vom Vortag",
         "130 ml Vollmilch",
@@ -818,10 +826,13 @@ const RECIPES_EN = [
     {
       "language": "en",
       "name": "Miso Ramen",
-      "custom": true,
       "link": "https://www.justonecookbook.com/homemade-chashu-miso-ramen/",
+      "image": "https://cdn.justonecookbook.com/spai/q_glossy+ret_img+to_auto/www.justonecookbook.com/wp-content/uploads/2025/10/Miso-Ramen-7281-II-1024x1536.jpg",
+      "time": "25min",
+      "minutes": 25,
       "tags": [
-        "dinner"
+        "dinner",
+        "pasta"
       ]
     }
 ];
