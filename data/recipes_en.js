@@ -574,23 +574,12 @@ const RECIPES_EN = [
     },
     {
       "language": "de",
-      "name": "Aprikosen-Blechkuchen mit Streuseln",
-      "custom": true,
-      "link": "https://jennyisbaking.com/de/2020/05/15/apricot-sheet-cake-just-like-from-granny/#recipe",
-      "image": "https://i0.wp.com/jennyisbaking.com/wp-1c174-content/uploads/2020/04/DSC08703.jpg",
-      "tags": [
-        "sweet",
-        "süß",
-        "kuchen",
-        "kaffee",
-        "cookie"
-      ]
-    },
-    {
-      "language": "en",
       "name": "Pasta mit Brokkoli & Salsiccia",
       "custom": true,
-      "link": "https://www.kitchenstories.com/de/rezepte/pasta-mit-brokkoli-und-salsiccia?utm_source=nimmersatt",
+      "link": "https://www.kitchenstories.com/de/rezepte/pasta-mit-brokkoli-und-salsiccia",
+      "image": "https://www.kitchenstories.com/wp-content/uploads/sites/13/2026/09/r1963-photo-final-2.jpg",
+      "time": "25min",
+      "minutes": 25,
       "tags": [
         "dinner",
         "herzhaft",
@@ -605,20 +594,20 @@ const RECIPES_EN = [
       "link": "https://www.themediterraneandish.com/spanakopita-recipe-greek-spinach-pie/",
       "ingredients": [
         "16 oz frozen chopped spinach",
-        "2 bunches flat-leaf parsley"
+        "2 bunches flat-leaf parsley",
         "1 large yellow onion",
         "2 garlic cloves",
         "2 tbsp extra virgin olive oil",
         "4 eggs",
         "10.5 oz feta cheese",
         "2 tsp dried dill weed",
-        "ground black pepper"
+        "ground black pepper",
         "1 16 oz package Fillo Dough"
       ],
       "tags": [
         "dinner",
         "herzhaft",
-        "vegetarisch"
+        "vegetarian"
       ]
     },
     {

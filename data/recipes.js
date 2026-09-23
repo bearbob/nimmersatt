@@ -1108,5 +1108,19 @@ const RECIPES = [
         "link": "https://www.malteskitchen.de/bohnensalat-kichererbsen-spitzpaprika-feta/",
         "image": "https://www.malteskitchen.de/wp-content/uploads/2018/04/bohnen-kichererbsen-salat-04-1200x680.jpg",
         "tags": ["dinner"]
-    }
+    },
+        {
+      "language": "de",
+      "name": "Aprikosen-Blechkuchen mit Streuseln",
+      "custom": true,
+      "link": "https://jennyisbaking.com/de/2020/05/15/apricot-sheet-cake-just-like-from-granny/#recipe",
+      "image": "https://i0.wp.com/jennyisbaking.com/wp-1c174-content/uploads/2020/04/DSC08703.jpg",
+      "tags": [
+        "sweet",
+        "süß",
+        "kuchen",
+        "kaffee",
+        "cookie"
+      ]
+    },
 ];
