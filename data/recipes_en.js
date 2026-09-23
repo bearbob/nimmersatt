@@ -510,5 +510,330 @@ const RECIPES_EN = [
       "3 tablespoons grated or shredded parmesan",
       "2 slices sourdough or 1 long piece of baguette"
     ]
-  }
+  },
+  {
+      "language": "de",
+      "name": "Paneer Tikka Masala",
+      "custom": true,
+      "time": "35 min",
+      "link": "https://www.aline-made.com/de/paneer-tikka-masala/#recipe",
+      "image": "https://www.aline-made.com/wp-content/uploads/2023/05/Paneer-Tikka-Masala-5.jpg",
+      "tags": [
+        "dinner",
+        "vegetarisch"
+      ],
+      "time": "35min",
+      "minutes": 35,
+      "ingredients": [
+        "2 EL Öl",
+        "400 g Paneer",
+        "4 EL Griechischer Joghurt",
+        "½ TL geräuchertes Paprikapulver",
+        "¼ TL Salz",
+        "1 Zwiebel",
+        "4 Knoblauchzehen",
+        "2 EL Ingwer, gerieben",
+        "3 EL Garam Masala",
+        "½ TL Kreuzkümmel",
+        "½ TL Koriander, gemahlen",
+        "½ TL Kurkuma",
+        "½ TL Cayennepfeffer",
+        "400 g passierte Tomaten",
+        "80 ml Sahne",
+        "1 TL Zucker",
+      ]
+    },
+    {
+      "language": "de",
+      "name": "Grünkohl-Nudeln mit Tofu & Pfeffersauce",
+      "image": "https://www.eat-this.org/wp-content/uploads/2015/03/eat_this_gruenkohl-nudeln_mit_tofu_und_pfeffersauce_003-1280x854@2x.jpg",
+      "custom": true,
+      "link": "https://www.eat-this.org/gruenkohl-nudeln-mit-tofu-und-pfeffersauce/#recipe",
+      "tags": [
+        "dinner",
+        "pasta",
+        "nudeln",
+        "vegetarisch",
+        "vegan"
+      ],
+      "time": "20min",
+      "minutes": 20
+    },
+    {
+      "language": "en",
+      "name": "Tomato Tart with Garlic & Capers",
+      "custom": true,
+      "link": "https://www.alisoneroman.com/recipes/tomato-tart-with-garlic-and-capers",
+      "image": "https://storage.ghost.io/c/aa/c9/aac954d7-13e7-4d9e-8784-fa2d15230fb2/content/images/size/w1200/format/avif/images-squarespace-cdn-com/content/v1/541b1515e4b0a990b33a796e/1723511614855-HXD1SR2315VVF0BE2QYE/tomato_tart_137.jpg",
+      "tags": [
+        "dinner",
+        "vegetarian"
+      ],
+      "time": "2h",
+      "minutes": 120
+    },
+    {
+      "language": "de",
+      "name": "Aprikosen-Blechkuchen mit Streuseln",
+      "custom": true,
+      "link": "https://jennyisbaking.com/de/2020/05/15/apricot-sheet-cake-just-like-from-granny/#recipe",
+      "image": "https://i0.wp.com/jennyisbaking.com/wp-1c174-content/uploads/2020/04/DSC08703.jpg",
+      "tags": [
+        "sweet",
+        "süß",
+        "kuchen",
+        "kaffee",
+        "cookie"
+      ]
+    },
+    {
+      "language": "en",
+      "name": "Pasta mit Brokkoli & Salsiccia",
+      "custom": true,
+      "link": "https://www.kitchenstories.com/de/rezepte/pasta-mit-brokkoli-und-salsiccia?utm_source=nimmersatt",
+      "tags": [
+        "dinner",
+        "herzhaft",
+        "pasta",
+        "nudeln"
+      ]
+    },
+    {
+      "language": "en",
+      "name": "Greek Spinach Pie",
+      "custom": true,
+      "link": "https://www.themediterraneandish.com/spanakopita-recipe-greek-spinach-pie/",
+      "ingredients": [
+        "16 oz frozen chopped spinach",
+        "2 bunches flat-leaf parsley"
+        "1 large yellow onion",
+        "2 garlic cloves",
+        "2 tbsp extra virgin olive oil",
+        "4 eggs",
+        "10.5 oz feta cheese",
+        "2 tsp dried dill weed",
+        "ground black pepper"
+        "1 16 oz package Fillo Dough"
+      ],
+      "tags": [
+        "dinner",
+        "herzhaft",
+        "vegetarisch"
+      ]
+    },
+    {
+      "language": "en",
+      "name": "Kumpir",
+      "link": "https://gastronomyc.com/recipe/kumpir/",
+      "video": "https://www.youtube.com/watch?v=wl2GnOTrl3U",
+      "image": "https://gastronomyc.com/wp-content/uploads/2025/07/20250603_192750-e1754599417539.jpg",
+      "tags": [
+        "dinner",
+        "vegetarisch"
+      ],
+      "time": "1h 10min",
+      "minutes": 70
+    },
+    {
+      "language": "en",
+      "name": "Mediterranean Salmon with Veggies and Feta",
+      "custom": true,
+      "link": "https://www.themediterraneandish.com/baked-salmon-with-vegetables/",
+      "tags": [
+        "dinner",
+        "herzhaft",
+        "pasta",
+        "nudeln",
+        "vegetarisch"
+      ]
+    },
+    {
+      "language": "en",
+      "name": "Stuffed Bell Pepper",
+      "custom": true,
+      "link": "https://insanelygoodrecipes.com/stuffed-bell-peppers/",
+      "tags": [
+        "dinner",
+        "herzhaft",
+        "pasta",
+        "nudeln",
+        "vegetarisch"
+      ]
+    },
+    {
+      "language": "en",
+      "name": "Old Fashioned Beef Stew Recipe",
+      "custom": true,
+      "link": "https://insanelygoodrecipes.com/old-fashioned-beef-stew/",
+      "tags": [
+        "dinner",
+        "herzhaft",
+        "pasta",
+        "nudeln",
+        "vegetarisch"
+      ]
+    },
+    {
+      "language": "en",
+      "name": "Chlorella, basil and lemon pesto",
+      "custom": true,
+      "time": "10 min",
+      "link": "https://www.korodrogerie.de/en/f/chlorella-pesto",
+      "tags": [
+        "dinner",
+        "vegetarian",
+        "vegetarisch",
+        "vegan"
+      ]
+    },
+    {
+      "language": "en",
+      "name": "Vegan Banana Pudding Matcha",
+      "custom": true,
+      "link": "https://www.korodrogerie.de/en/f/banana-pudding-matcha-vegan",
+      "tags": [
+        "sweet",
+        "süß",
+        "kuchen",
+        "kaffee",
+        "cookie",
+        "vegetarian",
+        "vegetarisch",
+        "vegan"
+      ]
+    },
+    {
+      "language": "en",
+      "name": "Protein Peanut Dessert",
+      "custom": true,
+      "time": "5 min",
+      "link": "https://www.korodrogerie.de/en/f/protein-peanut-dessert",
+      "tags": [
+        "sweet",
+        "süß",
+        "kuchen",
+        "kaffee",
+        "cookie"
+      ]
+    },
+    {
+      "language": "en",
+      "name": "Spaghetti all'assassina",
+      "custom": true,
+      "time": "5 min",
+      "link": "https://www.korodrogerie.de/en/f/authentic-spaghetti-all-assassina",
+      "tags": [
+        "dinner",
+        "vegetarian",
+        "vegetarisch",
+        "vegan"
+      ]
+    },
+    {
+      "language": "en",
+      "name": "Cheese-Leak-Mince Soup with Tortelloni",
+      "custom": true,
+      "link": "https://www.korodrogerie.de/en/f/cheese-leak-mince-soup-with-tortelloni",
+      "tags": [
+        "dinner",
+        "vegetarian",
+        "vegetarisch"
+      ]
+    },
+    {
+      "language": "en",
+      "name": "Sonnenbörek",
+      "custom": true,
+      "link": "https://sallys-blog.de/rezepte/sonnen-boerek-vegetarisch-ramadan",
+      "video": "https://m.youtube.com/watch?v=XjzmHWmW6eA",
+      "tags": [
+        "vegetarian",
+        "vegetarisch"
+      ]
+    },
+    {
+      "language": "en",
+      "name": "Lasagne",
+      "custom": true,
+      "time": "1h 45min",
+      "link": "https://www.simplyrecipes.com/recipes/lasagna/",
+      "ingredients": [
+        "2 teaspoons extra virgin olive oil",
+        "1 pound ground beef chuck",
+        "1/2 medium onion, diced (about 3/4 cup)",
+        "1/2 large bell pepper (green, red, or yellow), diced (about 3/4 cup)",
+        "2 cloves garlic, minced",
+        "1 (28-ounce)can good-quality tomato sauce",
+        "3 ounces tomato paste (half a 6-ounce can)",
+        "1 (14 ounce) can crushed tomatoey",
+        "2 tablespoons chopped fresh oregano, or 2 teaspoons dried oregano",
+        "1/4 cup chopped fresh parsley (preferably flat leaf), packed",
+        "1 tablespoon Italian seasoning",
+        "1 pinch garlic powder and/or garlic salt",
+        "1 tablespoon red or white wine vinegar",
+        "1 tablespoon to 1/4 cup sugar (to taste, optional)",
+        "Salt"
+      ],
+      "tags": [
+        "dinner"
+      ]
+    },
+    {
+      "language": "en",
+      "name": "Eggs Benedict",
+      "custom": true,
+      "time": "30min",
+      "link": "https://www.simplyrecipes.com/recipes/eggs_benedict/",
+      "ingredients": [
+        "8 slices bacon or 4 slices Canadian bacon",
+        "4 large eggs",
+        "2 teaspoons white or rice vinegar",
+        "2 English muffins",
+        "Butter",
+        "2 tablespoons chopped parsley, for garnish",
+        "10 tablespoons unsalted butter (if using salted butter, omit the added salt)",
+        "3 large egg yolks",
+        "1 tablespoon lemon juice",
+        "1/2 teaspoon kosher salt",
+        "Dash cayenne or Tabasco sauce"
+      ],
+      "tags": [
+        "dinner"
+      ]
+    },
+    {
+      "language": "en",
+      "name": "Spinatknödel mit Parmesan",
+      "custom": true,
+      "link": "https://sarahkocht.de/spinatknoedel-mit-parmesan/",
+      "ingredients": [
+        "225 g Weißbrot vom Vortag",
+        "130 ml Vollmilch",
+        "300 g gehackter TK-Spinat",
+        "2 kleine Zwiebeln",
+        "2 EL Butter",
+        "1 Knoblauchzehe",
+        "2 Eier",
+        "Salz",
+        "Pfeffer",
+        "1 Msp. frisch geriebene Muskatnuss",
+        "4 EL Mehl",
+        "75 g frisch geriebener Parmesan"
+      ],
+      "tags": [
+        "vegetarian",
+        "vegetarisch",
+        "dinner"
+      ]
+    },
+    {
+      "language": "en",
+      "name": "Miso Ramen",
+      "custom": true,
+      "link": "https://www.justonecookbook.com/homemade-chashu-miso-ramen/",
+      "tags": [
+        "dinner"
+      ]
+    }
 ];
+
