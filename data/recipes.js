@@ -21,7 +21,18 @@ const RECIPES = [
       "id": "jamies5zutaten",
       "page": 50,
     },
-    "tags": ["dinner", "herzhaft"]
+    "link": "https://www.elle.de/rezept-gruene-spaghetti-jamie-oliver",
+    "image": "https://static.elle.de/0x107:1024x683/1920x1080/images/2021-01/gettyimages-957755816-kopie.jpg",
+    "tags": ["dinner", "pasta", "vegetarian"],
+    "time": "25min",
+    "minutes": 25,
+    "ingredients": [
+      "150 g Spaghetti",
+      "4 Knoblauchzehen",
+      "200 g Schwarzkohl",
+      "30 g geriebener Parmesan",
+      "30 g Ricotta"
+    ]
   },
   {
     "name": "Blitzschnelle Bratwurst-Carbonara",
@@ -32,15 +43,34 @@ const RECIPES = [
     "link": "https://www.tastesheriff.com/blitzschnelle-bratwurst-carbonara-aus-jamies-5-zutaten-kueche/",
     "image": "https://www.tastesheriff.com/wp-content/uploads/2017/12/wuerstchen_carbonara_jamie-8.jpg",
     "ingredients": ["Tagliatelle", "Bratwurst", "glatte petersilie", "ei", "parmesan", "olivenöl", "pfeffer", "salz"],
-    "tags": ["dinner", "herzhaft"]
+    "tags": ["dinner", "pasta"]
   },
   {
-    "name": "Pasta mit Hackfleisch und Steinpilzen",
+    "name": "Steinpilz-Pasta",
     "book": {
       "id": "jamies5zutaten",
       "page": 68,
     },
-    "tags": ["dinner", "herzhaft"]
+    "link": "https://feiertaeglich.de/15-minuten-spinat-pilz-pasta-rezept/",
+    "image": "https://feiertaeglich.de/wp-content/uploads/2022/11/feiertaeglich_PilzSpinatPasta-3-1024x1536.jpg",
+    "time": "15min",
+    "minutes": 15,
+    "tags": ["dinner", "pasta"],
+    "ingredients": [
+      "250 g Penne",
+      "1 EL Butterschmalz oder Pflanzen-Öl",
+      "1 Knoblauchzehe",
+      "1 kleine Zwiebel",
+      "gemahlene Muskatnuss",
+      "450 g Blattspinat, gefroren",
+      "500 g Champignon",
+      "1 TL Weissweinessig",
+      "250 ml Hafersahne (oder normale Sahne)",
+      "150 g Pecorino",
+      "Petersilie (optional)",
+      "Meersalz",
+      "frisch gemahlener Pfeffer"
+    ]
   },
   {
     "name": "Koreanischer Eierreis",
@@ -58,6 +88,10 @@ const RECIPES = [
       "id": "jamies5zutaten",
       "page": 92,
     },
+    "link": "https://gulasch-app.de/kochbuch/cheddar-frittata-mit-pilzen-und-speck/",
+    "image": "https://images.gulas.cz/recipes/150-frittata-houbami-hrudnikem.webp",
+    "minutes": 26,
+    "time": "26min",
     "tags": ["dinner", "herzhaft"]
   },
   {
@@ -74,6 +108,8 @@ const RECIPES = [
       "id": "jamies5zutaten",
       "page": 130,
     },
+    "image": "https://www.gourmetguerilla.de/wp-content/uploads/2018/03/Schnelle-Asia-Fischfrikadellen-nach-Jamie-Oliver-GourmetGuerilla.de-9860-2-1250x1200.jpg",
+    "link": "https://www.gourmetguerilla.de/meine-date-mit-jamie-oliver-das-rezept-fuer-seine-schnellen-asia-fischfrikadellen-aus-nur-5-zutaten/",
     "tags": ["dinner", "herzhaft"]
   },
   {
@@ -305,7 +341,9 @@ const RECIPES = [
     "tags": ["sweet", "süß", "kuchen", "kaffee"],
   },
   {
-    "name": "Quarkeierkuchen",
+    "name": "Pfannkuchen",
+    "link": "https://emmikochteinfach.de/pfannkuchen-rezept-einfaches-grundrezept/",
+    "image": "https://emmikochteinfach.de/wp-content/uploads/2022/03/Klassische-Pfannkuchen-Rezept-Grundrezept-1.webp",
     "tags": ["dinner", "sweet"],
   },
   {
@@ -1035,7 +1073,7 @@ const RECIPES = [
         "name": "Bohnenpfanne mit Tofu",
         "language": "de",
         "link": "https://www.ndr.de/ratgeber/kochen/rezepte/bohnenpfanne-mit-tofu,bohnenpfanne-100.html",
-        "image": "https://images.ndr.de/image/271e096c-ee42-4236-ae73-7c990377d49b/AAABnBpSK7k/AAABnSSvrFg/16x9-big/bohnenpfanne-102.webp",
+        "image": "https://images.ndr.de/image/271e096c-ee42-4236-ae73-7c990377d49b/AAABnBpSK7k/AAABnSSvrFg/16x9-big/bohnenpfanne-102.webp?width=1920",
         "tags": ["dinner"]
     }, {
         "name": "Apfel-Schmand-Torte",
