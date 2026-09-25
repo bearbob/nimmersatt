@@ -39,6 +39,8 @@ const state = {
   shoppingCustomItems: [],    // [{ id, text, checked, categoryId, order }]
   shoppingIngredientMap: {},  // { normalizedText: categoryId }
   shoppingHistory: [],        // [string] up to 20 unique items
+  recipeEmojis: {},           // { [recipeKey]: emoji }
+  recipeNotes: {},            // { [recipeKey]: note }
 };
 
 let currentFavView = 'overview'; // 'overview' | 'detail'
@@ -54,6 +56,7 @@ function loadStorage() {
   loadCustomRecipes();
   loadCustomInMatch();
   loadShopping();
+  loadRecipeAnnotations();
 
   try {
     const list = JSON.parse(localStorage.getItem('nimmersatt_list') || '[]');
@@ -166,6 +169,19 @@ function saveShoppingMap() {
 }
 function saveShoppingHistory() {
   localStorage.setItem('nimmersatt_shopping_history', JSON.stringify(state.shoppingHistory));
+}
+
+function loadRecipeAnnotations() {
+  try { state.recipeEmojis = JSON.parse(localStorage.getItem('nimmersatt_recipe_emojis') || '{}'); }
+  catch (_) { state.recipeEmojis = {}; }
+  try { state.recipeNotes = JSON.parse(localStorage.getItem('nimmersatt_recipe_notes') || '{}'); }
+  catch (_) { state.recipeNotes = {}; }
+}
+function saveRecipeEmojis() {
+  localStorage.setItem('nimmersatt_recipe_emojis', JSON.stringify(state.recipeEmojis));
+}
+function saveRecipeNotes() {
+  localStorage.setItem('nimmersatt_recipe_notes', JSON.stringify(state.recipeNotes));
 }
 
 // ── Favourite list CRUD ────────────────────────────────────────────────────
@@ -311,6 +327,13 @@ function getEmoji(recipe) {
 
 function recipeKey(recipe) { return recipe.name; }
 
+function getDisplayEmoji(recipe) {
+  return state.recipeEmojis[recipeKey(recipe)] || getEmoji(recipe);
+}
+function getUserNote(recipe) {
+  return state.recipeNotes[recipeKey(recipe)] || '';
+}
+
 function escHtml(str) {
   return String(str)
     .replace(/&/g, '&amp;')
@@ -324,6 +347,10 @@ function escHtml(str) {
 function createCardEl(recipe) {
   const cat = getCategory(recipe);
   const emoji = getEmoji(recipe);
+  const key = recipeKey(recipe);
+  const customEmoji = state.recipeEmojis[key] || '🫥';
+  const userNote = state.recipeNotes[key] || '';
+  const hasNote = !!userNote;
 
   let linksHtml = '';
   if (recipe.link) {
@@ -344,11 +371,16 @@ function createCardEl(recipe) {
     <div class="card-indicator skip">✕ SKIP</div>
     <div class="card-hero" style="${recipe.image ? '' : `background:${cat.color}30;`}">${recipe.image ? `<img src="${escHtml(recipe.image)}" alt="" onerror="this.parentElement.style.background='${cat.color}30';this.replaceWith(document.createTextNode('${emoji}'));">` : emoji}</div>
     <div class="card-body">
+      <div class="card-body-actions">
+        <button class="card-emoji-btn" aria-label="Set emoji">${escHtml(customEmoji)}</button>
+        <button class="card-note-btn${hasNote ? ' has-note' : ''}" aria-label="${hasNote ? 'Edit note' : 'Add note'}">Note</button>
+      </div>
       <div class="card-category" style="background:${cat.color};color:${cat.fontColor};">
         ${cat.emoji} ${cat.label}
       </div>
       <h2 class="card-name">${escHtml(recipe.name)}</h2>
       ${recipe.subtitle ? `<p class="card-subtitle">${escHtml(recipe.subtitle)}</p>` : ''}
+      ${userNote ? `<p class="card-user-note">${escHtml(userNote)}</p>` : ''}
       <div class="card-meta">
         ${recipe.time ? `<span class="card-time">⏱ ${escHtml(recipe.time)}</span>` : ''}
         ${ingredients ? `<span class="card-ingredients">🛒 ${escHtml(ingredients)}</span>` : ''}
@@ -361,6 +393,13 @@ function createCardEl(recipe) {
   card.querySelectorAll('a').forEach(a => {
     a.addEventListener('pointerdown', e => e.stopPropagation());
   });
+  const emojiBtn = card.querySelector('.card-emoji-btn');
+  const noteBtn = card.querySelector('.card-note-btn');
+  [emojiBtn, noteBtn].forEach(btn => {
+    btn.addEventListener('pointerdown', e => e.stopPropagation());
+  });
+  emojiBtn.addEventListener('click', () => openEmojiModal(recipe));
+  noteBtn.addEventListener('click', () => openNoteModal(recipe));
   return card;
 }
 
@@ -560,11 +599,10 @@ function initSwipeToDelete(itemEl, onDelete, onTap) {
 
 function openRecipeDetail(recipe) {
   const cat = getCategory(recipe);
-  const emoji = getEmoji(recipe);
 
   const heroEl = document.getElementById('recipe-detail-hero');
   heroEl.style.background = `${cat.color}30`;
-  document.getElementById('recipe-detail-emoji').textContent = emoji;
+  document.getElementById('recipe-detail-emoji').textContent = getDisplayEmoji(recipe);
 
   const catEl = document.getElementById('recipe-detail-category');
   catEl.textContent = `${cat.emoji} ${cat.label}`;
@@ -579,6 +617,15 @@ function openRecipeDetail(recipe) {
     subtitleEl.classList.remove('hidden');
   } else {
     subtitleEl.classList.add('hidden');
+  }
+
+  const noteEl = document.getElementById('recipe-detail-note');
+  const userNote = getUserNote(recipe);
+  if (userNote) {
+    noteEl.textContent = userNote;
+    noteEl.classList.remove('hidden');
+  } else {
+    noteEl.classList.add('hidden');
   }
 
   const timeEl = document.getElementById('recipe-detail-time');
@@ -890,10 +937,11 @@ function renderFavDetail() {
     const item = document.createElement('div');
     item.className = 'fav-detail-item';
     item.innerHTML = `
-      <div class="fav-detail-item-emoji" style="background:${cat.color}25;">${getEmoji(recipe)}</div>
+      <div class="fav-detail-item-emoji" style="background:${cat.color}25;">${getDisplayEmoji(recipe)}</div>
       <div class="fav-detail-item-info">
         <div class="fav-detail-item-name">${escHtml(recipe.name)}</div>
         ${sub ? `<div class="fav-detail-item-sub">${escHtml(sub)}</div>` : ''}
+        ${getUserNote(recipe) ? `<div class="fav-detail-item-note">${escHtml(getUserNote(recipe))}</div>` : ''}
         ${linkHtml}
       </div>
       <span class="fav-delete-hint">← Swipe to delete</span>`;
@@ -1841,6 +1889,96 @@ function createShoppingCategoryFromInput() {
   input.value = '';
 }
 
+// ── Recipe emoji modal ─────────────────────────────────────────────────────
+
+let emojiTargetRecipe = null;
+
+function openEmojiModal(recipe) {
+  emojiTargetRecipe = recipe;
+  const key = recipeKey(recipe);
+  document.getElementById('emoji-modal-name').textContent =
+    recipe.name.length > 30 ? recipe.name.slice(0, 28) + '…' : recipe.name;
+  const input = document.getElementById('emoji-modal-input');
+  input.value = state.recipeEmojis[key] || '';
+  const panel = document.getElementById('emoji-modal');
+  const backdrop = document.getElementById('emoji-modal-backdrop');
+  panel.classList.remove('hidden'); backdrop.classList.remove('hidden');
+  requestAnimationFrame(() => { panel.classList.add('open'); backdrop.classList.add('open'); });
+  setTimeout(() => input.focus(), 350);
+}
+
+function closeEmojiModal() {
+  const panel = document.getElementById('emoji-modal');
+  const backdrop = document.getElementById('emoji-modal-backdrop');
+  panel.classList.remove('open'); backdrop.classList.remove('open');
+  panel.addEventListener('transitionend', () => {
+    panel.classList.add('hidden'); backdrop.classList.add('hidden');
+  }, { once: true });
+  emojiTargetRecipe = null;
+}
+
+function saveEmojiFromModal() {
+  if (!emojiTargetRecipe) return;
+  const input = document.getElementById('emoji-modal-input');
+  const value = input.value.trim();
+  const key = recipeKey(emojiTargetRecipe);
+  if (value) {
+    let emoji = value;
+    if (typeof Intl !== 'undefined' && Intl.Segmenter) {
+      emoji = [...new Intl.Segmenter().segment(value)][0]?.segment || value;
+    } else {
+      emoji = [...value][0] || value;
+    }
+    state.recipeEmojis[key] = emoji;
+  } else {
+    delete state.recipeEmojis[key];
+  }
+  saveRecipeEmojis();
+  closeEmojiModal();
+  renderDeck();
+}
+
+// ── Recipe note modal ──────────────────────────────────────────────────────
+
+let noteTargetRecipe = null;
+
+function openNoteModal(recipe) {
+  noteTargetRecipe = recipe;
+  const key = recipeKey(recipe);
+  document.getElementById('note-modal-name').textContent =
+    recipe.name.length > 30 ? recipe.name.slice(0, 28) + '…' : recipe.name;
+  document.getElementById('note-modal-textarea').value = state.recipeNotes[key] || '';
+  const panel = document.getElementById('note-modal');
+  const backdrop = document.getElementById('note-modal-backdrop');
+  panel.classList.remove('hidden'); backdrop.classList.remove('hidden');
+  requestAnimationFrame(() => { panel.classList.add('open'); backdrop.classList.add('open'); });
+  setTimeout(() => document.getElementById('note-modal-textarea').focus(), 350);
+}
+
+function closeNoteModal() {
+  const panel = document.getElementById('note-modal');
+  const backdrop = document.getElementById('note-modal-backdrop');
+  panel.classList.remove('open'); backdrop.classList.remove('open');
+  panel.addEventListener('transitionend', () => {
+    panel.classList.add('hidden'); backdrop.classList.add('hidden');
+  }, { once: true });
+  noteTargetRecipe = null;
+}
+
+function saveNoteFromModal() {
+  if (!noteTargetRecipe) return;
+  const value = document.getElementById('note-modal-textarea').value.trim();
+  const key = recipeKey(noteTargetRecipe);
+  if (value) {
+    state.recipeNotes[key] = value;
+  } else {
+    delete state.recipeNotes[key];
+  }
+  saveRecipeNotes();
+  closeNoteModal();
+  renderDeck();
+}
+
 // ── Navigation ─────────────────────────────────────────────────────────────
 
 function navigateTo(page) {
@@ -1980,6 +2118,27 @@ function init() {
   document.getElementById('crm-save-btn').addEventListener('click', saveCustomRecipeFromModal);
   document.getElementById('crm-name').addEventListener('keydown', e => {
     if (e.key === 'Enter') { e.preventDefault(); saveCustomRecipeFromModal(); }
+  });
+
+  // Emoji modal
+  document.getElementById('emoji-modal-backdrop').addEventListener('click', closeEmojiModal);
+  document.getElementById('emoji-modal-close').addEventListener('click', closeEmojiModal);
+  document.getElementById('emoji-modal-clear').addEventListener('click', () => {
+    document.getElementById('emoji-modal-input').value = '';
+  });
+  document.getElementById('emoji-modal-save').addEventListener('click', saveEmojiFromModal);
+  document.getElementById('emoji-modal-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') { e.preventDefault(); saveEmojiFromModal(); }
+    if (e.key === 'Escape') closeEmojiModal();
+  });
+
+  // Note modal
+  document.getElementById('note-modal-backdrop').addEventListener('click', closeNoteModal);
+  document.getElementById('note-modal-close').addEventListener('click', closeNoteModal);
+  document.getElementById('note-modal-cancel').addEventListener('click', closeNoteModal);
+  document.getElementById('note-modal-save').addEventListener('click', saveNoteFromModal);
+  document.getElementById('note-modal-textarea').addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeNoteModal();
   });
 
   // Shopping page

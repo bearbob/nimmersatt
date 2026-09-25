@@ -319,6 +319,7 @@
       <div id="recipe-detail-category"></div>
       <h2 id="recipe-detail-name"></h2>
       <p id="recipe-detail-subtitle" class="hidden"></p>
+      <p id="recipe-detail-note" class="recipe-detail-note hidden"></p>
       <div id="recipe-detail-meta">
         <span id="recipe-detail-time" class="hidden"></span>
         <span id="recipe-detail-ingredients" class="hidden"></span>
@@ -404,6 +405,49 @@
       </button>
     </div>
     <div id="shopping-cat-picker-list"></div>
+  </div>
+
+  <!-- Emoji modal -->
+  <div id="emoji-modal-backdrop" class="hidden"></div>
+  <div id="emoji-modal" role="dialog" aria-modal="true" aria-label="Set emoji" class="hidden">
+    <div id="emoji-modal-header">
+      <h3 id="emoji-modal-name"></h3>
+      <button id="emoji-modal-close" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div id="emoji-modal-body">
+      <p class="emoji-modal-hint">Tap the field below, then open your emoji keyboard to pick a custom emoji for this recipe.</p>
+      <input type="text" id="emoji-modal-input" inputmode="text" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" placeholder="🫥" maxlength="10">
+    </div>
+    <div id="emoji-modal-footer">
+      <button id="emoji-modal-clear">Remove</button>
+      <button id="emoji-modal-save">Save</button>
+    </div>
+  </div>
+
+  <!-- Note modal -->
+  <div id="note-modal-backdrop" class="hidden"></div>
+  <div id="note-modal" role="dialog" aria-modal="true" aria-label="Recipe note" class="hidden">
+    <div id="note-modal-header">
+      <h3 id="note-modal-name"></h3>
+      <button id="note-modal-close" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div id="note-modal-body">
+      <textarea id="note-modal-textarea" placeholder="Add your personal note about this recipe…" rows="4" maxlength="500"></textarea>
+    </div>
+    <div id="note-modal-footer">
+      <button id="note-modal-cancel">Cancel</button>
+      <button id="note-modal-save">Save</button>
+    </div>
   </div>
 
   <script src="version.js"></script>
