@@ -923,7 +923,27 @@ const RECIPES = [
         "link": "https://www.kitchenstories.com/de/rezepte/knusprige-vegane-dumplings-aus-reispapier",
         "ingredients": ["Reispapier", "Tofu Natur", "Karotte", "Champignons", "Ingwer", "Knoblauch", "Sesamöl", "Sojasauce", "Salz", "Pfeffer", "Geröstete Chili in Öl"],
         "tags": ["dinner", "vegetarisch", "vegan"]
-    }, {
+    }, 
+    {
+        "name": "Lazy Dumplings aus der Pfanne",
+        "language": "de",
+        "minutes": 20,
+        "link": "https://www.kitchenstories.com/lazy-dumplings/144577",
+        "image": "https://www.kitchenstories.com/wp-content/uploads/sites/13/2026/07/lazy-dumplings-ks.png",
+        "ingredients": [
+          "1 Frühlingszwiebel",
+          "15 g Ingwer",
+          "1 Knoblauchzehe",
+          "400 g Putenhackfleisch",
+          "2 EL Sojasoße",
+          "1-2 EL neutrales Öl",
+          "16 Wan-Tan-Blätter",
+          "80 ml Wasser",
+          "1 TL Sesam"  
+        ],
+        "tags": ["dinner"]
+    },
+    {
         "name": "Orecchiette mit Mais, Speck und wachsweichen Eiern",
         "language": "de",
         "time": "35  min",
