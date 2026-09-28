@@ -306,6 +306,7 @@ const RECIPES_EN = [
     "tags": ["bread", "bbq", "vegan", "vegetarian"],
     "ingredients": ["flour", "yeast", "honey", "salt", "water", "olive oil", "rosemary", "flaky salt"],
     "language": "en",
+    "minutes": 900,
   },
   {
     "name": "Focaccia Pizza with crushed San Marzanos & Mozarella",
@@ -314,6 +315,7 @@ const RECIPES_EN = [
     "tags": ["bread", "pizza", "dinner"],
     "ingredients": ["flour", "yeast", "honey", "salt", "water", "olive oil", "rosemary", "flaky salt", "tomatoes", "mozzarella", "garlic", "basil", "balsamic vinegar", "pepper", "cheese"],
     "language": "en",
+    "minutes": 300,
   },
   {
     "name": "Pizza fritte duo",
@@ -321,6 +323,7 @@ const RECIPES_EN = [
     "image": "https://asset.jamieoliver.com/images/cq7w2e71/production/5a7331e7cae43d5f6debb560235ef68e6ba3c3e7-1333x2000.jpg",
     "tags": ["dinner"],
     "language": "en",
+    "minutes": 20,
   },
   {
     "name": "Mexican-style pizza",
@@ -329,13 +332,25 @@ const RECIPES_EN = [
     "image": "https://asset.jamieoliver.com/images/cq7w2e71/production/8c1b54c301d4c14a4ffefc970bd0fe98b264f935-1600x2000.jpg",
     "tags": ["dinner"],
     "language": "en",
+    "minutes": 135,
   },
   {
     "name": "Quick folded pan pizza",
     "link": "https://www.jamieoliver.com/recipes/pizza/quick-folded-pan-pizza/",
     "image": "https://asset.jamieoliver.com/images/cq7w2e71/production/196de3942cfdd47d9544660044ddc1553768cd19-853x1279.jpg",
-    "tags": ["dinner"],
+    "tags": ["dinner", "pizza"],
+    "minutes": 20,
     "language": "en",
+    "ingredients": [
+      "1 courgette",
+      "6 olives, stone in",
+      "4 tbsp tomato passata",
+      "1 tbsp red or green pesto",
+      "400g self-raising flour, plus extra for dusting",
+      "120g mixed grated mozzarella and Cheddar cheese",
+      "1 round lettuce",
+      "optional: olive oil and balsamic vinegar"
+    ]
   },
   {
     "name": "Traybaked pesto pizza pie",
@@ -344,6 +359,7 @@ const RECIPES_EN = [
     "image": "https://asset.jamieoliver.com/images/cq7w2e71/production/0bac3f8822e75026e962fa3907a753022f4556e6-959x1280.jpg",
     "tags": ["dinner"],
     "language": "en",
+    "minutes": 45,
   },
   {
     "name": "Bolognese sauce",
@@ -352,6 +368,7 @@ const RECIPES_EN = [
     "image": "https://asset.jamieoliver.com/images/cq7w2e71/production/9c4752056c95d188825c27b0f35e3e7d2f44e97f-958x1280.jpg",
     "tags": ["dinner"],
     "language": "en",
+    "minutes": 75,
   },
   {
     "name": "Omlette with spinach",
@@ -359,7 +376,7 @@ const RECIPES_EN = [
     "image": "https://ichef.bbci.co.uk/food/ic/food_16x9_1600/recipes/theperfectomelette_86680_16x9.jpg",
     "tags": ["vegetarian"],
     "time": "30 min",
-"minutes": 30 ,
+    "minutes": 30 ,
     "ingredients": ["eggs", "butter", "spinach", "cheddar", "salt", "pepper"],
     "language": "en",
   },

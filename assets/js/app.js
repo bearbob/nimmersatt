@@ -342,6 +342,16 @@ function escHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
+function getTime(recipe) {
+  if (recipe.time) return recipe.time;
+  if (recipe.minutes) {
+    const hours = Math.floor(recipe.minutes / 60);
+    const minutes =recipe.minutes % 60;
+    return hours + 'h ' + minutes + 'min';
+  }
+  return '';
+}
+
 // ── Card creation ──────────────────────────────────────────────────────────
 
 function createCardEl(recipe) {
@@ -364,6 +374,8 @@ function createCardEl(recipe) {
     ? recipe.ingredients.join(', ')
     : '';
 
+  const time = getTime(recipe);
+
   const card = document.createElement('div');
   card.className = 'card';
   card.innerHTML = `
@@ -382,7 +394,7 @@ function createCardEl(recipe) {
       ${recipe.subtitle ? `<p class="card-subtitle">${escHtml(recipe.subtitle)}</p>` : ''}
       ${userNote ? `<p class="card-user-note">${escHtml(userNote)}</p>` : ''}
       <div class="card-meta">
-        ${recipe.time ? `<span class="card-time">⏱ ${escHtml(recipe.time)}</span>` : ''}
+        ${time ? `<span class="card-time">⏱ ${escHtml(time)}</span>` : ''}
         ${ingredients ? `<span class="card-ingredients">🛒 ${escHtml(ingredients)}</span>` : ''}
       </div>
       ${linksHtml ? `<div class="card-links">${linksHtml}</div>` : ''}
