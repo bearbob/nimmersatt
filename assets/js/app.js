@@ -347,7 +347,9 @@ function getTime(recipe) {
   if (recipe.minutes) {
     const hours = Math.floor(recipe.minutes / 60);
     const minutes =recipe.minutes % 60;
-    return hours + 'h ' + minutes + 'min';
+    return '' 
+    + (hours > 0 ? hours + 'h ' : '') 
+    + (minutes > 0 ? minutes + 'min' : '');
   }
   return '';
 }
