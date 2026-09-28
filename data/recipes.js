@@ -887,7 +887,7 @@ const RECIPES = [
         "name": "Cream of Celery Soup",
         "language": "en",
         "time": "40 min",
-"minutes": 40,
+        "minutes": 40,
         "link": "https://www.tasteofhome.com/recipes/cream-of-celery-soup/",
         "image": "https://www.tasteofhome.com/wp-content/uploads/2018/01/Cream-of-Celery-Soup_EXPS_FT21_28681_F_1105_1.jpg",
         "tags": ["dinner", "vegetarian"]
@@ -908,16 +908,33 @@ const RECIPES = [
         "language": "de",
         "link": "https://www.kitchenstories.com/de/rezepte/bagel-mit-lachsfilet-und-erbsen-hummus",
         "image": "https://www.kitchenstories.com/wp-content/uploads/sites/13/2026/09/r1212-photo-final.jpg",
-        "tags": ["dinner"]
+        "tags": ["dinner"],
+        "minutes": 40
     }, {
         "name": "Ofenbohnen mit Tomaten und Toast",
         "language": "de",
         "link": "https://www.kitchenstories.com/de/rezepte/weisse-bohnen-aus-dem-ofen-mit-tomaten-und-toast",
         "image": "https://www.kitchenstories.com/wp-content/uploads/sites/13/2026/09/r2626-photo-final-3.jpg",
-        "tags": ["dinner", "vegetarisch"]
+        "tags": ["dinner", "vegetarisch"],
+        "minutes": 50,
+        "ingredients": [
+          "250 g weiße Bohnen aus der Dose",
+          "200 g Kirschtomaten",
+          "2 Zehen Knoblauch",
+          "1 Zwiebel",
+          "0.5 TL Chiliflocken",
+          "0.5 TL Zucker",
+          "4 EL Olivenöl",
+          "1 TL Apfelessig",
+          "5 Scheiben Brote",
+          "Salz",
+          "Pfeffer",
+          "Basilikum"
+        ]
     }, {
         "name": "Knusprige vegane Dumplings aus Reispapier",
         "language": "de",
+        "icon": "🥟",
         "time": "40  min",
 "minutes": 40 ,
         "link": "https://www.kitchenstories.com/de/rezepte/knusprige-vegane-dumplings-aus-reispapier",
