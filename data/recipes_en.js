@@ -834,6 +834,53 @@ const RECIPES_EN = [
         "dinner",
         "pasta"
       ]
+    },
+    {
+      "name": "Piadina Romagnola (Italian Flatbread)",
+      "language": "en",
+      "link": "https://www.recipesfromitaly.com/piadina-recipe-italian-flatbread/",
+      "image": "https://www.recipesfromitaly.com/wp-content/uploads/2025/06/piadina-with-tomato-and-mozzarella-1200px.jpg",
+      "time": "1h 5min",
+      "minutes": 65,
+      "tags": [
+        "vegetarian",
+        "vegetarisch",
+        "dinner"
+      ],
+      "ingredients": [
+        "500 g (3 ⅓ cups) all purpose flour",
+        "80 ml (about ⅓ cup), extra virgin olive oil or 80 g (about ⅓ cup) lard",
+        "1 teaspoon salt",
+        "⅓ teaspoon baking soda"
+      ]
+    },
+    {
+      "name": "Spinach and Ricotta Cannelloni",
+      "language": "en",
+      "time": "1h 15min",
+      "minutes": 75,
+      "link": "https://www.insidetherustickitchen.com/spinach-and-ricotta-cannelloni/",
+      "image": "https://www.insidetherustickitchen.com/wp-content/uploads/2018/02/spianch-and-ricotta-cannelloni-fina-2740x1110-inside-the-rustic-kitchen.jpg",
+      "tags": [
+        "vegetarian",
+        "dinner",
+        "pasta"
+      ],
+      "ingredients": [
+        "1 shallot",
+        "2 garlic cloves",
+        "3 1/2 cups (700g) passata/pureed tomatoes",
+        "1 small bunch basil",
+        "1/2 tbsp olive oil",
+        "12.3 oz (350g) ricotta cheese",
+        "8.8 oz (250g) raw fresh spinach",
+        "1 egg",
+        "3 tbsp parmesan, grated",
+        "1 pinch of nutmeg",
+        "salt and pepper",
+        "12 cannelloni pasta tubes",
+        "4.4 oz (125g) ball of mozzarella",
+      ]
     }
 ];
 
