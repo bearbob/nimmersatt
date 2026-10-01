@@ -898,6 +898,46 @@ const RECIPES_EN = [
         "12 cannelloni pasta tubes",
         "4.4 oz (125g) ball of mozzarella",
       ]
+    },
+    {
+      "name": "Dinner Rolls",
+      "subtitle": "These homemade Dinner Rolls are fluffy, buttery, and pillowy-soft. It’s impossible to eat just one! Serve them with family meals, Sunday supper, and holiday feasts.",
+      "language": "en",
+      "minutes": 140,
+      "link": "https://preppykitchen.com/dinner-rolls/",
+      "image": "https://preppykitchen.com/wp-content/uploads/2024/11/Dinner-Rolls-Blog-3-1025x1536.jpg",
+      "tags": [
+        "vegetarian",
+        "bread"
+      ],
+      "ingredients": [
+        "1 cup warm whole milk (240ml)",
+        "1 (0.25oz/7g) packet instant yeast (rapid rise)",
+        "3½ cups all-purpose flour divided (420g)",
+        "5 tablespoons unsalted butter softened (71g)",
+        "3 tablespoons granulated sugar",
+        "1 large egg",
+        "1 teaspoon salt",
+        "2 tablespoons unsalted butter",
+      ]
+    },
+    {
+      "name": "Sourdough Bread",
+      "subtitle": "This beginner-friendly sourdough recipe does not require kneading, takes very little hands-on prep time, and has straightforward and clear steps.",
+      "language": "en",
+      "minutes": 580,
+      "link": "https://preppykitchen.com/sourdough-bread/",
+      "image": "https://preppykitchen.com/wp-content/uploads/2025/01/Sourdough-Bread-Blog-2-1025x1536.jpg",
+      "tags": [
+        "vegetarian",
+        "bread"
+      ],
+      "ingredients": [
+        "water",
+        "120 grams active starter (about ½ cup)",
+        "500 grams bread flour (4 cups plus 2 tablespoons)",
+        "16 grams fine sea salt"
+      ]
     }
 ];
 

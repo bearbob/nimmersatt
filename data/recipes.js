@@ -1184,10 +1184,9 @@ const RECIPES = [
         "image": "https://www.malteskitchen.de/wp-content/uploads/2018/04/bohnen-kichererbsen-salat-04-1200x680.jpg",
         "tags": ["dinner"]
     },
-        {
+    {
       "language": "de",
       "name": "Aprikosen-Blechkuchen mit Streuseln",
-      "custom": true,
       "link": "https://jennyisbaking.com/de/2020/05/15/apricot-sheet-cake-just-like-from-granny/#recipe",
       "image": "https://i0.wp.com/jennyisbaking.com/wp-1c174-content/uploads/2020/04/DSC08703.jpg",
       "tags": [
@@ -1196,6 +1195,31 @@ const RECIPES = [
         "kuchen",
         "kaffee",
         "cookie"
+      ]
+    },
+    {
+      "language": "de",
+      "name": "Eierragout mit türkischen Reis",
+      "video": "https://www.youtube.com/watch?v=WZ4aLBJpc5w",
+      "icon": "🥚",
+      "tags": [
+        "dinner",
+      ],
+      "ingredients": [
+        "1 Glas Basmati Langkornreis",
+        "3-4 EL Fadennudeln",
+        "2 EL Rapsöl",
+        "4 Eier",
+        "1-2 EL Butter",
+        "2 EL Mehl ",
+        "2 Schalotten oder 1 große Zwiebel",
+        "300 - 500 ml Milch",
+        "1,5 TL Currypulver",
+        "1 TL Kurkuma",
+        "1,5 TL Salz",
+        "Prise Pfeffer",
+        "0,5 TL Rosmarin getrocknet ",
+        "4 - 5 EL TK-Erbsen"
       ]
     },
 ];
