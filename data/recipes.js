@@ -1105,13 +1105,27 @@ const RECIPES = [
         "language": "de",
         "link": "https://www.eat-this.org/fruchtige-chili-gazpacho/",
         "image": "https://www.eat-this.org/wp-content/uploads/2015/07/chili-gazpacho-1.jpg",
-        "tags": ["dinner", "herzhaft", "pasta", "nudeln", "vegetarisch", "vegan"]
+        "tags": ["dinner", "herzhaft", "pasta", "nudeln", "vegetarisch", "vegan"],
+        "ingredients": [
+          "3 große, reife Tomaten",
+          "1 grüne Paprika",
+          "1 große Hand voll süße Cocktailtomaten",
+          "1/2 Salatgurke",
+          "2 Knoblauchzehen",
+          "2 EL Apfelessig",
+          "4 EL Olivenöl",
+          "1 TL Meersalz",
+          "1/2 TL schwarzer Pfeffer",
+          "1/2 - 1 rote Chili",
+          "1 Brötchen"
+        ]
     }, {
         "name": "Bohnenpfanne mit Tofu",
         "language": "de",
         "link": "https://www.ndr.de/ratgeber/kochen/rezepte/bohnenpfanne-mit-tofu,bohnenpfanne-100.html",
         "image": "https://images.ndr.de/image/271e096c-ee42-4236-ae73-7c990377d49b/AAABnBpSK7k/AAABnSSvrFg/16x9-big/bohnenpfanne-102.webp?width=1920",
-        "tags": ["dinner"]
+        "tags": ["dinner"],
+        "minutes": 30
     }, {
         "name": "Apfel-Schmand-Torte",
         "language": "de",
