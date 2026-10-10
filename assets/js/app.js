@@ -1052,7 +1052,8 @@ function performSearch(query) {
   const matches = recipe => {
     const name = recipe.name.toLowerCase();
     const ingredients = (recipe.ingredients || []).join(' ').toLowerCase();
-    return terms.every(t => name.includes(t) || ingredients.includes(t));
+    const tags = (recipe.tags || []).join(' ').toLowerCase();
+    return terms.every(t => name.includes(t) || ingredients.includes(t) || tags.includes(t));
   };
 
   const builtIn = state.allRecipes.filter(r => {
