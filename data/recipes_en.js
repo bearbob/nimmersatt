@@ -938,6 +938,42 @@ const RECIPES_EN = [
         "500 grams bread flour (4 cups plus 2 tablespoons)",
         "16 grams fine sea salt"
       ]
-    }
+    },
+    {
+    "name": "Chicken Tikka Masala",
+    "link": "https://www.jamieoliver.com/recipes/chicken/chicken-tikka-masala/",
+    "image": "https://asset.jamieoliver.com/images/cq7w2e71/production/7ac1a2406a986bcea99e8cc0bdb2fa72a29ac0e2-1387x2081.jpg",
+    "minutes": 90,
+    "tags": ["dinner"],
+    "ingredients": ["chicken thighs", "garlic", "fresh ginger", "tikka masala paste", "Greek yoghurt", "chopped tomatoes", "double cream", "fresh coriander", "rice"],
+    "language": "en",
+  },
+  {
+    "name": "Roast Chicken",
+    "link": "https://www.jamieoliver.com/recipes/chicken/roast-chicken/",
+    "image": "https://asset.jamieoliver.com/images/cq7w2e71/production/76e5ffd023d1f650c17f213c3538cec901165ece-1918x2578.jpg",
+    "minutes": 130,
+    "tags": ["dinner"],
+    "ingredients": ["whole chicken", "lemon", "garlic", "fresh thyme", "fresh rosemary", "olive oil", "butter", "onion"],
+    "language": "en",
+  },
+  {
+    "name": "Beef Stew",
+    "link": "https://www.jamieoliver.com/recipes/beef/beef-stew/",
+    "image": "https://asset.jamieoliver.com/images/cq7w2e71/production/c77fdbed3fad083e22369d68714b3d6916f7c0ed-958x1280.png",
+    "minutes": 265,
+    "tags": ["dinner"],
+    "ingredients": ["braising beef", "carrots", "celery", "onion", "garlic", "red wine", "beef stock", "tomato purée", "bay leaves", "fresh thyme", "potatoes"],
+    "language": "en",
+  },
+  {
+    "name": "Cottage Pie",
+    "link": "https://www.jamieoliver.com/recipes/easy-cottage-pie/",
+    "image": "https://asset.jamieoliver.com/images/cq7w2e71/production/1e5d8b818d267a45d8d5fc75295c2f81aef02559-853x1280.jpg",
+    "minutes": 70,
+    "tags": ["dinner"],
+    "ingredients": ["minced beef", "onion", "carrots", "celery", "garlic", "tomato purée", "Worcestershire sauce", "beef stock", "potatoes", "butter", "milk"],
+    "language": "en",
+  }
 ];
 
